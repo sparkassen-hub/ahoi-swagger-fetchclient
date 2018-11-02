@@ -1,0 +1,7 @@
+node_modules
+.swagger-codegen
+.swagger-codegen-ignore
+generate.sh
+git_push.sh
+README.md-replace
+swagger-codegen
