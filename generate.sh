@@ -16,6 +16,7 @@ rm -rf ./swagger-codegen
 
 cp README.md-replace README.md
 cp .gitignore-replace .gitignore
+cp .nojekyll ./docs
 
 npm install
 npm run build
