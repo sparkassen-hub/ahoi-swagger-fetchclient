@@ -4,7 +4,8 @@
 
 ## API Docs
 
-**&rarr; [API Docs](https://sparkassen-hub.github.io/ahoi-swagger-fetchclient/docs/modules/_api_.html)**
+**&rarr; [API
+Docs](https://sparkassen-hub.github.io/ahoi-swagger-fetchclient/modules/_api_.html)**
 
 ## AHOI - Open Banking API
 
