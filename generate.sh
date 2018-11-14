@@ -15,10 +15,12 @@ java -jar swagger-codegen/modules/swagger-codegen-cli/target/swagger-codegen-cli
 rm -rf ./swagger-codegen
 
 cp README.md-replace README.md
+cp .gitignore-replace .gitignore
 
 npm install
 npm run build
 
-npm install -g @compodoc/compodoc
-compodoc ./api.ts -p tsconfig.json -d ./docs --theme gitbook --hideGenerator --disableCoverage --toggleMenuItems default
+npm install typedoc
+rm -rf ./docs
+./node_modules/typedoc/bin/typedoc --out ./docs ./api.ts --target ES6 --hideGenerator --module commonjs --excludePrivate --excludeProtected --excludeExternals --mode modules --theme default
 cp AHOI-Logo.png ./docs/AHOI-Logo.png

@@ -1,6 +1,6 @@
 {
   "name": "ahoi-swagger-fetchclient",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "swagger client for ahoi-swagger-fetchclient",
   "author": "Swagger Codegen Contributors",
   "keywords": [
@@ -17,7 +17,8 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "portable-fetch": "^3.0.0"
+    "portable-fetch": "^3.0.0",
+    "typedoc": "^0.13.0"
   },
   "devDependencies": {
     "@types/node": "^8.0.9",

@@ -290,7 +290,7 @@ var TanChallenge;
 exports.AccessApiFetchParamCreator = function (configuration) {
     return {
         /**
-         * Delete access with **accessId** and all related accounts.
+         * Delete access with **accessId** and all related accounts
          * @summary Delete access
          * @param {string} accessId The **id** for the access to delete
          * @param {*} [options] Override http request option.
@@ -328,7 +328,7 @@ exports.AccessApiFetchParamCreator = function (configuration) {
         /**
          * Retrieve the access with **accessId**. The retrieved object does not contain sensitive information such as the PIN.
          * @summary Get access
-         * @param {string} accessId The **id** for the access to retrieve.
+         * @param {string} accessId The **id** for the access to retrieve
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -362,7 +362,7 @@ exports.AccessApiFetchParamCreator = function (configuration) {
             };
         },
         /**
-         * Returns all registered accesses for the authenticated user. Confidential information like the PIN will not be returned.
+         * Returns all registered accesses for the authenticated user. The access fields contain confidential information (e.g., PIN) that will not be returned.
          * @summary List accesses
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -430,10 +430,10 @@ exports.AccessApiFetchParamCreator = function (configuration) {
             };
         },
         /**
-         * Update the access credentials in **accessFields**. If the access does not exist, the **accessId** does not match the **id** in **accessDto** or the **providerId** is not the same, the status code 404 is returned. If another access with the same login  data already exists, the status code 409 is returned.  The updated access is validated by setting up an account. The status code 200 does not imply that the credentials are correct. To check this the client should obtain access.
+         * Update the access credentials in **accessFields**. If the access does not exist, the **accessId** does not match the **id** in **accessDto**, or the **providerId** is not the same, status code 404 is returned. If another access with the same login data already exists, status code 409 is returned.  The updated access is validated by setting up an account. Status code 200 does not imply that the credentials are correct. To check this, the client should obtain access.
          * @summary Update access
-         * @param {string} accessId The **id** for the access to update.
-         * @param {Access} accessDto The Access object that contains the changed credentials in             **accessFields**. Other fields cannot be edited.
+         * @param {string} accessId The **id** for the access to update
+         * @param {Access} accessDto The access object that contains the changed credentials in             **accessFields**. Other fields cannot be edited.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -482,7 +482,7 @@ exports.AccessApiFetchParamCreator = function (configuration) {
 exports.AccessApiFp = function (configuration) {
     return {
         /**
-         * Delete access with **accessId** and all related accounts.
+         * Delete access with **accessId** and all related accounts
          * @summary Delete access
          * @param {string} accessId The **id** for the access to delete
          * @param {*} [options] Override http request option.
@@ -506,7 +506,7 @@ exports.AccessApiFp = function (configuration) {
         /**
          * Retrieve the access with **accessId**. The retrieved object does not contain sensitive information such as the PIN.
          * @summary Get access
-         * @param {string} accessId The **id** for the access to retrieve.
+         * @param {string} accessId The **id** for the access to retrieve
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -526,7 +526,7 @@ exports.AccessApiFp = function (configuration) {
             };
         },
         /**
-         * Returns all registered accesses for the authenticated user. Confidential information like the PIN will not be returned.
+         * Returns all registered accesses for the authenticated user. The access fields contain confidential information (e.g., PIN) that will not be returned.
          * @summary List accesses
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -569,10 +569,10 @@ exports.AccessApiFp = function (configuration) {
             };
         },
         /**
-         * Update the access credentials in **accessFields**. If the access does not exist, the **accessId** does not match the **id** in **accessDto** or the **providerId** is not the same, the status code 404 is returned. If another access with the same login  data already exists, the status code 409 is returned.  The updated access is validated by setting up an account. The status code 200 does not imply that the credentials are correct. To check this the client should obtain access.
+         * Update the access credentials in **accessFields**. If the access does not exist, the **accessId** does not match the **id** in **accessDto**, or the **providerId** is not the same, status code 404 is returned. If another access with the same login data already exists, status code 409 is returned.  The updated access is validated by setting up an account. Status code 200 does not imply that the credentials are correct. To check this, the client should obtain access.
          * @summary Update access
-         * @param {string} accessId The **id** for the access to update.
-         * @param {Access} accessDto The Access object that contains the changed credentials in             **accessFields**. Other fields cannot be edited.
+         * @param {string} accessId The **id** for the access to update
+         * @param {Access} accessDto The access object that contains the changed credentials in             **accessFields**. Other fields cannot be edited.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -600,7 +600,7 @@ exports.AccessApiFp = function (configuration) {
 exports.AccessApiFactory = function (configuration, fetch, basePath) {
     return {
         /**
-         * Delete access with **accessId** and all related accounts.
+         * Delete access with **accessId** and all related accounts
          * @summary Delete access
          * @param {string} accessId The **id** for the access to delete
          * @param {*} [options] Override http request option.
@@ -612,7 +612,7 @@ exports.AccessApiFactory = function (configuration, fetch, basePath) {
         /**
          * Retrieve the access with **accessId**. The retrieved object does not contain sensitive information such as the PIN.
          * @summary Get access
-         * @param {string} accessId The **id** for the access to retrieve.
+         * @param {string} accessId The **id** for the access to retrieve
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -620,7 +620,7 @@ exports.AccessApiFactory = function (configuration, fetch, basePath) {
             return exports.AccessApiFp(configuration).getAccess(accessId, options)(fetch, basePath);
         },
         /**
-         * Returns all registered accesses for the authenticated user. Confidential information like the PIN will not be returned.
+         * Returns all registered accesses for the authenticated user. The access fields contain confidential information (e.g., PIN) that will not be returned.
          * @summary List accesses
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -639,10 +639,10 @@ exports.AccessApiFactory = function (configuration, fetch, basePath) {
             return exports.AccessApiFp(configuration).postAccess(accessDto, options)(fetch, basePath);
         },
         /**
-         * Update the access credentials in **accessFields**. If the access does not exist, the **accessId** does not match the **id** in **accessDto** or the **providerId** is not the same, the status code 404 is returned. If another access with the same login  data already exists, the status code 409 is returned.  The updated access is validated by setting up an account. The status code 200 does not imply that the credentials are correct. To check this the client should obtain access.
+         * Update the access credentials in **accessFields**. If the access does not exist, the **accessId** does not match the **id** in **accessDto**, or the **providerId** is not the same, status code 404 is returned. If another access with the same login data already exists, status code 409 is returned.  The updated access is validated by setting up an account. Status code 200 does not imply that the credentials are correct. To check this, the client should obtain access.
          * @summary Update access
-         * @param {string} accessId The **id** for the access to update.
-         * @param {Access} accessDto The Access object that contains the changed credentials in             **accessFields**. Other fields cannot be edited.
+         * @param {string} accessId The **id** for the access to update
+         * @param {Access} accessDto The access object that contains the changed credentials in             **accessFields**. Other fields cannot be edited.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -663,7 +663,7 @@ var AccessApi = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     /**
-     * Delete access with **accessId** and all related accounts.
+     * Delete access with **accessId** and all related accounts
      * @summary Delete access
      * @param {string} accessId The **id** for the access to delete
      * @param {*} [options] Override http request option.
@@ -676,7 +676,7 @@ var AccessApi = /** @class */ (function (_super) {
     /**
      * Retrieve the access with **accessId**. The retrieved object does not contain sensitive information such as the PIN.
      * @summary Get access
-     * @param {string} accessId The **id** for the access to retrieve.
+     * @param {string} accessId The **id** for the access to retrieve
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AccessApi
@@ -685,7 +685,7 @@ var AccessApi = /** @class */ (function (_super) {
         return exports.AccessApiFp(this.configuration).getAccess(accessId, options)(this.fetch, this.basePath);
     };
     /**
-     * Returns all registered accesses for the authenticated user. Confidential information like the PIN will not be returned.
+     * Returns all registered accesses for the authenticated user. The access fields contain confidential information (e.g., PIN) that will not be returned.
      * @summary List accesses
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -706,10 +706,10 @@ var AccessApi = /** @class */ (function (_super) {
         return exports.AccessApiFp(this.configuration).postAccess(accessDto, options)(this.fetch, this.basePath);
     };
     /**
-     * Update the access credentials in **accessFields**. If the access does not exist, the **accessId** does not match the **id** in **accessDto** or the **providerId** is not the same, the status code 404 is returned. If another access with the same login  data already exists, the status code 409 is returned.  The updated access is validated by setting up an account. The status code 200 does not imply that the credentials are correct. To check this the client should obtain access.
+     * Update the access credentials in **accessFields**. If the access does not exist, the **accessId** does not match the **id** in **accessDto**, or the **providerId** is not the same, status code 404 is returned. If another access with the same login data already exists, status code 409 is returned.  The updated access is validated by setting up an account. Status code 200 does not imply that the credentials are correct. To check this, the client should obtain access.
      * @summary Update access
-     * @param {string} accessId The **id** for the access to update.
-     * @param {Access} accessDto The Access object that contains the changed credentials in             **accessFields**. Other fields cannot be edited.
+     * @param {string} accessId The **id** for the access to update
+     * @param {Access} accessDto The access object that contains the changed credentials in             **accessFields**. Other fields cannot be edited.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AccessApi
@@ -727,7 +727,7 @@ exports.AccessApi = AccessApi;
 exports.AccountApiFetchParamCreator = function (configuration) {
     return {
         /**
-         * Delete the account identified by **accountId**.
+         * Delete the account identified by **accountId**
          * @summary Delete account
          * @param {string} accessId The **accessId** for the account to delete
          * @param {string} accountId The **id** for the account to delete
@@ -769,7 +769,7 @@ exports.AccountApiFetchParamCreator = function (configuration) {
             };
         },
         /**
-         * Returns the account identified by **accountId**.
+         * Returns the account identified by **accountId**
          * @summary Get account
          * @param {string} accessId The **accessId** for the account to retrieve
          * @param {string} accountId The **id** for the account to retrieve
@@ -811,7 +811,7 @@ exports.AccountApiFetchParamCreator = function (configuration) {
             };
         },
         /**
-         * Retrieve all accounts for the current user under the **accessId**.
+         * Retrieve all accounts for the current user under the **accessId**
          * @summary List accounts
          * @param {string} accessId The **id** for the access for which to retrieve all accounts
          * @param {*} [options] Override http request option.
@@ -903,7 +903,7 @@ exports.AccountApiFetchParamCreator = function (configuration) {
 exports.AccountApiFp = function (configuration) {
     return {
         /**
-         * Delete the account identified by **accountId**.
+         * Delete the account identified by **accountId**
          * @summary Delete account
          * @param {string} accessId The **accessId** for the account to delete
          * @param {string} accountId The **id** for the account to delete
@@ -926,7 +926,7 @@ exports.AccountApiFp = function (configuration) {
             };
         },
         /**
-         * Returns the account identified by **accountId**.
+         * Returns the account identified by **accountId**
          * @summary Get account
          * @param {string} accessId The **accessId** for the account to retrieve
          * @param {string} accountId The **id** for the account to retrieve
@@ -949,7 +949,7 @@ exports.AccountApiFp = function (configuration) {
             };
         },
         /**
-         * Retrieve all accounts for the current user under the **accessId**.
+         * Retrieve all accounts for the current user under the **accessId**
          * @summary List accounts
          * @param {string} accessId The **id** for the access for which to retrieve all accounts
          * @param {*} [options] Override http request option.
@@ -1003,7 +1003,7 @@ exports.AccountApiFp = function (configuration) {
 exports.AccountApiFactory = function (configuration, fetch, basePath) {
     return {
         /**
-         * Delete the account identified by **accountId**.
+         * Delete the account identified by **accountId**
          * @summary Delete account
          * @param {string} accessId The **accessId** for the account to delete
          * @param {string} accountId The **id** for the account to delete
@@ -1014,7 +1014,7 @@ exports.AccountApiFactory = function (configuration, fetch, basePath) {
             return exports.AccountApiFp(configuration).deleteAccount(accessId, accountId, options)(fetch, basePath);
         },
         /**
-         * Returns the account identified by **accountId**.
+         * Returns the account identified by **accountId**
          * @summary Get account
          * @param {string} accessId The **accessId** for the account to retrieve
          * @param {string} accountId The **id** for the account to retrieve
@@ -1025,7 +1025,7 @@ exports.AccountApiFactory = function (configuration, fetch, basePath) {
             return exports.AccountApiFp(configuration).getAccount(accessId, accountId, options)(fetch, basePath);
         },
         /**
-         * Retrieve all accounts for the current user under the **accessId**.
+         * Retrieve all accounts for the current user under the **accessId**
          * @summary List accounts
          * @param {string} accessId The **id** for the access for which to retrieve all accounts
          * @param {*} [options] Override http request option.
@@ -1060,7 +1060,7 @@ var AccountApi = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     /**
-     * Delete the account identified by **accountId**.
+     * Delete the account identified by **accountId**
      * @summary Delete account
      * @param {string} accessId The **accessId** for the account to delete
      * @param {string} accountId The **id** for the account to delete
@@ -1072,7 +1072,7 @@ var AccountApi = /** @class */ (function (_super) {
         return exports.AccountApiFp(this.configuration).deleteAccount(accessId, accountId, options)(this.fetch, this.basePath);
     };
     /**
-     * Returns the account identified by **accountId**.
+     * Returns the account identified by **accountId**
      * @summary Get account
      * @param {string} accessId The **accessId** for the account to retrieve
      * @param {string} accountId The **id** for the account to retrieve
@@ -1084,7 +1084,7 @@ var AccountApi = /** @class */ (function (_super) {
         return exports.AccountApiFp(this.configuration).getAccount(accessId, accountId, options)(this.fetch, this.basePath);
     };
     /**
-     * Retrieve all accounts for the current user under the **accessId**.
+     * Retrieve all accounts for the current user under the **accessId**
      * @summary List accounts
      * @param {string} accessId The **id** for the access for which to retrieve all accounts
      * @param {*} [options] Override http request option.
@@ -1118,7 +1118,7 @@ exports.CategoryApiFetchParamCreator = function (configuration) {
     return {
         /**
          * Supported origins are: FINLYTICS
-         * @summary Retrieve all categories for given origin.
+         * @summary Retrieve all categories for given origin
          * @param {string} origin identifier of a supported origin
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1164,7 +1164,7 @@ exports.CategoryApiFp = function (configuration) {
     return {
         /**
          * Supported origins are: FINLYTICS
-         * @summary Retrieve all categories for given origin.
+         * @summary Retrieve all categories for given origin
          * @param {string} origin identifier of a supported origin
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1194,7 +1194,7 @@ exports.CategoryApiFactory = function (configuration, fetch, basePath) {
     return {
         /**
          * Supported origins are: FINLYTICS
-         * @summary Retrieve all categories for given origin.
+         * @summary Retrieve all categories for given origin
          * @param {string} origin identifier of a supported origin
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1217,7 +1217,7 @@ var CategoryApi = /** @class */ (function (_super) {
     }
     /**
      * Supported origins are: FINLYTICS
-     * @summary Retrieve all categories for given origin.
+     * @summary Retrieve all categories for given origin
      * @param {string} origin identifier of a supported origin
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1236,7 +1236,7 @@ exports.CategoryApi = CategoryApi;
 exports.ContractApiFetchParamCreator = function (configuration) {
     return {
         /**
-         *
+         * api.resource.contracts.getContractList.description
          * @summary Fetches contract list of current user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1274,7 +1274,7 @@ exports.ContractApiFetchParamCreator = function (configuration) {
 exports.ContractApiFp = function (configuration) {
     return {
         /**
-         *
+         * api.resource.contracts.getContractList.description
          * @summary Fetches contract list of current user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1303,7 +1303,7 @@ exports.ContractApiFp = function (configuration) {
 exports.ContractApiFactory = function (configuration, fetch, basePath) {
     return {
         /**
-         *
+         * api.resource.contracts.getContractList.description
          * @summary Fetches contract list of current user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1325,7 +1325,7 @@ var ContractApi = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     /**
-     *
+     * api.resource.contracts.getContractList.description
      * @summary Fetches contract list of current user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1344,7 +1344,7 @@ exports.ContractApi = ContractApi;
 exports.ForecastApiFetchParamCreator = function (configuration) {
     return {
         /**
-         * The current month is determined by the latest refresh.
+         * The current month is determined by the most recent refresh.
          * @summary Get balance forecast
          * @param {string} accessId The **accessId** for which to retrieve forecasts
          * @param {string} accountId The **accountId** for which to retrieve forecasts
@@ -1386,10 +1386,10 @@ exports.ForecastApiFetchParamCreator = function (configuration) {
             };
         },
         /**
-         * The current  month is determined by latest refresh of transactions. The request  also retrieves the transactions expected to be applied until the  end of the current month.
-         * @summary Retrieve balance forecast for the end of the current month.
-         * @param {string} accessId The **accessId** for the forecast.
-         * @param {string} accountId The **id** for the account.
+         * The current month is determined by the most recent refresh of transactions. The request  also retrieves the transactions expected to be applied until the  end of the current month.
+         * @summary Get forecast transactions
+         * @param {string} accessId The **accessId** for the forecast
+         * @param {string} accountId The **id** for the account
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1436,7 +1436,7 @@ exports.ForecastApiFetchParamCreator = function (configuration) {
 exports.ForecastApiFp = function (configuration) {
     return {
         /**
-         * The current month is determined by the latest refresh.
+         * The current month is determined by the most recent refresh.
          * @summary Get balance forecast
          * @param {string} accessId The **accessId** for which to retrieve forecasts
          * @param {string} accountId The **accountId** for which to retrieve forecasts
@@ -1459,10 +1459,10 @@ exports.ForecastApiFp = function (configuration) {
             };
         },
         /**
-         * The current  month is determined by latest refresh of transactions. The request  also retrieves the transactions expected to be applied until the  end of the current month.
-         * @summary Retrieve balance forecast for the end of the current month.
-         * @param {string} accessId The **accessId** for the forecast.
-         * @param {string} accountId The **id** for the account.
+         * The current month is determined by the most recent refresh of transactions. The request  also retrieves the transactions expected to be applied until the  end of the current month.
+         * @summary Get forecast transactions
+         * @param {string} accessId The **accessId** for the forecast
+         * @param {string} accountId The **id** for the account
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1490,7 +1490,7 @@ exports.ForecastApiFp = function (configuration) {
 exports.ForecastApiFactory = function (configuration, fetch, basePath) {
     return {
         /**
-         * The current month is determined by the latest refresh.
+         * The current month is determined by the most recent refresh.
          * @summary Get balance forecast
          * @param {string} accessId The **accessId** for which to retrieve forecasts
          * @param {string} accountId The **accountId** for which to retrieve forecasts
@@ -1501,10 +1501,10 @@ exports.ForecastApiFactory = function (configuration, fetch, basePath) {
             return exports.ForecastApiFp(configuration).getForecast(accessId, accountId, options)(fetch, basePath);
         },
         /**
-         * The current  month is determined by latest refresh of transactions. The request  also retrieves the transactions expected to be applied until the  end of the current month.
-         * @summary Retrieve balance forecast for the end of the current month.
-         * @param {string} accessId The **accessId** for the forecast.
-         * @param {string} accountId The **id** for the account.
+         * The current month is determined by the most recent refresh of transactions. The request  also retrieves the transactions expected to be applied until the  end of the current month.
+         * @summary Get forecast transactions
+         * @param {string} accessId The **accessId** for the forecast
+         * @param {string} accountId The **id** for the account
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1525,7 +1525,7 @@ var ForecastApi = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     /**
-     * The current month is determined by the latest refresh.
+     * The current month is determined by the most recent refresh.
      * @summary Get balance forecast
      * @param {string} accessId The **accessId** for which to retrieve forecasts
      * @param {string} accountId The **accountId** for which to retrieve forecasts
@@ -1537,10 +1537,10 @@ var ForecastApi = /** @class */ (function (_super) {
         return exports.ForecastApiFp(this.configuration).getForecast(accessId, accountId, options)(this.fetch, this.basePath);
     };
     /**
-     * The current  month is determined by latest refresh of transactions. The request  also retrieves the transactions expected to be applied until the  end of the current month.
-     * @summary Retrieve balance forecast for the end of the current month.
-     * @param {string} accessId The **accessId** for the forecast.
-     * @param {string} accountId The **id** for the account.
+     * The current month is determined by the most recent refresh of transactions. The request  also retrieves the transactions expected to be applied until the  end of the current month.
+     * @summary Get forecast transactions
+     * @param {string} accessId The **accessId** for the forecast
+     * @param {string} accountId The **id** for the account
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ForecastApi
@@ -1558,7 +1558,7 @@ exports.ForecastApi = ForecastApi;
 exports.ProviderApiFetchParamCreator = function (configuration) {
     return {
         /**
-         * Retrieve a single provider identified by **providerId**.
+         * Retrieve a single provider identified by **providerId**
          * @summary Get provider
          * @param {string} providerId The **providerId** to retrieve
          * @param {*} [options] Override http request option.
@@ -1594,7 +1594,7 @@ exports.ProviderApiFetchParamCreator = function (configuration) {
             };
         },
         /**
-         * Retrieve a list of bank providers. A provider-**id** is necessary to create an _access_. To retrieve the necessary access fields, you need to query the specific `provider/{providerId}`. For performance reasons they are kept separate.
+         * Retrieve a list of bank providers. A **providerid** is required to create an _access_. To retrieve the necessary access fields, you need to query the specific `provider/{providerId}`. For performance reasons they are kept separate.
          * @summary List bank providers
          * @param {string} [bankCode] Optional — if length &#x3D; 8, the response will also contain data describing             the fields required for account setup
          * @param {boolean} [supported] Optional — response should only contain providers supported for account             setup via this API
@@ -1644,7 +1644,7 @@ exports.ProviderApiFetchParamCreator = function (configuration) {
 exports.ProviderApiFp = function (configuration) {
     return {
         /**
-         * Retrieve a single provider identified by **providerId**.
+         * Retrieve a single provider identified by **providerId**
          * @summary Get provider
          * @param {string} providerId The **providerId** to retrieve
          * @param {*} [options] Override http request option.
@@ -1666,7 +1666,7 @@ exports.ProviderApiFp = function (configuration) {
             };
         },
         /**
-         * Retrieve a list of bank providers. A provider-**id** is necessary to create an _access_. To retrieve the necessary access fields, you need to query the specific `provider/{providerId}`. For performance reasons they are kept separate.
+         * Retrieve a list of bank providers. A **providerid** is required to create an _access_. To retrieve the necessary access fields, you need to query the specific `provider/{providerId}`. For performance reasons they are kept separate.
          * @summary List bank providers
          * @param {string} [bankCode] Optional — if length &#x3D; 8, the response will also contain data describing             the fields required for account setup
          * @param {boolean} [supported] Optional — response should only contain providers supported for account             setup via this API
@@ -1698,7 +1698,7 @@ exports.ProviderApiFp = function (configuration) {
 exports.ProviderApiFactory = function (configuration, fetch, basePath) {
     return {
         /**
-         * Retrieve a single provider identified by **providerId**.
+         * Retrieve a single provider identified by **providerId**
          * @summary Get provider
          * @param {string} providerId The **providerId** to retrieve
          * @param {*} [options] Override http request option.
@@ -1708,7 +1708,7 @@ exports.ProviderApiFactory = function (configuration, fetch, basePath) {
             return exports.ProviderApiFp(configuration).getProvider(providerId, options)(fetch, basePath);
         },
         /**
-         * Retrieve a list of bank providers. A provider-**id** is necessary to create an _access_. To retrieve the necessary access fields, you need to query the specific `provider/{providerId}`. For performance reasons they are kept separate.
+         * Retrieve a list of bank providers. A **providerid** is required to create an _access_. To retrieve the necessary access fields, you need to query the specific `provider/{providerId}`. For performance reasons they are kept separate.
          * @summary List bank providers
          * @param {string} [bankCode] Optional — if length &#x3D; 8, the response will also contain data describing             the fields required for account setup
          * @param {boolean} [supported] Optional — response should only contain providers supported for account             setup via this API
@@ -1733,7 +1733,7 @@ var ProviderApi = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     /**
-     * Retrieve a single provider identified by **providerId**.
+     * Retrieve a single provider identified by **providerId**
      * @summary Get provider
      * @param {string} providerId The **providerId** to retrieve
      * @param {*} [options] Override http request option.
@@ -1744,7 +1744,7 @@ var ProviderApi = /** @class */ (function (_super) {
         return exports.ProviderApiFp(this.configuration).getProvider(providerId, options)(this.fetch, this.basePath);
     };
     /**
-     * Retrieve a list of bank providers. A provider-**id** is necessary to create an _access_. To retrieve the necessary access fields, you need to query the specific `provider/{providerId}`. For performance reasons they are kept separate.
+     * Retrieve a list of bank providers. A **providerid** is required to create an _access_. To retrieve the necessary access fields, you need to query the specific `provider/{providerId}`. For performance reasons they are kept separate.
      * @summary List bank providers
      * @param {string} [bankCode] Optional — if length &#x3D; 8, the response will also contain data describing             the fields required for account setup
      * @param {boolean} [supported] Optional — response should only contain providers supported for account             setup via this API
@@ -1760,13 +1760,372 @@ var ProviderApi = /** @class */ (function (_super) {
 }(BaseAPI));
 exports.ProviderApi = ProviderApi;
 /**
+ * QuickStartApi - fetch parameter creator
+ * @export
+ */
+exports.QuickStartApiFetchParamCreator = function (configuration) {
+    return {
+        /**
+         * Retrieve a single provider identified by **providerId**
+         * @summary Get provider
+         * @param {string} providerId The **providerId** to retrieve
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getProvider: function (providerId, options) {
+            if (options === void 0) { options = {}; }
+            // verify required parameter 'providerId' is not null or undefined
+            if (providerId === null || providerId === undefined) {
+                throw new RequiredError('providerId', 'Required parameter providerId was null or undefined when calling getProvider.');
+            }
+            var localVarPath = "/providers/{providerId}"
+                .replace("{" + "providerId" + "}", encodeURIComponent(String(providerId)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            if (configuration && configuration.accessToken) {
+                var localVarAccessTokenValue = typeof configuration.accessToken === 'function'
+                    ? configuration.accessToken("oauth2", [])
+                    : configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Retrieve a list of bank providers. A **providerid** is required to create an _access_. To retrieve the necessary access fields, you need to query the specific `provider/{providerId}`. For performance reasons they are kept separate.
+         * @summary List bank providers
+         * @param {string} [bankCode] Optional — if length &#x3D; 8, the response will also contain data describing             the fields required for account setup
+         * @param {boolean} [supported] Optional — response should only contain providers supported for account             setup via this API
+         * @param {string} [query] Optional — search parameters for BankCode, BIC, Location, Name. Will be ignored             if the bankCode query parameter is set.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getProviders: function (bankCode, supported, query, options) {
+            if (options === void 0) { options = {}; }
+            var localVarPath = "/providers";
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            if (configuration && configuration.accessToken) {
+                var localVarAccessTokenValue = typeof configuration.accessToken === 'function'
+                    ? configuration.accessToken("oauth2", [])
+                    : configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
+            }
+            if (bankCode !== undefined) {
+                localVarQueryParameter['bankCode'] = bankCode;
+            }
+            if (supported !== undefined) {
+                localVarQueryParameter['supported'] = supported;
+            }
+            if (query !== undefined) {
+                localVarQueryParameter['query'] = query;
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Create a new access and setup all associated accounts and transactions. This will also trigger the creation of monthly transaction summaries, the analysis of all accounts for recurring transactions, and the calculation of the balance forecast.   If the credentials were invalid, the validation state is set accordingly.    It is possible to have multiple accesses for one user.
+         * @summary Create a new access
+         * @param {Access} accessDto A valid BankAccess object containing the required             **accessFields** as indicated by the provider object and the             **providerId**.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        postAccess: function (accessDto, options) {
+            if (options === void 0) { options = {}; }
+            // verify required parameter 'accessDto' is not null or undefined
+            if (accessDto === null || accessDto === undefined) {
+                throw new RequiredError('accessDto', 'Required parameter accessDto was null or undefined when calling postAccess.');
+            }
+            var localVarPath = "/accesses";
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            if (configuration && configuration.accessToken) {
+                var localVarAccessTokenValue = typeof configuration.accessToken === 'function'
+                    ? configuration.accessToken("oauth2", [])
+                    : configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("Access" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body = needsSerialization ? JSON.stringify(accessDto || {}) : (accessDto || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Registers a user with AHOI
+         * @summary User registration
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        register: function (options) {
+            if (options === void 0) { options = {}; }
+            var localVarPath = "/registration";
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            if (configuration && configuration.accessToken) {
+                var localVarAccessTokenValue = typeof configuration.accessToken === 'function'
+                    ? configuration.accessToken("oauth2", [])
+                    : configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    };
+};
+/**
+ * QuickStartApi - functional programming interface
+ * @export
+ */
+exports.QuickStartApiFp = function (configuration) {
+    return {
+        /**
+         * Retrieve a single provider identified by **providerId**
+         * @summary Get provider
+         * @param {string} providerId The **providerId** to retrieve
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getProvider: function (providerId, options) {
+            var localVarFetchArgs = exports.QuickStartApiFetchParamCreator(configuration).getProvider(providerId, options);
+            return function (fetch, basePath) {
+                if (fetch === void 0) { fetch = portableFetch; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then(function (response) {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    }
+                    else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * Retrieve a list of bank providers. A **providerid** is required to create an _access_. To retrieve the necessary access fields, you need to query the specific `provider/{providerId}`. For performance reasons they are kept separate.
+         * @summary List bank providers
+         * @param {string} [bankCode] Optional — if length &#x3D; 8, the response will also contain data describing             the fields required for account setup
+         * @param {boolean} [supported] Optional — response should only contain providers supported for account             setup via this API
+         * @param {string} [query] Optional — search parameters for BankCode, BIC, Location, Name. Will be ignored             if the bankCode query parameter is set.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getProviders: function (bankCode, supported, query, options) {
+            var localVarFetchArgs = exports.QuickStartApiFetchParamCreator(configuration).getProviders(bankCode, supported, query, options);
+            return function (fetch, basePath) {
+                if (fetch === void 0) { fetch = portableFetch; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then(function (response) {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    }
+                    else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * Create a new access and setup all associated accounts and transactions. This will also trigger the creation of monthly transaction summaries, the analysis of all accounts for recurring transactions, and the calculation of the balance forecast.   If the credentials were invalid, the validation state is set accordingly.    It is possible to have multiple accesses for one user.
+         * @summary Create a new access
+         * @param {Access} accessDto A valid BankAccess object containing the required             **accessFields** as indicated by the provider object and the             **providerId**.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        postAccess: function (accessDto, options) {
+            var localVarFetchArgs = exports.QuickStartApiFetchParamCreator(configuration).postAccess(accessDto, options);
+            return function (fetch, basePath) {
+                if (fetch === void 0) { fetch = portableFetch; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then(function (response) {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    }
+                    else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * Registers a user with AHOI
+         * @summary User registration
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        register: function (options) {
+            var localVarFetchArgs = exports.QuickStartApiFetchParamCreator(configuration).register(options);
+            return function (fetch, basePath) {
+                if (fetch === void 0) { fetch = portableFetch; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then(function (response) {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    }
+                    else {
+                        throw response;
+                    }
+                });
+            };
+        },
+    };
+};
+/**
+ * QuickStartApi - factory interface
+ * @export
+ */
+exports.QuickStartApiFactory = function (configuration, fetch, basePath) {
+    return {
+        /**
+         * Retrieve a single provider identified by **providerId**
+         * @summary Get provider
+         * @param {string} providerId The **providerId** to retrieve
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getProvider: function (providerId, options) {
+            return exports.QuickStartApiFp(configuration).getProvider(providerId, options)(fetch, basePath);
+        },
+        /**
+         * Retrieve a list of bank providers. A **providerid** is required to create an _access_. To retrieve the necessary access fields, you need to query the specific `provider/{providerId}`. For performance reasons they are kept separate.
+         * @summary List bank providers
+         * @param {string} [bankCode] Optional — if length &#x3D; 8, the response will also contain data describing             the fields required for account setup
+         * @param {boolean} [supported] Optional — response should only contain providers supported for account             setup via this API
+         * @param {string} [query] Optional — search parameters for BankCode, BIC, Location, Name. Will be ignored             if the bankCode query parameter is set.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getProviders: function (bankCode, supported, query, options) {
+            return exports.QuickStartApiFp(configuration).getProviders(bankCode, supported, query, options)(fetch, basePath);
+        },
+        /**
+         * Create a new access and setup all associated accounts and transactions. This will also trigger the creation of monthly transaction summaries, the analysis of all accounts for recurring transactions, and the calculation of the balance forecast.   If the credentials were invalid, the validation state is set accordingly.    It is possible to have multiple accesses for one user.
+         * @summary Create a new access
+         * @param {Access} accessDto A valid BankAccess object containing the required             **accessFields** as indicated by the provider object and the             **providerId**.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        postAccess: function (accessDto, options) {
+            return exports.QuickStartApiFp(configuration).postAccess(accessDto, options)(fetch, basePath);
+        },
+        /**
+         * Registers a user with AHOI
+         * @summary User registration
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        register: function (options) {
+            return exports.QuickStartApiFp(configuration).register(options)(fetch, basePath);
+        },
+    };
+};
+/**
+ * QuickStartApi - object-oriented interface
+ * @export
+ * @class QuickStartApi
+ * @extends {BaseAPI}
+ */
+var QuickStartApi = /** @class */ (function (_super) {
+    __extends(QuickStartApi, _super);
+    function QuickStartApi() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    /**
+     * Retrieve a single provider identified by **providerId**
+     * @summary Get provider
+     * @param {string} providerId The **providerId** to retrieve
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof QuickStartApi
+     */
+    QuickStartApi.prototype.getProvider = function (providerId, options) {
+        return exports.QuickStartApiFp(this.configuration).getProvider(providerId, options)(this.fetch, this.basePath);
+    };
+    /**
+     * Retrieve a list of bank providers. A **providerid** is required to create an _access_. To retrieve the necessary access fields, you need to query the specific `provider/{providerId}`. For performance reasons they are kept separate.
+     * @summary List bank providers
+     * @param {string} [bankCode] Optional — if length &#x3D; 8, the response will also contain data describing             the fields required for account setup
+     * @param {boolean} [supported] Optional — response should only contain providers supported for account             setup via this API
+     * @param {string} [query] Optional — search parameters for BankCode, BIC, Location, Name. Will be ignored             if the bankCode query parameter is set.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof QuickStartApi
+     */
+    QuickStartApi.prototype.getProviders = function (bankCode, supported, query, options) {
+        return exports.QuickStartApiFp(this.configuration).getProviders(bankCode, supported, query, options)(this.fetch, this.basePath);
+    };
+    /**
+     * Create a new access and setup all associated accounts and transactions. This will also trigger the creation of monthly transaction summaries, the analysis of all accounts for recurring transactions, and the calculation of the balance forecast.   If the credentials were invalid, the validation state is set accordingly.    It is possible to have multiple accesses for one user.
+     * @summary Create a new access
+     * @param {Access} accessDto A valid BankAccess object containing the required             **accessFields** as indicated by the provider object and the             **providerId**.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof QuickStartApi
+     */
+    QuickStartApi.prototype.postAccess = function (accessDto, options) {
+        return exports.QuickStartApiFp(this.configuration).postAccess(accessDto, options)(this.fetch, this.basePath);
+    };
+    /**
+     * Registers a user with AHOI
+     * @summary User registration
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof QuickStartApi
+     */
+    QuickStartApi.prototype.register = function (options) {
+        return exports.QuickStartApiFp(this.configuration).register(options)(this.fetch, this.basePath);
+    };
+    return QuickStartApi;
+}(BaseAPI));
+exports.QuickStartApi = QuickStartApi;
+/**
  * RegistrationApi - fetch parameter creator
  * @export
  */
 exports.RegistrationApiFetchParamCreator = function (configuration) {
     return {
         /**
-         *
+         * api.resource.registration.deleteRegistration.description
          * @summary Delete the user context for the current token.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1796,8 +2155,8 @@ exports.RegistrationApiFetchParamCreator = function (configuration) {
             };
         },
         /**
-         * A valid API public key will be returned in JWK format to be used to encrypt registration data
-         * @summary Request API jwk public key
+         * A valid API public key will be returned in JWK format to be used to encrypt registration data. Only needed with extended encryption.
+         * @summary Request API JWK public key
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1826,7 +2185,7 @@ exports.RegistrationApiFetchParamCreator = function (configuration) {
             };
         },
         /**
-         * A valid API public key will be returned to be used to encrypt registration data
+         * A valid API public key will be returned to be used to encrypt registration data. Only needed with extended encryption.
          * @summary Request API public key
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1894,7 +2253,7 @@ exports.RegistrationApiFetchParamCreator = function (configuration) {
 exports.RegistrationApiFp = function (configuration) {
     return {
         /**
-         *
+         * api.resource.registration.deleteRegistration.description
          * @summary Delete the user context for the current token.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1915,8 +2274,8 @@ exports.RegistrationApiFp = function (configuration) {
             };
         },
         /**
-         * A valid API public key will be returned in JWK format to be used to encrypt registration data
-         * @summary Request API jwk public key
+         * A valid API public key will be returned in JWK format to be used to encrypt registration data. Only needed with extended encryption.
+         * @summary Request API JWK public key
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1936,7 +2295,7 @@ exports.RegistrationApiFp = function (configuration) {
             };
         },
         /**
-         * A valid API public key will be returned to be used to encrypt registration data
+         * A valid API public key will be returned to be used to encrypt registration data. Only needed with extended encryption.
          * @summary Request API public key
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1986,7 +2345,7 @@ exports.RegistrationApiFp = function (configuration) {
 exports.RegistrationApiFactory = function (configuration, fetch, basePath) {
     return {
         /**
-         *
+         * api.resource.registration.deleteRegistration.description
          * @summary Delete the user context for the current token.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1995,8 +2354,8 @@ exports.RegistrationApiFactory = function (configuration, fetch, basePath) {
             return exports.RegistrationApiFp(configuration).deleteRegistration(options)(fetch, basePath);
         },
         /**
-         * A valid API public key will be returned in JWK format to be used to encrypt registration data
-         * @summary Request API jwk public key
+         * A valid API public key will be returned in JWK format to be used to encrypt registration data. Only needed with extended encryption.
+         * @summary Request API JWK public key
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2004,7 +2363,7 @@ exports.RegistrationApiFactory = function (configuration, fetch, basePath) {
             return exports.RegistrationApiFp(configuration).getJsonWebKey(options)(fetch, basePath);
         },
         /**
-         * A valid API public key will be returned to be used to encrypt registration data
+         * A valid API public key will be returned to be used to encrypt registration data. Only needed with extended encryption.
          * @summary Request API public key
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2035,7 +2394,7 @@ var RegistrationApi = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     /**
-     *
+     * api.resource.registration.deleteRegistration.description
      * @summary Delete the user context for the current token.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2045,8 +2404,8 @@ var RegistrationApi = /** @class */ (function (_super) {
         return exports.RegistrationApiFp(this.configuration).deleteRegistration(options)(this.fetch, this.basePath);
     };
     /**
-     * A valid API public key will be returned in JWK format to be used to encrypt registration data
-     * @summary Request API jwk public key
+     * A valid API public key will be returned in JWK format to be used to encrypt registration data. Only needed with extended encryption.
+     * @summary Request API JWK public key
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RegistrationApi
@@ -2055,7 +2414,7 @@ var RegistrationApi = /** @class */ (function (_super) {
         return exports.RegistrationApiFp(this.configuration).getJsonWebKey(options)(this.fetch, this.basePath);
     };
     /**
-     * A valid API public key will be returned to be used to encrypt registration data
+     * A valid API public key will be returned to be used to encrypt registration data. Only needed with extended encryption.
      * @summary Request API public key
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2084,9 +2443,9 @@ exports.RegistrationApi = RegistrationApi;
 exports.SecurityApiFetchParamCreator = function (configuration) {
     return {
         /**
-         *
+         * api.resource.accesses.accessId.accounts.accountId.securities.securityId.getSecurity.description
          * @summary Get security
-         * @param {string} accessId
+         * @param {string} accessId api.resource.accesses.accessId.accounts.accountId.securities.securityId.getSecurity.parameter.accessId.description
          * @param {string} accountId The **accountId** for which to retrieve securities
          * @param {string} securityId The **securityId** for the security to retrieve
          * @param {*} [options] Override http request option.
@@ -2132,11 +2491,11 @@ exports.SecurityApiFetchParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * api.resource.accesses.accessId.accounts.accountId.securities.listSecurities.description
          * @summary List securities for account
-         * @param {string} accessId
+         * @param {string} accessId api.resource.accesses.accessId.accounts.accountId.securities.listSecurities.parameter.accessId.description
          * @param {string} accountId The **accountId** for which to retrieve securities
-         * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.         A \&quot;maxAge\&quot; of 3600 will not trigger an update of the account securities, when last         refresh has been done 2000 seconds ago.
+         * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.         A \&quot;maxAge\&quot; of 3600 will not trigger an update of the account securities when the last         refresh was performed 2000 seconds ago.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2186,9 +2545,9 @@ exports.SecurityApiFetchParamCreator = function (configuration) {
 exports.SecurityApiFp = function (configuration) {
     return {
         /**
-         *
+         * api.resource.accesses.accessId.accounts.accountId.securities.securityId.getSecurity.description
          * @summary Get security
-         * @param {string} accessId
+         * @param {string} accessId api.resource.accesses.accessId.accounts.accountId.securities.securityId.getSecurity.parameter.accessId.description
          * @param {string} accountId The **accountId** for which to retrieve securities
          * @param {string} securityId The **securityId** for the security to retrieve
          * @param {*} [options] Override http request option.
@@ -2210,11 +2569,11 @@ exports.SecurityApiFp = function (configuration) {
             };
         },
         /**
-         *
+         * api.resource.accesses.accessId.accounts.accountId.securities.listSecurities.description
          * @summary List securities for account
-         * @param {string} accessId
+         * @param {string} accessId api.resource.accesses.accessId.accounts.accountId.securities.listSecurities.parameter.accessId.description
          * @param {string} accountId The **accountId** for which to retrieve securities
-         * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.         A \&quot;maxAge\&quot; of 3600 will not trigger an update of the account securities, when last         refresh has been done 2000 seconds ago.
+         * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.         A \&quot;maxAge\&quot; of 3600 will not trigger an update of the account securities when the last         refresh was performed 2000 seconds ago.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2242,9 +2601,9 @@ exports.SecurityApiFp = function (configuration) {
 exports.SecurityApiFactory = function (configuration, fetch, basePath) {
     return {
         /**
-         *
+         * api.resource.accesses.accessId.accounts.accountId.securities.securityId.getSecurity.description
          * @summary Get security
-         * @param {string} accessId
+         * @param {string} accessId api.resource.accesses.accessId.accounts.accountId.securities.securityId.getSecurity.parameter.accessId.description
          * @param {string} accountId The **accountId** for which to retrieve securities
          * @param {string} securityId The **securityId** for the security to retrieve
          * @param {*} [options] Override http request option.
@@ -2254,11 +2613,11 @@ exports.SecurityApiFactory = function (configuration, fetch, basePath) {
             return exports.SecurityApiFp(configuration).getSecurity(accessId, accountId, securityId, options)(fetch, basePath);
         },
         /**
-         *
+         * api.resource.accesses.accessId.accounts.accountId.securities.listSecurities.description
          * @summary List securities for account
-         * @param {string} accessId
+         * @param {string} accessId api.resource.accesses.accessId.accounts.accountId.securities.listSecurities.parameter.accessId.description
          * @param {string} accountId The **accountId** for which to retrieve securities
-         * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.         A \&quot;maxAge\&quot; of 3600 will not trigger an update of the account securities, when last         refresh has been done 2000 seconds ago.
+         * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.         A \&quot;maxAge\&quot; of 3600 will not trigger an update of the account securities when the last         refresh was performed 2000 seconds ago.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2279,9 +2638,9 @@ var SecurityApi = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     /**
-     *
+     * api.resource.accesses.accessId.accounts.accountId.securities.securityId.getSecurity.description
      * @summary Get security
-     * @param {string} accessId
+     * @param {string} accessId api.resource.accesses.accessId.accounts.accountId.securities.securityId.getSecurity.parameter.accessId.description
      * @param {string} accountId The **accountId** for which to retrieve securities
      * @param {string} securityId The **securityId** for the security to retrieve
      * @param {*} [options] Override http request option.
@@ -2292,11 +2651,11 @@ var SecurityApi = /** @class */ (function (_super) {
         return exports.SecurityApiFp(this.configuration).getSecurity(accessId, accountId, securityId, options)(this.fetch, this.basePath);
     };
     /**
-     *
+     * api.resource.accesses.accessId.accounts.accountId.securities.listSecurities.description
      * @summary List securities for account
-     * @param {string} accessId
+     * @param {string} accessId api.resource.accesses.accessId.accounts.accountId.securities.listSecurities.parameter.accessId.description
      * @param {string} accountId The **accountId** for which to retrieve securities
-     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.         A \&quot;maxAge\&quot; of 3600 will not trigger an update of the account securities, when last         refresh has been done 2000 seconds ago.
+     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.         A \&quot;maxAge\&quot; of 3600 will not trigger an update of the account securities when the last         refresh was performed 2000 seconds ago.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SecurityApi
@@ -2314,9 +2673,9 @@ exports.SecurityApi = SecurityApi;
 exports.TANSchemesApiFetchParamCreator = function (configuration) {
     return {
         /**
-         * Returns the currently selected TAN media for the access.
-         * @summary Get current TAN media.
-         * @param {string} accessId The **accessId** for which to retrieve the current TAN media.
+         * Returns the currently selected TAN media for the access
+         * @summary Get current TAN media
+         * @param {string} accessId The **accessId** for which to retrieve the current TAN media
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2350,9 +2709,9 @@ exports.TANSchemesApiFetchParamCreator = function (configuration) {
             };
         },
         /**
-         * Returns the currently selected TAN scheme for the access.
+         * Returns the currently selected TAN scheme for the access
          * @summary Get current TAN scheme.
-         * @param {string} accessId The **accessId** for which to retrieve the current TAN scheme.
+         * @param {string} accessId The **accessId** for which to retrieve the current TAN scheme
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2386,10 +2745,10 @@ exports.TANSchemesApiFetchParamCreator = function (configuration) {
             };
         },
         /**
-         * Retrieves all available TAN schemes for access.
+         * Retrieves all available TAN schemes for access
          * @summary List TAN schemes for access
          * @param {string} accessId The **id** for the access for which to retrieve the TAN list
-         * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.      A \&quot;maxAge\&quot; of 3600 will not trigger an update of TAN schemes, when last refresh has been      done 2000 seconds ago.
+         * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.      A \&quot;maxAge\&quot; of 3600 will not trigger an update of TAN schemes when the last refresh was      performed 2000 seconds ago.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2426,10 +2785,10 @@ exports.TANSchemesApiFetchParamCreator = function (configuration) {
             };
         },
         /**
-         * Update the access with a new currentTanMedia.
-         * @summary Update current TAN media.
-         * @param {string} accessId The **accessId** for which to set the current TAN media.
-         * @param {string} tanMediaId The **id** for the TAN media that should be set as the new currentTanMedia.
+         * Update the access with a new currentTanMedia
+         * @summary Update current TAN media
+         * @param {string} accessId The **accessId** for which to set the current TAN media
+         * @param {string} tanMediaId The **id** for the TAN media that should be set as the new currentTanMedia
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2468,10 +2827,10 @@ exports.TANSchemesApiFetchParamCreator = function (configuration) {
             };
         },
         /**
-         * Update the access with a new currentTanScheme.
-         * @summary Update current TAN scheme.
-         * @param {string} accessId The **accessId** for which to set the current TAN scheme.
-         * @param {string} tanSchemeId The **id** for the TAN scheme that should be set as the new currentTanScheme.
+         * Update the access with a new currentTanScheme
+         * @summary Update current TAN scheme
+         * @param {string} accessId The **accessId** for which to set the current TAN scheme
+         * @param {string} tanSchemeId The **id** for the TAN scheme that should be set as the new currentTanScheme
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2518,9 +2877,9 @@ exports.TANSchemesApiFetchParamCreator = function (configuration) {
 exports.TANSchemesApiFp = function (configuration) {
     return {
         /**
-         * Returns the currently selected TAN media for the access.
-         * @summary Get current TAN media.
-         * @param {string} accessId The **accessId** for which to retrieve the current TAN media.
+         * Returns the currently selected TAN media for the access
+         * @summary Get current TAN media
+         * @param {string} accessId The **accessId** for which to retrieve the current TAN media
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2540,9 +2899,9 @@ exports.TANSchemesApiFp = function (configuration) {
             };
         },
         /**
-         * Returns the currently selected TAN scheme for the access.
+         * Returns the currently selected TAN scheme for the access
          * @summary Get current TAN scheme.
-         * @param {string} accessId The **accessId** for which to retrieve the current TAN scheme.
+         * @param {string} accessId The **accessId** for which to retrieve the current TAN scheme
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2562,10 +2921,10 @@ exports.TANSchemesApiFp = function (configuration) {
             };
         },
         /**
-         * Retrieves all available TAN schemes for access.
+         * Retrieves all available TAN schemes for access
          * @summary List TAN schemes for access
          * @param {string} accessId The **id** for the access for which to retrieve the TAN list
-         * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.      A \&quot;maxAge\&quot; of 3600 will not trigger an update of TAN schemes, when last refresh has been      done 2000 seconds ago.
+         * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.      A \&quot;maxAge\&quot; of 3600 will not trigger an update of TAN schemes when the last refresh was      performed 2000 seconds ago.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2585,10 +2944,10 @@ exports.TANSchemesApiFp = function (configuration) {
             };
         },
         /**
-         * Update the access with a new currentTanMedia.
-         * @summary Update current TAN media.
-         * @param {string} accessId The **accessId** for which to set the current TAN media.
-         * @param {string} tanMediaId The **id** for the TAN media that should be set as the new currentTanMedia.
+         * Update the access with a new currentTanMedia
+         * @summary Update current TAN media
+         * @param {string} accessId The **accessId** for which to set the current TAN media
+         * @param {string} tanMediaId The **id** for the TAN media that should be set as the new currentTanMedia
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2608,10 +2967,10 @@ exports.TANSchemesApiFp = function (configuration) {
             };
         },
         /**
-         * Update the access with a new currentTanScheme.
-         * @summary Update current TAN scheme.
-         * @param {string} accessId The **accessId** for which to set the current TAN scheme.
-         * @param {string} tanSchemeId The **id** for the TAN scheme that should be set as the new currentTanScheme.
+         * Update the access with a new currentTanScheme
+         * @summary Update current TAN scheme
+         * @param {string} accessId The **accessId** for which to set the current TAN scheme
+         * @param {string} tanSchemeId The **id** for the TAN scheme that should be set as the new currentTanScheme
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2639,9 +2998,9 @@ exports.TANSchemesApiFp = function (configuration) {
 exports.TANSchemesApiFactory = function (configuration, fetch, basePath) {
     return {
         /**
-         * Returns the currently selected TAN media for the access.
-         * @summary Get current TAN media.
-         * @param {string} accessId The **accessId** for which to retrieve the current TAN media.
+         * Returns the currently selected TAN media for the access
+         * @summary Get current TAN media
+         * @param {string} accessId The **accessId** for which to retrieve the current TAN media
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2649,9 +3008,9 @@ exports.TANSchemesApiFactory = function (configuration, fetch, basePath) {
             return exports.TANSchemesApiFp(configuration).getCurrentTanMedia(accessId, options)(fetch, basePath);
         },
         /**
-         * Returns the currently selected TAN scheme for the access.
+         * Returns the currently selected TAN scheme for the access
          * @summary Get current TAN scheme.
-         * @param {string} accessId The **accessId** for which to retrieve the current TAN scheme.
+         * @param {string} accessId The **accessId** for which to retrieve the current TAN scheme
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2659,10 +3018,10 @@ exports.TANSchemesApiFactory = function (configuration, fetch, basePath) {
             return exports.TANSchemesApiFp(configuration).getCurrentTanScheme(accessId, options)(fetch, basePath);
         },
         /**
-         * Retrieves all available TAN schemes for access.
+         * Retrieves all available TAN schemes for access
          * @summary List TAN schemes for access
          * @param {string} accessId The **id** for the access for which to retrieve the TAN list
-         * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.      A \&quot;maxAge\&quot; of 3600 will not trigger an update of TAN schemes, when last refresh has been      done 2000 seconds ago.
+         * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.      A \&quot;maxAge\&quot; of 3600 will not trigger an update of TAN schemes when the last refresh was      performed 2000 seconds ago.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2670,10 +3029,10 @@ exports.TANSchemesApiFactory = function (configuration, fetch, basePath) {
             return exports.TANSchemesApiFp(configuration).getTanSchemes(accessId, maxAge, options)(fetch, basePath);
         },
         /**
-         * Update the access with a new currentTanMedia.
-         * @summary Update current TAN media.
-         * @param {string} accessId The **accessId** for which to set the current TAN media.
-         * @param {string} tanMediaId The **id** for the TAN media that should be set as the new currentTanMedia.
+         * Update the access with a new currentTanMedia
+         * @summary Update current TAN media
+         * @param {string} accessId The **accessId** for which to set the current TAN media
+         * @param {string} tanMediaId The **id** for the TAN media that should be set as the new currentTanMedia
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2681,10 +3040,10 @@ exports.TANSchemesApiFactory = function (configuration, fetch, basePath) {
             return exports.TANSchemesApiFp(configuration).putCurrentTanMedia(accessId, tanMediaId, options)(fetch, basePath);
         },
         /**
-         * Update the access with a new currentTanScheme.
-         * @summary Update current TAN scheme.
-         * @param {string} accessId The **accessId** for which to set the current TAN scheme.
-         * @param {string} tanSchemeId The **id** for the TAN scheme that should be set as the new currentTanScheme.
+         * Update the access with a new currentTanScheme
+         * @summary Update current TAN scheme
+         * @param {string} accessId The **accessId** for which to set the current TAN scheme
+         * @param {string} tanSchemeId The **id** for the TAN scheme that should be set as the new currentTanScheme
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2705,9 +3064,9 @@ var TANSchemesApi = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     /**
-     * Returns the currently selected TAN media for the access.
-     * @summary Get current TAN media.
-     * @param {string} accessId The **accessId** for which to retrieve the current TAN media.
+     * Returns the currently selected TAN media for the access
+     * @summary Get current TAN media
+     * @param {string} accessId The **accessId** for which to retrieve the current TAN media
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TANSchemesApi
@@ -2716,9 +3075,9 @@ var TANSchemesApi = /** @class */ (function (_super) {
         return exports.TANSchemesApiFp(this.configuration).getCurrentTanMedia(accessId, options)(this.fetch, this.basePath);
     };
     /**
-     * Returns the currently selected TAN scheme for the access.
+     * Returns the currently selected TAN scheme for the access
      * @summary Get current TAN scheme.
-     * @param {string} accessId The **accessId** for which to retrieve the current TAN scheme.
+     * @param {string} accessId The **accessId** for which to retrieve the current TAN scheme
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TANSchemesApi
@@ -2727,10 +3086,10 @@ var TANSchemesApi = /** @class */ (function (_super) {
         return exports.TANSchemesApiFp(this.configuration).getCurrentTanScheme(accessId, options)(this.fetch, this.basePath);
     };
     /**
-     * Retrieves all available TAN schemes for access.
+     * Retrieves all available TAN schemes for access
      * @summary List TAN schemes for access
      * @param {string} accessId The **id** for the access for which to retrieve the TAN list
-     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.      A \&quot;maxAge\&quot; of 3600 will not trigger an update of TAN schemes, when last refresh has been      done 2000 seconds ago.
+     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.      A \&quot;maxAge\&quot; of 3600 will not trigger an update of TAN schemes when the last refresh was      performed 2000 seconds ago.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TANSchemesApi
@@ -2739,10 +3098,10 @@ var TANSchemesApi = /** @class */ (function (_super) {
         return exports.TANSchemesApiFp(this.configuration).getTanSchemes(accessId, maxAge, options)(this.fetch, this.basePath);
     };
     /**
-     * Update the access with a new currentTanMedia.
-     * @summary Update current TAN media.
-     * @param {string} accessId The **accessId** for which to set the current TAN media.
-     * @param {string} tanMediaId The **id** for the TAN media that should be set as the new currentTanMedia.
+     * Update the access with a new currentTanMedia
+     * @summary Update current TAN media
+     * @param {string} accessId The **accessId** for which to set the current TAN media
+     * @param {string} tanMediaId The **id** for the TAN media that should be set as the new currentTanMedia
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TANSchemesApi
@@ -2751,10 +3110,10 @@ var TANSchemesApi = /** @class */ (function (_super) {
         return exports.TANSchemesApiFp(this.configuration).putCurrentTanMedia(accessId, tanMediaId, options)(this.fetch, this.basePath);
     };
     /**
-     * Update the access with a new currentTanScheme.
-     * @summary Update current TAN scheme.
-     * @param {string} accessId The **accessId** for which to set the current TAN scheme.
-     * @param {string} tanSchemeId The **id** for the TAN scheme that should be set as the new currentTanScheme.
+     * Update the access with a new currentTanScheme
+     * @summary Update current TAN scheme
+     * @param {string} accessId The **accessId** for which to set the current TAN scheme
+     * @param {string} tanSchemeId The **id** for the TAN scheme that should be set as the new currentTanScheme
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TANSchemesApi
@@ -2772,9 +3131,9 @@ exports.TANSchemesApi = TANSchemesApi;
 exports.TaskApiFetchParamCreator = function (configuration) {
     return {
         /**
-         * Fetch challenge for asynchronous running task item from AHOI.
-         * @summary Fetch challenge
-         * @param {string} taskId The **id** for the Task.
+         * This is the third required step when executing a TAN-aware  banking task (e.g., a SEPA transfer).
+         * @summary Fetch task challenges
+         * @param {string} taskId The **id** of the task
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2808,9 +3167,9 @@ exports.TaskApiFetchParamCreator = function (configuration) {
             };
         },
         /**
-         * Fetch asynchronous running task item and its state from AHOI.
-         * @summary Fetch task
-         * @param {string} taskId The **id** for the access to retrieve.
+         * Use this to poll for  status changes (e.g., steps two and five of the SEPA transfer process) or to query the state  after receiving a callback from AHOI.
+         * @summary Fetch state of task
+         * @param {string} taskId The **id** of the task for which to retrieve the status.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2844,10 +3203,10 @@ exports.TaskApiFetchParamCreator = function (configuration) {
             };
         },
         /**
-         * Provide an authorization information (e.g. TAN) to an asynchronous running task.
-         * @summary Authorize task
-         * @param {string} taskId The **id** for the Task.
-         * @param {ChallengeResponse} challengeResponse the response to process
+         * The SEPA transfer initiated using the _Transfer_ resource requires this starting with step four.
+         * @summary Authorize a task
+         * @param {string} taskId The **id** of the task
+         * @param {ChallengeResponse} challengeResponse The response to process
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2896,9 +3255,9 @@ exports.TaskApiFetchParamCreator = function (configuration) {
 exports.TaskApiFp = function (configuration) {
     return {
         /**
-         * Fetch challenge for asynchronous running task item from AHOI.
-         * @summary Fetch challenge
-         * @param {string} taskId The **id** for the Task.
+         * This is the third required step when executing a TAN-aware  banking task (e.g., a SEPA transfer).
+         * @summary Fetch task challenges
+         * @param {string} taskId The **id** of the task
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2918,9 +3277,9 @@ exports.TaskApiFp = function (configuration) {
             };
         },
         /**
-         * Fetch asynchronous running task item and its state from AHOI.
-         * @summary Fetch task
-         * @param {string} taskId The **id** for the access to retrieve.
+         * Use this to poll for  status changes (e.g., steps two and five of the SEPA transfer process) or to query the state  after receiving a callback from AHOI.
+         * @summary Fetch state of task
+         * @param {string} taskId The **id** of the task for which to retrieve the status.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2940,10 +3299,10 @@ exports.TaskApiFp = function (configuration) {
             };
         },
         /**
-         * Provide an authorization information (e.g. TAN) to an asynchronous running task.
-         * @summary Authorize task
-         * @param {string} taskId The **id** for the Task.
-         * @param {ChallengeResponse} challengeResponse the response to process
+         * The SEPA transfer initiated using the _Transfer_ resource requires this starting with step four.
+         * @summary Authorize a task
+         * @param {string} taskId The **id** of the task
+         * @param {ChallengeResponse} challengeResponse The response to process
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2971,9 +3330,9 @@ exports.TaskApiFp = function (configuration) {
 exports.TaskApiFactory = function (configuration, fetch, basePath) {
     return {
         /**
-         * Fetch challenge for asynchronous running task item from AHOI.
-         * @summary Fetch challenge
-         * @param {string} taskId The **id** for the Task.
+         * This is the third required step when executing a TAN-aware  banking task (e.g., a SEPA transfer).
+         * @summary Fetch task challenges
+         * @param {string} taskId The **id** of the task
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2981,9 +3340,9 @@ exports.TaskApiFactory = function (configuration, fetch, basePath) {
             return exports.TaskApiFp(configuration).getChallenge(taskId, options)(fetch, basePath);
         },
         /**
-         * Fetch asynchronous running task item and its state from AHOI.
-         * @summary Fetch task
-         * @param {string} taskId The **id** for the access to retrieve.
+         * Use this to poll for  status changes (e.g., steps two and five of the SEPA transfer process) or to query the state  after receiving a callback from AHOI.
+         * @summary Fetch state of task
+         * @param {string} taskId The **id** of the task for which to retrieve the status.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2991,10 +3350,10 @@ exports.TaskApiFactory = function (configuration, fetch, basePath) {
             return exports.TaskApiFp(configuration).getTask(taskId, options)(fetch, basePath);
         },
         /**
-         * Provide an authorization information (e.g. TAN) to an asynchronous running task.
-         * @summary Authorize task
-         * @param {string} taskId The **id** for the Task.
-         * @param {ChallengeResponse} challengeResponse the response to process
+         * The SEPA transfer initiated using the _Transfer_ resource requires this starting with step four.
+         * @summary Authorize a task
+         * @param {string} taskId The **id** of the task
+         * @param {ChallengeResponse} challengeResponse The response to process
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -3015,9 +3374,9 @@ var TaskApi = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     /**
-     * Fetch challenge for asynchronous running task item from AHOI.
-     * @summary Fetch challenge
-     * @param {string} taskId The **id** for the Task.
+     * This is the third required step when executing a TAN-aware  banking task (e.g., a SEPA transfer).
+     * @summary Fetch task challenges
+     * @param {string} taskId The **id** of the task
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TaskApi
@@ -3026,9 +3385,9 @@ var TaskApi = /** @class */ (function (_super) {
         return exports.TaskApiFp(this.configuration).getChallenge(taskId, options)(this.fetch, this.basePath);
     };
     /**
-     * Fetch asynchronous running task item and its state from AHOI.
-     * @summary Fetch task
-     * @param {string} taskId The **id** for the access to retrieve.
+     * Use this to poll for  status changes (e.g., steps two and five of the SEPA transfer process) or to query the state  after receiving a callback from AHOI.
+     * @summary Fetch state of task
+     * @param {string} taskId The **id** of the task for which to retrieve the status.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TaskApi
@@ -3037,10 +3396,10 @@ var TaskApi = /** @class */ (function (_super) {
         return exports.TaskApiFp(this.configuration).getTask(taskId, options)(this.fetch, this.basePath);
     };
     /**
-     * Provide an authorization information (e.g. TAN) to an asynchronous running task.
-     * @summary Authorize task
-     * @param {string} taskId The **id** for the Task.
-     * @param {ChallengeResponse} challengeResponse the response to process
+     * The SEPA transfer initiated using the _Transfer_ resource requires this starting with step four.
+     * @summary Authorize a task
+     * @param {string} taskId The **id** of the task
+     * @param {ChallengeResponse} challengeResponse The response to process
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TaskApi
@@ -3058,7 +3417,7 @@ exports.TaskApi = TaskApi;
 exports.TransactionApiFetchParamCreator = function (configuration) {
     return {
         /**
-         * Returns the transaction identified by **transactionId** in relationship with **accountId**.
+         * Returns the transaction identified by **transactionId** in relation to **accountId**.
          * @summary Get transaction
          * @param {string} accessId The **accessId** for the transaction to retrieve
          * @param {string} accountId The **accountId** for the transaction to retrieve
@@ -3106,13 +3465,13 @@ exports.TransactionApiFetchParamCreator = function (configuration) {
             };
         },
         /**
-         * Retrieve all transactions for **accountId**.
+         * Retrieve all transactions for **accountId**
          * @summary List transactions for account
-         * @param {string} accessId The **accessId** for which to retrieve transactions.
-         * @param {string} accountId The **accountId** for which to retrieve transactions.
-         * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.          A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions, when last refresh has          been done 2000 seconds ago.
+         * @param {string} accessId The **accessId** for which to retrieve transactions
+         * @param {string} accountId The **accountId** for which to retrieve transactions
+         * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.          A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions, when the last refresh was          performed 2000 seconds ago.
          * @param {number} [limit] Optional — limit the number of returned transactions
-         * @param {number} [offset] Optional — skip the first **offset** transactions in result
+         * @param {number} [offset] Optional — skip the first **offset** transactions in the result
          * @param {string} [from] Optional — only return transactions with booking date later than **from**; an ISO8601 Month(2014-11), Date (2014-11-17) or DateTime         (2014-11-17T12:00:00Z)
          * @param {string} [to] Optional — only return transactions with booking date prior or equal to **to**; an ISO8601 Date, Month or DateTime
          * @param {*} [options] Override http request option.
@@ -3168,12 +3527,12 @@ exports.TransactionApiFetchParamCreator = function (configuration) {
             };
         },
         /**
-         * Retrieve all transactions for **patternId**.
+         * Retrieve all transactions for **patternId**
          * @summary List transactions for pattern
          * @param {string} accessId The **accessId** for which to retrieve transactions
          * @param {string} accountId The **accountId** for which to retrieve transactions
          * @param {string} patternId The **patternId** for which to retrieve transactions
-         * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.       A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions, when last refresh has       been done 2000 seconds ago.
+         * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.       A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions when the last refresh was       performed 2000 seconds ago.
          * @param {number} [limit] Optional — limit the number of returned transactions
          * @param {number} [offset] Optional — skip the first **offset** transactions in result
          * @param {string} [from] Optional — only return transactions with a booking date later than **from**; an ISO8601 Month(2014-11), Date (2014-11-17) or DateTime         (2014-11-17T12:00:00Z)
@@ -3244,7 +3603,7 @@ exports.TransactionApiFetchParamCreator = function (configuration) {
 exports.TransactionApiFp = function (configuration) {
     return {
         /**
-         * Returns the transaction identified by **transactionId** in relationship with **accountId**.
+         * Returns the transaction identified by **transactionId** in relation to **accountId**.
          * @summary Get transaction
          * @param {string} accessId The **accessId** for the transaction to retrieve
          * @param {string} accountId The **accountId** for the transaction to retrieve
@@ -3268,13 +3627,13 @@ exports.TransactionApiFp = function (configuration) {
             };
         },
         /**
-         * Retrieve all transactions for **accountId**.
+         * Retrieve all transactions for **accountId**
          * @summary List transactions for account
-         * @param {string} accessId The **accessId** for which to retrieve transactions.
-         * @param {string} accountId The **accountId** for which to retrieve transactions.
-         * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.          A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions, when last refresh has          been done 2000 seconds ago.
+         * @param {string} accessId The **accessId** for which to retrieve transactions
+         * @param {string} accountId The **accountId** for which to retrieve transactions
+         * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.          A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions, when the last refresh was          performed 2000 seconds ago.
          * @param {number} [limit] Optional — limit the number of returned transactions
-         * @param {number} [offset] Optional — skip the first **offset** transactions in result
+         * @param {number} [offset] Optional — skip the first **offset** transactions in the result
          * @param {string} [from] Optional — only return transactions with booking date later than **from**; an ISO8601 Month(2014-11), Date (2014-11-17) or DateTime         (2014-11-17T12:00:00Z)
          * @param {string} [to] Optional — only return transactions with booking date prior or equal to **to**; an ISO8601 Date, Month or DateTime
          * @param {*} [options] Override http request option.
@@ -3296,12 +3655,12 @@ exports.TransactionApiFp = function (configuration) {
             };
         },
         /**
-         * Retrieve all transactions for **patternId**.
+         * Retrieve all transactions for **patternId**
          * @summary List transactions for pattern
          * @param {string} accessId The **accessId** for which to retrieve transactions
          * @param {string} accountId The **accountId** for which to retrieve transactions
          * @param {string} patternId The **patternId** for which to retrieve transactions
-         * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.       A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions, when last refresh has       been done 2000 seconds ago.
+         * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.       A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions when the last refresh was       performed 2000 seconds ago.
          * @param {number} [limit] Optional — limit the number of returned transactions
          * @param {number} [offset] Optional — skip the first **offset** transactions in result
          * @param {string} [from] Optional — only return transactions with a booking date later than **from**; an ISO8601 Month(2014-11), Date (2014-11-17) or DateTime         (2014-11-17T12:00:00Z)
@@ -3333,7 +3692,7 @@ exports.TransactionApiFp = function (configuration) {
 exports.TransactionApiFactory = function (configuration, fetch, basePath) {
     return {
         /**
-         * Returns the transaction identified by **transactionId** in relationship with **accountId**.
+         * Returns the transaction identified by **transactionId** in relation to **accountId**.
          * @summary Get transaction
          * @param {string} accessId The **accessId** for the transaction to retrieve
          * @param {string} accountId The **accountId** for the transaction to retrieve
@@ -3345,13 +3704,13 @@ exports.TransactionApiFactory = function (configuration, fetch, basePath) {
             return exports.TransactionApiFp(configuration).getTransaction(accessId, accountId, transactionId, options)(fetch, basePath);
         },
         /**
-         * Retrieve all transactions for **accountId**.
+         * Retrieve all transactions for **accountId**
          * @summary List transactions for account
-         * @param {string} accessId The **accessId** for which to retrieve transactions.
-         * @param {string} accountId The **accountId** for which to retrieve transactions.
-         * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.          A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions, when last refresh has          been done 2000 seconds ago.
+         * @param {string} accessId The **accessId** for which to retrieve transactions
+         * @param {string} accountId The **accountId** for which to retrieve transactions
+         * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.          A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions, when the last refresh was          performed 2000 seconds ago.
          * @param {number} [limit] Optional — limit the number of returned transactions
-         * @param {number} [offset] Optional — skip the first **offset** transactions in result
+         * @param {number} [offset] Optional — skip the first **offset** transactions in the result
          * @param {string} [from] Optional — only return transactions with booking date later than **from**; an ISO8601 Month(2014-11), Date (2014-11-17) or DateTime         (2014-11-17T12:00:00Z)
          * @param {string} [to] Optional — only return transactions with booking date prior or equal to **to**; an ISO8601 Date, Month or DateTime
          * @param {*} [options] Override http request option.
@@ -3361,12 +3720,12 @@ exports.TransactionApiFactory = function (configuration, fetch, basePath) {
             return exports.TransactionApiFp(configuration).listTransactions(accessId, accountId, maxAge, limit, offset, from, to, options)(fetch, basePath);
         },
         /**
-         * Retrieve all transactions for **patternId**.
+         * Retrieve all transactions for **patternId**
          * @summary List transactions for pattern
          * @param {string} accessId The **accessId** for which to retrieve transactions
          * @param {string} accountId The **accountId** for which to retrieve transactions
          * @param {string} patternId The **patternId** for which to retrieve transactions
-         * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.       A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions, when last refresh has       been done 2000 seconds ago.
+         * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.       A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions when the last refresh was       performed 2000 seconds ago.
          * @param {number} [limit] Optional — limit the number of returned transactions
          * @param {number} [offset] Optional — skip the first **offset** transactions in result
          * @param {string} [from] Optional — only return transactions with a booking date later than **from**; an ISO8601 Month(2014-11), Date (2014-11-17) or DateTime         (2014-11-17T12:00:00Z)
@@ -3391,7 +3750,7 @@ var TransactionApi = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     /**
-     * Returns the transaction identified by **transactionId** in relationship with **accountId**.
+     * Returns the transaction identified by **transactionId** in relation to **accountId**.
      * @summary Get transaction
      * @param {string} accessId The **accessId** for the transaction to retrieve
      * @param {string} accountId The **accountId** for the transaction to retrieve
@@ -3404,13 +3763,13 @@ var TransactionApi = /** @class */ (function (_super) {
         return exports.TransactionApiFp(this.configuration).getTransaction(accessId, accountId, transactionId, options)(this.fetch, this.basePath);
     };
     /**
-     * Retrieve all transactions for **accountId**.
+     * Retrieve all transactions for **accountId**
      * @summary List transactions for account
-     * @param {string} accessId The **accessId** for which to retrieve transactions.
-     * @param {string} accountId The **accountId** for which to retrieve transactions.
-     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.          A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions, when last refresh has          been done 2000 seconds ago.
+     * @param {string} accessId The **accessId** for which to retrieve transactions
+     * @param {string} accountId The **accountId** for which to retrieve transactions
+     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.          A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions, when the last refresh was          performed 2000 seconds ago.
      * @param {number} [limit] Optional — limit the number of returned transactions
-     * @param {number} [offset] Optional — skip the first **offset** transactions in result
+     * @param {number} [offset] Optional — skip the first **offset** transactions in the result
      * @param {string} [from] Optional — only return transactions with booking date later than **from**; an ISO8601 Month(2014-11), Date (2014-11-17) or DateTime         (2014-11-17T12:00:00Z)
      * @param {string} [to] Optional — only return transactions with booking date prior or equal to **to**; an ISO8601 Date, Month or DateTime
      * @param {*} [options] Override http request option.
@@ -3421,12 +3780,12 @@ var TransactionApi = /** @class */ (function (_super) {
         return exports.TransactionApiFp(this.configuration).listTransactions(accessId, accountId, maxAge, limit, offset, from, to, options)(this.fetch, this.basePath);
     };
     /**
-     * Retrieve all transactions for **patternId**.
+     * Retrieve all transactions for **patternId**
      * @summary List transactions for pattern
      * @param {string} accessId The **accessId** for which to retrieve transactions
      * @param {string} accountId The **accountId** for which to retrieve transactions
      * @param {string} patternId The **patternId** for which to retrieve transactions
-     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.       A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions, when last refresh has       been done 2000 seconds ago.
+     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.       A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions when the last refresh was       performed 2000 seconds ago.
      * @param {number} [limit] Optional — limit the number of returned transactions
      * @param {number} [offset] Optional — skip the first **offset** transactions in result
      * @param {string} [from] Optional — only return transactions with a booking date later than **from**; an ISO8601 Month(2014-11), Date (2014-11-17) or DateTime         (2014-11-17T12:00:00Z)
@@ -3448,12 +3807,12 @@ exports.TransactionApi = TransactionApi;
 exports.TransactionPatternApiFetchParamCreator = function (configuration) {
     return {
         /**
-         * Disabling the transaction pattern results in ignoring the pattern in the forecast. The transaction still exists and relations with transactions are not modified.
+         * Disabling the transaction pattern results in ignoring the pattern in the forecast. The transaction pattern still exists and relationships to transactions are not modified.
          * @summary Enable a transaction pattern
          * @param {string} accessId The **accessId** for which to activate the pattern
          * @param {string} accountId The **accountId** for which to activate the pattern
          * @param {string} patternId The **patternId** to (de)activate
-         * @param {boolean} activated If &#x60;true&#x60;, the pattern will be used for forecast calculations;         &#x60;false&#x60; will be ignored
+         * @param {boolean} activated If &#x60;true&#x60;, the pattern will be used for forecast calculations;         &#x60;false&#x60; will be ignored.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -3550,7 +3909,7 @@ exports.TransactionPatternApiFetchParamCreator = function (configuration) {
             };
         },
         /**
-         * Returns the transaction pattern identified by **patternId** in relationship with  **accountId**.
+         * Returns the transaction pattern identified by **patternId** in relation to  **accountId**.
          * @summary Get transaction pattern
          * @param {string} accessId The **accessId** for the pattern to retrieve
          * @param {string} accountId The **accoundId** for the pattern to retrieve
@@ -3598,7 +3957,7 @@ exports.TransactionPatternApiFetchParamCreator = function (configuration) {
             };
         },
         /**
-         * Returns all transaction pattern for **accountId**. Transaction patterns are recurring transactions automatically identified by the server or manually created via [create transaction pattern](#!/Transaction_pattern/postTransactionPattern).
+         * Returns all transaction patterns for **accountId**. Transaction patterns are recurring transactions automatically identified by the server or manually created via [create transaction pattern](#!/Transaction_pattern/postTransactionPattern).
          * @summary List transaction patterns for account
          * @param {string} accessId The **accessId** for which to retrieve transaction patterns
          * @param {string} accountId The **accountId** for which to retrieve transaction patterns
@@ -3640,10 +3999,10 @@ exports.TransactionPatternApiFetchParamCreator = function (configuration) {
             };
         },
         /**
-         * Create a new pattern for an **accountId**. The **cycle** can be one of `MONTHLY`, `QUARTERLY`, `SEMI_ANNUALLY` or `ANNUALLY`. The **day** can be between `1` and `366`, depending on **cycle**:  | cycle | day range | example | | --- | --- | --- | | `MONTHLY` | `1`-`31`  | every 29th of the month => `29` | | `QUARTERLY` | `1`-`92`  | 23rd of February (23rd of May, etc.) => `54` (31 [complete first month] + 23 [days in second month]) | | `SEMI_ANNUALLY` | `1`-`184` | 1st of May and 1st of November => `121` (for first half of year: 31 + 28 + 31 + 30 + 1) | | `ANNUALLY` | `1`-`366` | 24th of December => `358` |  If a similar pattern already exists, you will receive an HTTP status code 409.
+         * Create a new pattern for an **accountId**. The **cycle** can be `MONTHLY`, `QUARTERLY`, `SEMI_ANNUALLY` or `ANNUALLY`. The **day** can be between `1` and `366`, depending on **cycle**:  | cycle | day range | example | | --- | --- | --- | | `MONTHLY` | `1`-`31`  | every 29th of the month => `29` | | `QUARTERLY` | `1`-`92`  | 23rd of February (23rd of May, etc.) => `54` (31 [complete first month] + 23 [days in second month]) | | `SEMI_ANNUALLY` | `1`-`184` | 1st of May and 1st of November => `121` (for first half of year: 31 + 28 + 31 + 30 + 1) | | `ANNUALLY` | `1`-`366` | 24th of December => `358` |  If a similar pattern already exists, you will receive an HTTP status code 409.
          * @summary Create a new pattern
-         * @param {string} accessId The **accessId** to which the new created pattern is associated with
-         * @param {string} accountId The **accountId** to which the new created pattern is associated with
+         * @param {string} accessId The **accessId** with which the newly created pattern is associated
+         * @param {string} accountId The **accountId** with which the newly created pattern is associated
          * @param {TransactionPattern} transactionPatternDto The transaction pattern to create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -3698,12 +4057,12 @@ exports.TransactionPatternApiFetchParamCreator = function (configuration) {
 exports.TransactionPatternApiFp = function (configuration) {
     return {
         /**
-         * Disabling the transaction pattern results in ignoring the pattern in the forecast. The transaction still exists and relations with transactions are not modified.
+         * Disabling the transaction pattern results in ignoring the pattern in the forecast. The transaction pattern still exists and relationships to transactions are not modified.
          * @summary Enable a transaction pattern
          * @param {string} accessId The **accessId** for which to activate the pattern
          * @param {string} accountId The **accountId** for which to activate the pattern
          * @param {string} patternId The **patternId** to (de)activate
-         * @param {boolean} activated If &#x60;true&#x60;, the pattern will be used for forecast calculations;         &#x60;false&#x60; will be ignored
+         * @param {boolean} activated If &#x60;true&#x60;, the pattern will be used for forecast calculations;         &#x60;false&#x60; will be ignored.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -3747,7 +4106,7 @@ exports.TransactionPatternApiFp = function (configuration) {
             };
         },
         /**
-         * Returns the transaction pattern identified by **patternId** in relationship with  **accountId**.
+         * Returns the transaction pattern identified by **patternId** in relation to  **accountId**.
          * @summary Get transaction pattern
          * @param {string} accessId The **accessId** for the pattern to retrieve
          * @param {string} accountId The **accoundId** for the pattern to retrieve
@@ -3771,7 +4130,7 @@ exports.TransactionPatternApiFp = function (configuration) {
             };
         },
         /**
-         * Returns all transaction pattern for **accountId**. Transaction patterns are recurring transactions automatically identified by the server or manually created via [create transaction pattern](#!/Transaction_pattern/postTransactionPattern).
+         * Returns all transaction patterns for **accountId**. Transaction patterns are recurring transactions automatically identified by the server or manually created via [create transaction pattern](#!/Transaction_pattern/postTransactionPattern).
          * @summary List transaction patterns for account
          * @param {string} accessId The **accessId** for which to retrieve transaction patterns
          * @param {string} accountId The **accountId** for which to retrieve transaction patterns
@@ -3794,10 +4153,10 @@ exports.TransactionPatternApiFp = function (configuration) {
             };
         },
         /**
-         * Create a new pattern for an **accountId**. The **cycle** can be one of `MONTHLY`, `QUARTERLY`, `SEMI_ANNUALLY` or `ANNUALLY`. The **day** can be between `1` and `366`, depending on **cycle**:  | cycle | day range | example | | --- | --- | --- | | `MONTHLY` | `1`-`31`  | every 29th of the month => `29` | | `QUARTERLY` | `1`-`92`  | 23rd of February (23rd of May, etc.) => `54` (31 [complete first month] + 23 [days in second month]) | | `SEMI_ANNUALLY` | `1`-`184` | 1st of May and 1st of November => `121` (for first half of year: 31 + 28 + 31 + 30 + 1) | | `ANNUALLY` | `1`-`366` | 24th of December => `358` |  If a similar pattern already exists, you will receive an HTTP status code 409.
+         * Create a new pattern for an **accountId**. The **cycle** can be `MONTHLY`, `QUARTERLY`, `SEMI_ANNUALLY` or `ANNUALLY`. The **day** can be between `1` and `366`, depending on **cycle**:  | cycle | day range | example | | --- | --- | --- | | `MONTHLY` | `1`-`31`  | every 29th of the month => `29` | | `QUARTERLY` | `1`-`92`  | 23rd of February (23rd of May, etc.) => `54` (31 [complete first month] + 23 [days in second month]) | | `SEMI_ANNUALLY` | `1`-`184` | 1st of May and 1st of November => `121` (for first half of year: 31 + 28 + 31 + 30 + 1) | | `ANNUALLY` | `1`-`366` | 24th of December => `358` |  If a similar pattern already exists, you will receive an HTTP status code 409.
          * @summary Create a new pattern
-         * @param {string} accessId The **accessId** to which the new created pattern is associated with
-         * @param {string} accountId The **accountId** to which the new created pattern is associated with
+         * @param {string} accessId The **accessId** with which the newly created pattern is associated
+         * @param {string} accountId The **accountId** with which the newly created pattern is associated
          * @param {TransactionPattern} transactionPatternDto The transaction pattern to create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -3826,12 +4185,12 @@ exports.TransactionPatternApiFp = function (configuration) {
 exports.TransactionPatternApiFactory = function (configuration, fetch, basePath) {
     return {
         /**
-         * Disabling the transaction pattern results in ignoring the pattern in the forecast. The transaction still exists and relations with transactions are not modified.
+         * Disabling the transaction pattern results in ignoring the pattern in the forecast. The transaction pattern still exists and relationships to transactions are not modified.
          * @summary Enable a transaction pattern
          * @param {string} accessId The **accessId** for which to activate the pattern
          * @param {string} accountId The **accountId** for which to activate the pattern
          * @param {string} patternId The **patternId** to (de)activate
-         * @param {boolean} activated If &#x60;true&#x60;, the pattern will be used for forecast calculations;         &#x60;false&#x60; will be ignored
+         * @param {boolean} activated If &#x60;true&#x60;, the pattern will be used for forecast calculations;         &#x60;false&#x60; will be ignored.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -3851,7 +4210,7 @@ exports.TransactionPatternApiFactory = function (configuration, fetch, basePath)
             return exports.TransactionPatternApiFp(configuration).deleteTransactionPattern(accessId, accountId, patternId, options)(fetch, basePath);
         },
         /**
-         * Returns the transaction pattern identified by **patternId** in relationship with  **accountId**.
+         * Returns the transaction pattern identified by **patternId** in relation to  **accountId**.
          * @summary Get transaction pattern
          * @param {string} accessId The **accessId** for the pattern to retrieve
          * @param {string} accountId The **accoundId** for the pattern to retrieve
@@ -3863,7 +4222,7 @@ exports.TransactionPatternApiFactory = function (configuration, fetch, basePath)
             return exports.TransactionPatternApiFp(configuration).getTransactionPattern(accessId, accountId, patternId, options)(fetch, basePath);
         },
         /**
-         * Returns all transaction pattern for **accountId**. Transaction patterns are recurring transactions automatically identified by the server or manually created via [create transaction pattern](#!/Transaction_pattern/postTransactionPattern).
+         * Returns all transaction patterns for **accountId**. Transaction patterns are recurring transactions automatically identified by the server or manually created via [create transaction pattern](#!/Transaction_pattern/postTransactionPattern).
          * @summary List transaction patterns for account
          * @param {string} accessId The **accessId** for which to retrieve transaction patterns
          * @param {string} accountId The **accountId** for which to retrieve transaction patterns
@@ -3874,10 +4233,10 @@ exports.TransactionPatternApiFactory = function (configuration, fetch, basePath)
             return exports.TransactionPatternApiFp(configuration).listTransactionPatterns(accessId, accountId, options)(fetch, basePath);
         },
         /**
-         * Create a new pattern for an **accountId**. The **cycle** can be one of `MONTHLY`, `QUARTERLY`, `SEMI_ANNUALLY` or `ANNUALLY`. The **day** can be between `1` and `366`, depending on **cycle**:  | cycle | day range | example | | --- | --- | --- | | `MONTHLY` | `1`-`31`  | every 29th of the month => `29` | | `QUARTERLY` | `1`-`92`  | 23rd of February (23rd of May, etc.) => `54` (31 [complete first month] + 23 [days in second month]) | | `SEMI_ANNUALLY` | `1`-`184` | 1st of May and 1st of November => `121` (for first half of year: 31 + 28 + 31 + 30 + 1) | | `ANNUALLY` | `1`-`366` | 24th of December => `358` |  If a similar pattern already exists, you will receive an HTTP status code 409.
+         * Create a new pattern for an **accountId**. The **cycle** can be `MONTHLY`, `QUARTERLY`, `SEMI_ANNUALLY` or `ANNUALLY`. The **day** can be between `1` and `366`, depending on **cycle**:  | cycle | day range | example | | --- | --- | --- | | `MONTHLY` | `1`-`31`  | every 29th of the month => `29` | | `QUARTERLY` | `1`-`92`  | 23rd of February (23rd of May, etc.) => `54` (31 [complete first month] + 23 [days in second month]) | | `SEMI_ANNUALLY` | `1`-`184` | 1st of May and 1st of November => `121` (for first half of year: 31 + 28 + 31 + 30 + 1) | | `ANNUALLY` | `1`-`366` | 24th of December => `358` |  If a similar pattern already exists, you will receive an HTTP status code 409.
          * @summary Create a new pattern
-         * @param {string} accessId The **accessId** to which the new created pattern is associated with
-         * @param {string} accountId The **accountId** to which the new created pattern is associated with
+         * @param {string} accessId The **accessId** with which the newly created pattern is associated
+         * @param {string} accountId The **accountId** with which the newly created pattern is associated
          * @param {TransactionPattern} transactionPatternDto The transaction pattern to create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -3899,12 +4258,12 @@ var TransactionPatternApi = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     /**
-     * Disabling the transaction pattern results in ignoring the pattern in the forecast. The transaction still exists and relations with transactions are not modified.
+     * Disabling the transaction pattern results in ignoring the pattern in the forecast. The transaction pattern still exists and relationships to transactions are not modified.
      * @summary Enable a transaction pattern
      * @param {string} accessId The **accessId** for which to activate the pattern
      * @param {string} accountId The **accountId** for which to activate the pattern
      * @param {string} patternId The **patternId** to (de)activate
-     * @param {boolean} activated If &#x60;true&#x60;, the pattern will be used for forecast calculations;         &#x60;false&#x60; will be ignored
+     * @param {boolean} activated If &#x60;true&#x60;, the pattern will be used for forecast calculations;         &#x60;false&#x60; will be ignored.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TransactionPatternApi
@@ -3926,7 +4285,7 @@ var TransactionPatternApi = /** @class */ (function (_super) {
         return exports.TransactionPatternApiFp(this.configuration).deleteTransactionPattern(accessId, accountId, patternId, options)(this.fetch, this.basePath);
     };
     /**
-     * Returns the transaction pattern identified by **patternId** in relationship with  **accountId**.
+     * Returns the transaction pattern identified by **patternId** in relation to  **accountId**.
      * @summary Get transaction pattern
      * @param {string} accessId The **accessId** for the pattern to retrieve
      * @param {string} accountId The **accoundId** for the pattern to retrieve
@@ -3939,7 +4298,7 @@ var TransactionPatternApi = /** @class */ (function (_super) {
         return exports.TransactionPatternApiFp(this.configuration).getTransactionPattern(accessId, accountId, patternId, options)(this.fetch, this.basePath);
     };
     /**
-     * Returns all transaction pattern for **accountId**. Transaction patterns are recurring transactions automatically identified by the server or manually created via [create transaction pattern](#!/Transaction_pattern/postTransactionPattern).
+     * Returns all transaction patterns for **accountId**. Transaction patterns are recurring transactions automatically identified by the server or manually created via [create transaction pattern](#!/Transaction_pattern/postTransactionPattern).
      * @summary List transaction patterns for account
      * @param {string} accessId The **accessId** for which to retrieve transaction patterns
      * @param {string} accountId The **accountId** for which to retrieve transaction patterns
@@ -3951,10 +4310,10 @@ var TransactionPatternApi = /** @class */ (function (_super) {
         return exports.TransactionPatternApiFp(this.configuration).listTransactionPatterns(accessId, accountId, options)(this.fetch, this.basePath);
     };
     /**
-     * Create a new pattern for an **accountId**. The **cycle** can be one of `MONTHLY`, `QUARTERLY`, `SEMI_ANNUALLY` or `ANNUALLY`. The **day** can be between `1` and `366`, depending on **cycle**:  | cycle | day range | example | | --- | --- | --- | | `MONTHLY` | `1`-`31`  | every 29th of the month => `29` | | `QUARTERLY` | `1`-`92`  | 23rd of February (23rd of May, etc.) => `54` (31 [complete first month] + 23 [days in second month]) | | `SEMI_ANNUALLY` | `1`-`184` | 1st of May and 1st of November => `121` (for first half of year: 31 + 28 + 31 + 30 + 1) | | `ANNUALLY` | `1`-`366` | 24th of December => `358` |  If a similar pattern already exists, you will receive an HTTP status code 409.
+     * Create a new pattern for an **accountId**. The **cycle** can be `MONTHLY`, `QUARTERLY`, `SEMI_ANNUALLY` or `ANNUALLY`. The **day** can be between `1` and `366`, depending on **cycle**:  | cycle | day range | example | | --- | --- | --- | | `MONTHLY` | `1`-`31`  | every 29th of the month => `29` | | `QUARTERLY` | `1`-`92`  | 23rd of February (23rd of May, etc.) => `54` (31 [complete first month] + 23 [days in second month]) | | `SEMI_ANNUALLY` | `1`-`184` | 1st of May and 1st of November => `121` (for first half of year: 31 + 28 + 31 + 30 + 1) | | `ANNUALLY` | `1`-`366` | 24th of December => `358` |  If a similar pattern already exists, you will receive an HTTP status code 409.
      * @summary Create a new pattern
-     * @param {string} accessId The **accessId** to which the new created pattern is associated with
-     * @param {string} accountId The **accountId** to which the new created pattern is associated with
+     * @param {string} accessId The **accessId** with which the newly created pattern is associated
+     * @param {string} accountId The **accountId** with which the newly created pattern is associated
      * @param {TransactionPattern} transactionPatternDto The transaction pattern to create
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3973,7 +4332,7 @@ exports.TransactionPatternApi = TransactionPatternApi;
 exports.TransactionSummaryApiFetchParamCreator = function (configuration) {
     return {
         /**
-         * Retrieve account summaries and provide a sum for incoming and outgoing transactions.
+         * Retrieve account summaries and provide a sum for incoming and outgoing transactions
          * @summary List account summaries
          * @param {string} accessId The **accessId** for which to list the summaries
          * @param {string} accountId The **accountId** for which to list the summaries
@@ -4039,7 +4398,7 @@ exports.TransactionSummaryApiFetchParamCreator = function (configuration) {
 exports.TransactionSummaryApiFp = function (configuration) {
     return {
         /**
-         * Retrieve account summaries and provide a sum for incoming and outgoing transactions.
+         * Retrieve account summaries and provide a sum for incoming and outgoing transactions
          * @summary List account summaries
          * @param {string} accessId The **accessId** for which to list the summaries
          * @param {string} accountId The **accountId** for which to list the summaries
@@ -4074,7 +4433,7 @@ exports.TransactionSummaryApiFp = function (configuration) {
 exports.TransactionSummaryApiFactory = function (configuration, fetch, basePath) {
     return {
         /**
-         * Retrieve account summaries and provide a sum for incoming and outgoing transactions.
+         * Retrieve account summaries and provide a sum for incoming and outgoing transactions
          * @summary List account summaries
          * @param {string} accessId The **accessId** for which to list the summaries
          * @param {string} accountId The **accountId** for which to list the summaries
@@ -4102,7 +4461,7 @@ var TransactionSummaryApi = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     /**
-     * Retrieve account summaries and provide a sum for incoming and outgoing transactions.
+     * Retrieve account summaries and provide a sum for incoming and outgoing transactions
      * @summary List account summaries
      * @param {string} accessId The **accessId** for which to list the summaries
      * @param {string} accountId The **accountId** for which to list the summaries
@@ -4127,11 +4486,11 @@ exports.TransactionSummaryApi = TransactionSummaryApi;
 exports.TransferApiFetchParamCreator = function (configuration) {
     return {
         /**
-         * The transfer represents a money  transfer from the account identified by its id to another bank account.  **Please note:** Exception from the norm. This POST request will not return  the two header fields X-Id and Location. Also, the returned JSON document  does not represent the transfer entity, but a temporary placeholder.  The transfer is processed asynchronous and needs a message URL zu be configured  to report back the tan challenge and when it is finished.
+         * <p>**Please note:** <ul>      <li>The IBAN of the receiving account needs to exist, even if it is located in Sandbank. Otherwise the transfer will fail.      <li>The returned JSON document represents the task that covers the transfer process as a result of a subsequent TAN request.  </ul>
          * @summary Create a new transfer
-         * @param {string} accessId
-         * @param {string} accountId The **id** for the account.
-         * @param {Transfer} transfer transfer to create
+         * @param {string} accessId The **id** of the access corresponding to accounts to be used
+         * @param {string} accountId The **id** for the account
+         * @param {Transfer} transfer Transfer to create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -4185,11 +4544,11 @@ exports.TransferApiFetchParamCreator = function (configuration) {
 exports.TransferApiFp = function (configuration) {
     return {
         /**
-         * The transfer represents a money  transfer from the account identified by its id to another bank account.  **Please note:** Exception from the norm. This POST request will not return  the two header fields X-Id and Location. Also, the returned JSON document  does not represent the transfer entity, but a temporary placeholder.  The transfer is processed asynchronous and needs a message URL zu be configured  to report back the tan challenge and when it is finished.
+         * <p>**Please note:** <ul>      <li>The IBAN of the receiving account needs to exist, even if it is located in Sandbank. Otherwise the transfer will fail.      <li>The returned JSON document represents the task that covers the transfer process as a result of a subsequent TAN request.  </ul>
          * @summary Create a new transfer
-         * @param {string} accessId
-         * @param {string} accountId The **id** for the account.
-         * @param {Transfer} transfer transfer to create
+         * @param {string} accessId The **id** of the access corresponding to accounts to be used
+         * @param {string} accountId The **id** for the account
+         * @param {Transfer} transfer Transfer to create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -4217,11 +4576,11 @@ exports.TransferApiFp = function (configuration) {
 exports.TransferApiFactory = function (configuration, fetch, basePath) {
     return {
         /**
-         * The transfer represents a money  transfer from the account identified by its id to another bank account.  **Please note:** Exception from the norm. This POST request will not return  the two header fields X-Id and Location. Also, the returned JSON document  does not represent the transfer entity, but a temporary placeholder.  The transfer is processed asynchronous and needs a message URL zu be configured  to report back the tan challenge and when it is finished.
+         * <p>**Please note:** <ul>      <li>The IBAN of the receiving account needs to exist, even if it is located in Sandbank. Otherwise the transfer will fail.      <li>The returned JSON document represents the task that covers the transfer process as a result of a subsequent TAN request.  </ul>
          * @summary Create a new transfer
-         * @param {string} accessId
-         * @param {string} accountId The **id** for the account.
-         * @param {Transfer} transfer transfer to create
+         * @param {string} accessId The **id** of the access corresponding to accounts to be used
+         * @param {string} accountId The **id** for the account
+         * @param {Transfer} transfer Transfer to create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -4242,11 +4601,11 @@ var TransferApi = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     /**
-     * The transfer represents a money  transfer from the account identified by its id to another bank account.  **Please note:** Exception from the norm. This POST request will not return  the two header fields X-Id and Location. Also, the returned JSON document  does not represent the transfer entity, but a temporary placeholder.  The transfer is processed asynchronous and needs a message URL zu be configured  to report back the tan challenge and when it is finished.
+     * <p>**Please note:** <ul>      <li>The IBAN of the receiving account needs to exist, even if it is located in Sandbank. Otherwise the transfer will fail.      <li>The returned JSON document represents the task that covers the transfer process as a result of a subsequent TAN request.  </ul>
      * @summary Create a new transfer
-     * @param {string} accessId
-     * @param {string} accountId The **id** for the account.
-     * @param {Transfer} transfer transfer to create
+     * @param {string} accessId The **id** of the access corresponding to accounts to be used
+     * @param {string} accountId The **id** for the account
+     * @param {Transfer} transfer Transfer to create
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TransferApi

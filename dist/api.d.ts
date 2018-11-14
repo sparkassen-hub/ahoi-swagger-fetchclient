@@ -79,13 +79,13 @@ export interface Access {
      */
     providerId: string;
     /**
-     * Authentication data for the given provider as map of InputFieldId to String (e.g., `{\"USERNAME\", \"yourName\"}`)  The fields necessary for the access are determined by the   InputField descriptions of the related provider.
+     * Authentication data for the given provider as a map of InputFieldId to String (e.g., `{\"USERNAME\", \"yourName\"}`)  The fields necessary for the access are determined by the   InputField descriptions of the related provider. The access fields will not be returned when accesses are read from the API.
      * @type {AccessFieldsMap}
      * @memberof Access
      */
     accessFields: AccessFieldsMap;
     /**
-     * The state reflects the validity of the access credentials. The state can change after communicating with the provider.  It can be OK (access credentials are valid); `ACCESS_LOCKED` (access is locked: This can happen when, for example, someone tried to login to your account by  using an incorrect PIN too many times or if your account was used for illegal purposes — automatic refresh will be disabled); or `ACCESS_WRONG` (access wrong: Saved  credentials are incorrect and no communication with the provider is possible — automatic refresh will be disabled)
+     * The state reflects the validity of the access credentials. The state can change after communicating with the provider.  It can be OK (access credentials are valid); `ACCESS_LOCKED` (access is locked: This can happen when, for example, someone tried to login to your account by  using an incorrect PIN too many times or if your account was used for illegal purposes — automatic refresh will be disabled); or `ACCESS_WRONG` (access wrong: Saved  credentials are incorrect and no communication with the provider is possible — automatic refresh will be disabled).
      * @type {string}
      * @memberof Access
      */
@@ -125,7 +125,7 @@ export interface AccessDescription {
      */
     infoText?: string;
     /**
-     * Information to describe and facilitate validation of an access.
+     * Information to describe and facilitate validation of an access
      * @type {Array<InputFieldDescription>}
      * @memberof AccessDescription
      */
@@ -150,7 +150,7 @@ export interface AccessFieldsMap {
      */
     CUSTOMERNUMBER?: string;
     /**
-     * Should be filled with the PIN if the Provider object signals this as mandatory.
+     * Should be filled with the PIN if the Provider object signals this as mandatory. In some special production scenarios the pin has to be encrypted. We will inform you when to use the extended encryption.
      * @type {string}
      * @memberof AccessFieldsMap
      */
@@ -175,7 +175,7 @@ export interface Account {
      */
     name: string;
     /**
-     * Account userDefinedName. This value can be set to define a custom name used in AHOI (e.g., \"My Giro Account\").  Can be changed by using the account resource.
+     * Account userDefinedName. This value can be set to define a custom name used in AHOI (e.g., \"My Giro Account\").  Can be changed by using the _account_ resource.
      * @type {string}
      * @memberof Account
      */
@@ -199,7 +199,7 @@ export interface Account {
      */
     kind: Account.KindEnum;
     /**
-     * Interval that indicates the freguency of which the account is updated.   This interval is read-only and is determined by the server depending on the last use of the API. The range is between every hour, daily and monthly.
+     * Interval that indicates the freguency at which the account is updated.   This interval is read-only and is determined by the server depending on the last use of the API. The range is between every hour, daily and monthly.
      * @type {number}
      * @memberof Account
      */
@@ -298,13 +298,13 @@ export interface Balance {
  */
 export interface Challenge {
     /**
-     * Text of the challenge.
+     * Text of the challenge
      * @type {string}
      * @memberof Challenge
      */
     challenge?: string;
     /**
-     * Additional information for authorization purposes e.g. IBAN, BIC, amount of transfer transaction.
+     * Additional information for authorization purposes (e.g., IBAN, BIC, amount of transfer transaction)
      * @type {string}
      * @memberof Challenge
      */
@@ -323,13 +323,13 @@ export interface Challenge {
  */
 export interface ChallengeResponse {
     /**
-     * Contains the challange to be used for task authorization.
+     * Contains the challange to be used for task authorization
      * @type {string}
      * @memberof ChallengeResponse
      */
     response: string;
     /**
-     * Only `TanChallengeResponseDto` is supported.
+     * Only `TanChallengeResponseDto` is supported
      * @type {string}
      * @memberof ChallengeResponse
      */
@@ -378,7 +378,7 @@ export interface Contract {
      */
     firstKnownBookingDate?: string;
     /**
-     * Last recent booking date detected
+     * Most recent booking date detected
      * @type {string}
      * @memberof Contract
      */
@@ -505,19 +505,19 @@ export interface InputFieldDescription {
      */
     id: InputFieldDescription.IdEnum;
     /**
-     * Label for this field description (e.g. 'PIN', 'Login name', 'Customer No.')
+     * Label for this field description (e.g., 'PIN', 'Login name', 'Customer No.')
      * @type {string}
      * @memberof InputFieldDescription
      */
     label: string;
     /**
-     * Flag that indicates whether the given field value must be masked when entered on client side, respectively encrypted when persisted  on server side
+     * Flag that indicates whether the given field value must be masked when entered on the client side or encrypted when persisting  on the server side
      * @type {boolean}
      * @memberof InputFieldDescription
      */
     masked: boolean;
     /**
-     * Format of field value  Can be DEFINITELYNUMERIC (Format is definitely numeric), DEFINITELYALPHANUMERIC (Format is definitely alphanumeric),  PROBABLYALPHANUMERIC (Format is probably alphanumeric; numeric is unlikely but possible), PROBABLYNUMERIC (Format is probably  numeric; alphanumeric is unlikely but possible) or UNSPECIFIED (Default. No hint available)
+     * Format of field value  Can be DEFINITELYNUMERIC (Format is definitely numeric), DEFINITELYALPHANUMERIC (Format is definitely alphanumeric),  PROBABLYALPHANUMERIC (Format is probably alphanumeric; numeric is unlikely but possible), PROBABLYNUMERIC (Format is probably  numeric; alphanumeric is unlikely but possible) or UNSPECIFIED (Default. No hint available).
      * @type {string}
      * @memberof InputFieldDescription
      */
@@ -581,19 +581,19 @@ export interface JwkJwkPublicKey {
      */
     alg?: string;
     /**
-     * Public key modulus BigInteger as base64url encoded
+     * Public key modulus BigInteger as Base64URL encoded
      * @type {string}
      * @memberof JwkJwkPublicKey
      */
     n?: string;
     /**
-     * Public key exponent BigInteger as base64url encoded
+     * Public key exponent BigInteger as Base64URL encoded
      * @type {string}
      * @memberof JwkJwkPublicKey
      */
     e?: string;
     /**
-     * Public key ID, i.e. a random UUID per key
+     * Public key ID (i.e., a random UUID per key)
      * @type {string}
      * @memberof JwkJwkPublicKey
      */
@@ -649,31 +649,31 @@ export interface MonthlySummary {
  */
 export interface Provider {
     /**
-     * UUID of this provider. A constant to identify provider even when  e.g. their bank code changes (provided type is BankProvider)
+     * UUID of this provider. A constant to identify provider even when, for  example, their bank code changes (provided type is BankProvider)
      * @type {string}
      * @memberof Provider
      */
     id: string;
     /**
-     * Name of this provider e.g. \"Hamburger Bank\"
+     * Name of this provider (e.g., \"Hamburger Bank\")
      * @type {string}
      * @memberof Provider
      */
     name: string;
     /**
-     * Location of this provider e.g. \"Hamburg\"
+     * Location of this provider (e.g., \"Hamburg\")
      * @type {string}
      * @memberof Provider
      */
     location: string;
     /**
-     * Description of the access for the account-setup e.g. UI-input-fields
+     * Description of the access for the account setup (e.g., UI input fields).
      * @type {AccessDescription}
      * @memberof Provider
      */
     accessDescription?: AccessDescription;
     /**
-     * Whether this bank is supported by AHOI-API, i.e. whether you can use a connection of this provider.
+     * Whether this bank is supported by AHOI API (i.e., whether you can use a connection to this provider).
      * @type {boolean}
      * @memberof Provider
      */
@@ -692,25 +692,25 @@ export interface Provider {
  */
 export interface RegistrationPublicKey {
     /**
-     * api.dto.model.com-starfinanz-ahoi-dto-v2-RegistrationPublicKeyDto.properties.keyId.description
+     * UUID of the public key for reference in the \"X-Ahoi-Session-Security\" header
      * @type {string}
      * @memberof RegistrationPublicKey
      */
     keyId: string;
     /**
-     * api.dto.model.com-starfinanz-ahoi-dto-v2-RegistrationPublicKeyDto.properties.validUntil.description
+     * Timestamp in ISO-8601 format defining when the public key expires
      * @type {string}
      * @memberof RegistrationPublicKey
      */
     validUntil: string;
     /**
-     * api.dto.model.com-starfinanz-ahoi-dto-v2-RegistrationPublicKeyDto.properties.publicKey.description
+     * Contains the Base64URL-encoded value and the encoding algorithm of the key
      * @type {SelfDescribedValue}
      * @memberof RegistrationPublicKey
      */
     publicKey: SelfDescribedValue;
     /**
-     * api.dto.model.com-starfinanz-ahoi-dto-v2-RegistrationPublicKeyDto.properties.publicKeySignature.description
+     * Contains the Base64 URL-encoded signature of the key and the encoding algorithm of the signature
      * @type {SelfDescribedValue}
      * @memberof RegistrationPublicKey
      */
@@ -723,7 +723,7 @@ export interface RegistrationPublicKey {
  */
 export interface RegistrationResponse {
     /**
-     * api.dto.model.com-starfinanz-ahoi-dto-v2-RegistrationResponseDto.properties.installation.description
+     * Contains the installation ID
      * @type {string}
      * @memberof RegistrationResponse
      */
@@ -773,7 +773,7 @@ export interface Security {
      */
     id: string;
     /**
-     * Wertpapierkennnummer  (german) securities identification number
+     * Wertpapierkennnummer  (German) securities identification number
      * @type {string}
      * @memberof Security
      */
@@ -797,13 +797,13 @@ export interface Security {
      */
     price?: Amount;
     /**
-     * Source of price   **LMAR - Local Market**   Source of price quotation is the market.     **THEO -Theoretical**   Source of price quotation is a theoretical value based on the market yield.     **VEND- Vendor**   Source of price quotation is an external vendor.
+     * Source of price:   **LMAR - Local Market**   Source of price quotation is the market.     **THEO -Theoretical**   Source of price quotation is a theoretical value based on the market yield.     **VEND- Vendor**   Source of price quotation is an external vendor.
      * @type {string}
      * @memberof Security
      */
     priceSource?: Security.PriceSourceEnum;
     /**
-     *
+     * api.dto.model.com-starfinanz-ahoi-dto-v2-SecurityDto.properties.quotationDate.description
      * @type {string}
      * @memberof Security
      */
@@ -815,7 +815,7 @@ export interface Security {
      */
     location?: string;
     /**
-     * Price qualifier    **MRKT** - Market Price   Last reported/known price of a financial instrument in a market.    **INDC** - Indicative Price   Estimated price, for example, for valuation purposes.
+     * Price qualifier:    **MRKT** - Market Price   Last reported/known price of a financial instrument in a market.    **INDC** - Indicative Price   Estimated price, for example, for valuation purposes.
      * @type {string}
      * @memberof Security
      */
@@ -827,13 +827,13 @@ export interface Security {
      */
     quantity?: string;
     /**
-     * Holding Value
+     * Holding value
      * @type {Amount}
      * @memberof Security
      */
     amount?: Amount;
     /**
-     * Holding Value in divergent currency
+     * Holding value in divergent currency
      * @type {Amount}
      * @memberof Security
      */
@@ -887,13 +887,13 @@ export declare namespace Security {
  */
 export interface SelfDescribedValue {
     /**
-     * api.dto.model.com-starfinanz-ahoi-dto-v2-SelfDescribedValueDto.properties.value.description
+     * Key or signature value itself
      * @type {string}
      * @memberof SelfDescribedValue
      */
     value: string;
     /**
-     * api.dto.model.com-starfinanz-ahoi-dto-v2-SelfDescribedValueDto.properties.specification.description
+     * Specification of the encryption algorithm
      * @type {string}
      * @memberof SelfDescribedValue
      */
@@ -937,7 +937,7 @@ export interface TanScheme {
      */
     schemeId?: string;
     /**
-     * Name of the used TAN scheme
+     * Name of the TAN scheme used
      * @type {string}
      * @memberof TanScheme
      */
@@ -956,13 +956,13 @@ export interface TanScheme {
  */
 export interface Task {
     /**
-     * Represents the state of this task.
+     * Represents the state of this task
      * @type {string}
      * @memberof Task
      */
     state?: Task.StateEnum;
     /**
-     * UUID of this task to be used for identification on further task actions.
+     * UUID of this task to be used for identification on further task actions
      * @type {string}
      * @memberof Task
      */
@@ -1011,7 +1011,7 @@ export interface Transaction {
      */
     transactionPatternId?: string;
     /**
-     *
+     * api.dto.model.com-starfinanz-ahoi-dto-v2-TransactionDto.properties.additionalInformation.description
      * @type {Array<AdditionalInformation>}
      * @memberof Transaction
      */
@@ -1036,7 +1036,7 @@ export interface TransactionPattern {
      */
     id?: string;
     /**
-     * State of this pattern  can be `ACTIVE` (default) or `INACTIVE` (user has disabled it)
+     * The state of this pattern  can be `ACTIVE` (default) or `INACTIVE` (user has disabled it)
      * @type {string}
      * @memberof TransactionPattern
      */
@@ -1185,7 +1185,7 @@ export interface BankAccount extends Account {
      */
     number: string;
     /**
-     * Bank code number (BLZ, national, 8 digits)
+     * Bank code (i.e., routing number) (BLZ, national, 8 digits)
      * @type {string}
      * @memberof BankAccount
      */
@@ -1228,7 +1228,7 @@ export declare namespace BankAccount {
  */
 export interface BankProvider extends Provider {
     /**
-     * Bank Code Number (BLZ, national 8 digits)
+     * Bank code (i.e., routing number) (BLZ, national 8 digits)
      * @type {string}
      * @memberof BankProvider
      */
@@ -1259,7 +1259,7 @@ export interface Category extends AdditionalInformation {
      */
     name: string;
     /**
-     * Origin id i.e. the id within the origin id service
+     * Origin id (i.e., the id within the origin id service)
      * @type {string}
      * @memberof Category
      */
@@ -1278,7 +1278,7 @@ export interface Category extends AdditionalInformation {
  */
 export interface Contractor extends AdditionalInformation {
     /**
-     *
+     * api.dto.model.com-starfinanz-ahoi-dto-v2-ContractorDto.properties.contractorId.description
      * @type {number}
      * @memberof Contractor
      */
@@ -1328,7 +1328,7 @@ export interface GiroTransaction extends Transaction {
      */
     bookingDate: Date;
     /**
-     * Value Date (ISO 8601: \"yyyy-MM-dd'T'HH:mm:ssX\")
+     * Value date (ISO 8601: \"yyyy-MM-dd'T'HH:mm:ssX\")
      * @type {Date}
      * @memberof GiroTransaction
      */
@@ -1340,7 +1340,7 @@ export interface GiroTransaction extends Transaction {
      */
     creditor: string;
     /**
-     * Creditor's bank code or BIC
+     * Creditor's bank code (i.e. routing number) or BIC
      * @type {string}
      * @memberof GiroTransaction
      */
@@ -1358,7 +1358,7 @@ export interface GiroTransaction extends Transaction {
      */
     debtor: string;
     /**
-     * Debtor's bank code or BIC
+     * Debtor's bank code (i.e. routing number) or BIC
      * @type {string}
      * @memberof GiroTransaction
      */
@@ -1401,13 +1401,13 @@ export interface GiroTransaction extends Transaction {
  */
 export interface TanChallenge extends Challenge {
     /**
-     *
+     * api.dto.model.com-starfinanz-ahoi-dto-v2-TanChallengeDto.properties.challengeType.description
      * @type {string}
      * @memberof TanChallenge
      */
     challengeType?: TanChallenge.ChallengeTypeEnum;
     /**
-     * Currently resource URI pointing to TAN UI input component.
+     * Currently resource URI pointing to TAN UI input component
      * @type {string}
      * @memberof TanChallenge
      */
@@ -1457,7 +1457,7 @@ export declare namespace TransferTask {
  */
 export declare const AccessApiFetchParamCreator: (configuration?: Configuration) => {
     /**
-     * Delete access with **accessId** and all related accounts.
+     * Delete access with **accessId** and all related accounts
      * @summary Delete access
      * @param {string} accessId The **id** for the access to delete
      * @param {*} [options] Override http request option.
@@ -1467,13 +1467,13 @@ export declare const AccessApiFetchParamCreator: (configuration?: Configuration)
     /**
      * Retrieve the access with **accessId**. The retrieved object does not contain sensitive information such as the PIN.
      * @summary Get access
-     * @param {string} accessId The **id** for the access to retrieve.
+     * @param {string} accessId The **id** for the access to retrieve
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getAccess(accessId: string, options?: any): FetchArgs;
     /**
-     * Returns all registered accesses for the authenticated user. Confidential information like the PIN will not be returned.
+     * Returns all registered accesses for the authenticated user. The access fields contain confidential information (e.g., PIN) that will not be returned.
      * @summary List accesses
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1488,10 +1488,10 @@ export declare const AccessApiFetchParamCreator: (configuration?: Configuration)
      */
     postAccess(accessDto: Access, options?: any): FetchArgs;
     /**
-     * Update the access credentials in **accessFields**. If the access does not exist, the **accessId** does not match the **id** in **accessDto** or the **providerId** is not the same, the status code 404 is returned. If another access with the same login  data already exists, the status code 409 is returned.  The updated access is validated by setting up an account. The status code 200 does not imply that the credentials are correct. To check this the client should obtain access.
+     * Update the access credentials in **accessFields**. If the access does not exist, the **accessId** does not match the **id** in **accessDto**, or the **providerId** is not the same, status code 404 is returned. If another access with the same login data already exists, status code 409 is returned.  The updated access is validated by setting up an account. Status code 200 does not imply that the credentials are correct. To check this, the client should obtain access.
      * @summary Update access
-     * @param {string} accessId The **id** for the access to update.
-     * @param {Access} accessDto The Access object that contains the changed credentials in             **accessFields**. Other fields cannot be edited.
+     * @param {string} accessId The **id** for the access to update
+     * @param {Access} accessDto The access object that contains the changed credentials in             **accessFields**. Other fields cannot be edited.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -1503,7 +1503,7 @@ export declare const AccessApiFetchParamCreator: (configuration?: Configuration)
  */
 export declare const AccessApiFp: (configuration?: Configuration) => {
     /**
-     * Delete access with **accessId** and all related accounts.
+     * Delete access with **accessId** and all related accounts
      * @summary Delete access
      * @param {string} accessId The **id** for the access to delete
      * @param {*} [options] Override http request option.
@@ -1513,13 +1513,13 @@ export declare const AccessApiFp: (configuration?: Configuration) => {
     /**
      * Retrieve the access with **accessId**. The retrieved object does not contain sensitive information such as the PIN.
      * @summary Get access
-     * @param {string} accessId The **id** for the access to retrieve.
+     * @param {string} accessId The **id** for the access to retrieve
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getAccess(accessId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Access>;
     /**
-     * Returns all registered accesses for the authenticated user. Confidential information like the PIN will not be returned.
+     * Returns all registered accesses for the authenticated user. The access fields contain confidential information (e.g., PIN) that will not be returned.
      * @summary List accesses
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1534,10 +1534,10 @@ export declare const AccessApiFp: (configuration?: Configuration) => {
      */
     postAccess(accessDto: Access, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Access>;
     /**
-     * Update the access credentials in **accessFields**. If the access does not exist, the **accessId** does not match the **id** in **accessDto** or the **providerId** is not the same, the status code 404 is returned. If another access with the same login  data already exists, the status code 409 is returned.  The updated access is validated by setting up an account. The status code 200 does not imply that the credentials are correct. To check this the client should obtain access.
+     * Update the access credentials in **accessFields**. If the access does not exist, the **accessId** does not match the **id** in **accessDto**, or the **providerId** is not the same, status code 404 is returned. If another access with the same login data already exists, status code 409 is returned.  The updated access is validated by setting up an account. Status code 200 does not imply that the credentials are correct. To check this, the client should obtain access.
      * @summary Update access
-     * @param {string} accessId The **id** for the access to update.
-     * @param {Access} accessDto The Access object that contains the changed credentials in             **accessFields**. Other fields cannot be edited.
+     * @param {string} accessId The **id** for the access to update
+     * @param {Access} accessDto The access object that contains the changed credentials in             **accessFields**. Other fields cannot be edited.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -1549,7 +1549,7 @@ export declare const AccessApiFp: (configuration?: Configuration) => {
  */
 export declare const AccessApiFactory: (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) => {
     /**
-     * Delete access with **accessId** and all related accounts.
+     * Delete access with **accessId** and all related accounts
      * @summary Delete access
      * @param {string} accessId The **id** for the access to delete
      * @param {*} [options] Override http request option.
@@ -1559,13 +1559,13 @@ export declare const AccessApiFactory: (configuration?: Configuration, fetch?: F
     /**
      * Retrieve the access with **accessId**. The retrieved object does not contain sensitive information such as the PIN.
      * @summary Get access
-     * @param {string} accessId The **id** for the access to retrieve.
+     * @param {string} accessId The **id** for the access to retrieve
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getAccess(accessId: string, options?: any): Promise<Access>;
     /**
-     * Returns all registered accesses for the authenticated user. Confidential information like the PIN will not be returned.
+     * Returns all registered accesses for the authenticated user. The access fields contain confidential information (e.g., PIN) that will not be returned.
      * @summary List accesses
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1580,10 +1580,10 @@ export declare const AccessApiFactory: (configuration?: Configuration, fetch?: F
      */
     postAccess(accessDto: Access, options?: any): Promise<Access>;
     /**
-     * Update the access credentials in **accessFields**. If the access does not exist, the **accessId** does not match the **id** in **accessDto** or the **providerId** is not the same, the status code 404 is returned. If another access with the same login  data already exists, the status code 409 is returned.  The updated access is validated by setting up an account. The status code 200 does not imply that the credentials are correct. To check this the client should obtain access.
+     * Update the access credentials in **accessFields**. If the access does not exist, the **accessId** does not match the **id** in **accessDto**, or the **providerId** is not the same, status code 404 is returned. If another access with the same login data already exists, status code 409 is returned.  The updated access is validated by setting up an account. Status code 200 does not imply that the credentials are correct. To check this, the client should obtain access.
      * @summary Update access
-     * @param {string} accessId The **id** for the access to update.
-     * @param {Access} accessDto The Access object that contains the changed credentials in             **accessFields**. Other fields cannot be edited.
+     * @param {string} accessId The **id** for the access to update
+     * @param {Access} accessDto The access object that contains the changed credentials in             **accessFields**. Other fields cannot be edited.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -1597,7 +1597,7 @@ export declare const AccessApiFactory: (configuration?: Configuration, fetch?: F
  */
 export declare class AccessApi extends BaseAPI {
     /**
-     * Delete access with **accessId** and all related accounts.
+     * Delete access with **accessId** and all related accounts
      * @summary Delete access
      * @param {string} accessId The **id** for the access to delete
      * @param {*} [options] Override http request option.
@@ -1608,14 +1608,14 @@ export declare class AccessApi extends BaseAPI {
     /**
      * Retrieve the access with **accessId**. The retrieved object does not contain sensitive information such as the PIN.
      * @summary Get access
-     * @param {string} accessId The **id** for the access to retrieve.
+     * @param {string} accessId The **id** for the access to retrieve
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AccessApi
      */
     getAccess(accessId: string, options?: any): Promise<Access>;
     /**
-     * Returns all registered accesses for the authenticated user. Confidential information like the PIN will not be returned.
+     * Returns all registered accesses for the authenticated user. The access fields contain confidential information (e.g., PIN) that will not be returned.
      * @summary List accesses
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1632,10 +1632,10 @@ export declare class AccessApi extends BaseAPI {
      */
     postAccess(accessDto: Access, options?: any): Promise<Access>;
     /**
-     * Update the access credentials in **accessFields**. If the access does not exist, the **accessId** does not match the **id** in **accessDto** or the **providerId** is not the same, the status code 404 is returned. If another access with the same login  data already exists, the status code 409 is returned.  The updated access is validated by setting up an account. The status code 200 does not imply that the credentials are correct. To check this the client should obtain access.
+     * Update the access credentials in **accessFields**. If the access does not exist, the **accessId** does not match the **id** in **accessDto**, or the **providerId** is not the same, status code 404 is returned. If another access with the same login data already exists, status code 409 is returned.  The updated access is validated by setting up an account. Status code 200 does not imply that the credentials are correct. To check this, the client should obtain access.
      * @summary Update access
-     * @param {string} accessId The **id** for the access to update.
-     * @param {Access} accessDto The Access object that contains the changed credentials in             **accessFields**. Other fields cannot be edited.
+     * @param {string} accessId The **id** for the access to update
+     * @param {Access} accessDto The access object that contains the changed credentials in             **accessFields**. Other fields cannot be edited.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AccessApi
@@ -1648,7 +1648,7 @@ export declare class AccessApi extends BaseAPI {
  */
 export declare const AccountApiFetchParamCreator: (configuration?: Configuration) => {
     /**
-     * Delete the account identified by **accountId**.
+     * Delete the account identified by **accountId**
      * @summary Delete account
      * @param {string} accessId The **accessId** for the account to delete
      * @param {string} accountId The **id** for the account to delete
@@ -1657,7 +1657,7 @@ export declare const AccountApiFetchParamCreator: (configuration?: Configuration
      */
     deleteAccount(accessId: string, accountId: string, options?: any): FetchArgs;
     /**
-     * Returns the account identified by **accountId**.
+     * Returns the account identified by **accountId**
      * @summary Get account
      * @param {string} accessId The **accessId** for the account to retrieve
      * @param {string} accountId The **id** for the account to retrieve
@@ -1666,7 +1666,7 @@ export declare const AccountApiFetchParamCreator: (configuration?: Configuration
      */
     getAccount(accessId: string, accountId: string, options?: any): FetchArgs;
     /**
-     * Retrieve all accounts for the current user under the **accessId**.
+     * Retrieve all accounts for the current user under the **accessId**
      * @summary List accounts
      * @param {string} accessId The **id** for the access for which to retrieve all accounts
      * @param {*} [options] Override http request option.
@@ -1690,7 +1690,7 @@ export declare const AccountApiFetchParamCreator: (configuration?: Configuration
  */
 export declare const AccountApiFp: (configuration?: Configuration) => {
     /**
-     * Delete the account identified by **accountId**.
+     * Delete the account identified by **accountId**
      * @summary Delete account
      * @param {string} accessId The **accessId** for the account to delete
      * @param {string} accountId The **id** for the account to delete
@@ -1699,7 +1699,7 @@ export declare const AccountApiFp: (configuration?: Configuration) => {
      */
     deleteAccount(accessId: string, accountId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response>;
     /**
-     * Returns the account identified by **accountId**.
+     * Returns the account identified by **accountId**
      * @summary Get account
      * @param {string} accessId The **accessId** for the account to retrieve
      * @param {string} accountId The **id** for the account to retrieve
@@ -1708,7 +1708,7 @@ export declare const AccountApiFp: (configuration?: Configuration) => {
      */
     getAccount(accessId: string, accountId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Account>;
     /**
-     * Retrieve all accounts for the current user under the **accessId**.
+     * Retrieve all accounts for the current user under the **accessId**
      * @summary List accounts
      * @param {string} accessId The **id** for the access for which to retrieve all accounts
      * @param {*} [options] Override http request option.
@@ -1732,7 +1732,7 @@ export declare const AccountApiFp: (configuration?: Configuration) => {
  */
 export declare const AccountApiFactory: (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) => {
     /**
-     * Delete the account identified by **accountId**.
+     * Delete the account identified by **accountId**
      * @summary Delete account
      * @param {string} accessId The **accessId** for the account to delete
      * @param {string} accountId The **id** for the account to delete
@@ -1741,7 +1741,7 @@ export declare const AccountApiFactory: (configuration?: Configuration, fetch?: 
      */
     deleteAccount(accessId: string, accountId: string, options?: any): Promise<Response>;
     /**
-     * Returns the account identified by **accountId**.
+     * Returns the account identified by **accountId**
      * @summary Get account
      * @param {string} accessId The **accessId** for the account to retrieve
      * @param {string} accountId The **id** for the account to retrieve
@@ -1750,7 +1750,7 @@ export declare const AccountApiFactory: (configuration?: Configuration, fetch?: 
      */
     getAccount(accessId: string, accountId: string, options?: any): Promise<Account>;
     /**
-     * Retrieve all accounts for the current user under the **accessId**.
+     * Retrieve all accounts for the current user under the **accessId**
      * @summary List accounts
      * @param {string} accessId The **id** for the access for which to retrieve all accounts
      * @param {*} [options] Override http request option.
@@ -1776,7 +1776,7 @@ export declare const AccountApiFactory: (configuration?: Configuration, fetch?: 
  */
 export declare class AccountApi extends BaseAPI {
     /**
-     * Delete the account identified by **accountId**.
+     * Delete the account identified by **accountId**
      * @summary Delete account
      * @param {string} accessId The **accessId** for the account to delete
      * @param {string} accountId The **id** for the account to delete
@@ -1786,7 +1786,7 @@ export declare class AccountApi extends BaseAPI {
      */
     deleteAccount(accessId: string, accountId: string, options?: any): Promise<Response>;
     /**
-     * Returns the account identified by **accountId**.
+     * Returns the account identified by **accountId**
      * @summary Get account
      * @param {string} accessId The **accessId** for the account to retrieve
      * @param {string} accountId The **id** for the account to retrieve
@@ -1796,7 +1796,7 @@ export declare class AccountApi extends BaseAPI {
      */
     getAccount(accessId: string, accountId: string, options?: any): Promise<Account>;
     /**
-     * Retrieve all accounts for the current user under the **accessId**.
+     * Retrieve all accounts for the current user under the **accessId**
      * @summary List accounts
      * @param {string} accessId The **id** for the access for which to retrieve all accounts
      * @param {*} [options] Override http request option.
@@ -1823,7 +1823,7 @@ export declare class AccountApi extends BaseAPI {
 export declare const CategoryApiFetchParamCreator: (configuration?: Configuration) => {
     /**
      * Supported origins are: FINLYTICS
-     * @summary Retrieve all categories for given origin.
+     * @summary Retrieve all categories for given origin
      * @param {string} origin identifier of a supported origin
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1837,7 +1837,7 @@ export declare const CategoryApiFetchParamCreator: (configuration?: Configuratio
 export declare const CategoryApiFp: (configuration?: Configuration) => {
     /**
      * Supported origins are: FINLYTICS
-     * @summary Retrieve all categories for given origin.
+     * @summary Retrieve all categories for given origin
      * @param {string} origin identifier of a supported origin
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1851,7 +1851,7 @@ export declare const CategoryApiFp: (configuration?: Configuration) => {
 export declare const CategoryApiFactory: (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) => {
     /**
      * Supported origins are: FINLYTICS
-     * @summary Retrieve all categories for given origin.
+     * @summary Retrieve all categories for given origin
      * @param {string} origin identifier of a supported origin
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1867,7 +1867,7 @@ export declare const CategoryApiFactory: (configuration?: Configuration, fetch?:
 export declare class CategoryApi extends BaseAPI {
     /**
      * Supported origins are: FINLYTICS
-     * @summary Retrieve all categories for given origin.
+     * @summary Retrieve all categories for given origin
      * @param {string} origin identifier of a supported origin
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1881,7 +1881,7 @@ export declare class CategoryApi extends BaseAPI {
  */
 export declare const ContractApiFetchParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * api.resource.contracts.getContractList.description
      * @summary Fetches contract list of current user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1894,7 +1894,7 @@ export declare const ContractApiFetchParamCreator: (configuration?: Configuratio
  */
 export declare const ContractApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * api.resource.contracts.getContractList.description
      * @summary Fetches contract list of current user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1907,7 +1907,7 @@ export declare const ContractApiFp: (configuration?: Configuration) => {
  */
 export declare const ContractApiFactory: (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) => {
     /**
-     *
+     * api.resource.contracts.getContractList.description
      * @summary Fetches contract list of current user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1922,7 +1922,7 @@ export declare const ContractApiFactory: (configuration?: Configuration, fetch?:
  */
 export declare class ContractApi extends BaseAPI {
     /**
-     *
+     * api.resource.contracts.getContractList.description
      * @summary Fetches contract list of current user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1936,7 +1936,7 @@ export declare class ContractApi extends BaseAPI {
  */
 export declare const ForecastApiFetchParamCreator: (configuration?: Configuration) => {
     /**
-     * The current month is determined by the latest refresh.
+     * The current month is determined by the most recent refresh.
      * @summary Get balance forecast
      * @param {string} accessId The **accessId** for which to retrieve forecasts
      * @param {string} accountId The **accountId** for which to retrieve forecasts
@@ -1945,10 +1945,10 @@ export declare const ForecastApiFetchParamCreator: (configuration?: Configuratio
      */
     getForecast(accessId: string, accountId: string, options?: any): FetchArgs;
     /**
-     * The current  month is determined by latest refresh of transactions. The request  also retrieves the transactions expected to be applied until the  end of the current month.
-     * @summary Retrieve balance forecast for the end of the current month.
-     * @param {string} accessId The **accessId** for the forecast.
-     * @param {string} accountId The **id** for the account.
+     * The current month is determined by the most recent refresh of transactions. The request  also retrieves the transactions expected to be applied until the  end of the current month.
+     * @summary Get forecast transactions
+     * @param {string} accessId The **accessId** for the forecast
+     * @param {string} accountId The **id** for the account
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -1960,7 +1960,7 @@ export declare const ForecastApiFetchParamCreator: (configuration?: Configuratio
  */
 export declare const ForecastApiFp: (configuration?: Configuration) => {
     /**
-     * The current month is determined by the latest refresh.
+     * The current month is determined by the most recent refresh.
      * @summary Get balance forecast
      * @param {string} accessId The **accessId** for which to retrieve forecasts
      * @param {string} accountId The **accountId** for which to retrieve forecasts
@@ -1969,10 +1969,10 @@ export declare const ForecastApiFp: (configuration?: Configuration) => {
      */
     getForecast(accessId: string, accountId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Forecast>;
     /**
-     * The current  month is determined by latest refresh of transactions. The request  also retrieves the transactions expected to be applied until the  end of the current month.
-     * @summary Retrieve balance forecast for the end of the current month.
-     * @param {string} accessId The **accessId** for the forecast.
-     * @param {string} accountId The **id** for the account.
+     * The current month is determined by the most recent refresh of transactions. The request  also retrieves the transactions expected to be applied until the  end of the current month.
+     * @summary Get forecast transactions
+     * @param {string} accessId The **accessId** for the forecast
+     * @param {string} accountId The **id** for the account
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -1984,7 +1984,7 @@ export declare const ForecastApiFp: (configuration?: Configuration) => {
  */
 export declare const ForecastApiFactory: (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) => {
     /**
-     * The current month is determined by the latest refresh.
+     * The current month is determined by the most recent refresh.
      * @summary Get balance forecast
      * @param {string} accessId The **accessId** for which to retrieve forecasts
      * @param {string} accountId The **accountId** for which to retrieve forecasts
@@ -1993,10 +1993,10 @@ export declare const ForecastApiFactory: (configuration?: Configuration, fetch?:
      */
     getForecast(accessId: string, accountId: string, options?: any): Promise<Forecast>;
     /**
-     * The current  month is determined by latest refresh of transactions. The request  also retrieves the transactions expected to be applied until the  end of the current month.
-     * @summary Retrieve balance forecast for the end of the current month.
-     * @param {string} accessId The **accessId** for the forecast.
-     * @param {string} accountId The **id** for the account.
+     * The current month is determined by the most recent refresh of transactions. The request  also retrieves the transactions expected to be applied until the  end of the current month.
+     * @summary Get forecast transactions
+     * @param {string} accessId The **accessId** for the forecast
+     * @param {string} accountId The **id** for the account
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -2010,7 +2010,7 @@ export declare const ForecastApiFactory: (configuration?: Configuration, fetch?:
  */
 export declare class ForecastApi extends BaseAPI {
     /**
-     * The current month is determined by the latest refresh.
+     * The current month is determined by the most recent refresh.
      * @summary Get balance forecast
      * @param {string} accessId The **accessId** for which to retrieve forecasts
      * @param {string} accountId The **accountId** for which to retrieve forecasts
@@ -2020,10 +2020,10 @@ export declare class ForecastApi extends BaseAPI {
      */
     getForecast(accessId: string, accountId: string, options?: any): Promise<Forecast>;
     /**
-     * The current  month is determined by latest refresh of transactions. The request  also retrieves the transactions expected to be applied until the  end of the current month.
-     * @summary Retrieve balance forecast for the end of the current month.
-     * @param {string} accessId The **accessId** for the forecast.
-     * @param {string} accountId The **id** for the account.
+     * The current month is determined by the most recent refresh of transactions. The request  also retrieves the transactions expected to be applied until the  end of the current month.
+     * @summary Get forecast transactions
+     * @param {string} accessId The **accessId** for the forecast
+     * @param {string} accountId The **id** for the account
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ForecastApi
@@ -2036,7 +2036,7 @@ export declare class ForecastApi extends BaseAPI {
  */
 export declare const ProviderApiFetchParamCreator: (configuration?: Configuration) => {
     /**
-     * Retrieve a single provider identified by **providerId**.
+     * Retrieve a single provider identified by **providerId**
      * @summary Get provider
      * @param {string} providerId The **providerId** to retrieve
      * @param {*} [options] Override http request option.
@@ -2044,7 +2044,7 @@ export declare const ProviderApiFetchParamCreator: (configuration?: Configuratio
      */
     getProvider(providerId: string, options?: any): FetchArgs;
     /**
-     * Retrieve a list of bank providers. A provider-**id** is necessary to create an _access_. To retrieve the necessary access fields, you need to query the specific `provider/{providerId}`. For performance reasons they are kept separate.
+     * Retrieve a list of bank providers. A **providerid** is required to create an _access_. To retrieve the necessary access fields, you need to query the specific `provider/{providerId}`. For performance reasons they are kept separate.
      * @summary List bank providers
      * @param {string} [bankCode] Optional — if length &#x3D; 8, the response will also contain data describing             the fields required for account setup
      * @param {boolean} [supported] Optional — response should only contain providers supported for account             setup via this API
@@ -2060,7 +2060,7 @@ export declare const ProviderApiFetchParamCreator: (configuration?: Configuratio
  */
 export declare const ProviderApiFp: (configuration?: Configuration) => {
     /**
-     * Retrieve a single provider identified by **providerId**.
+     * Retrieve a single provider identified by **providerId**
      * @summary Get provider
      * @param {string} providerId The **providerId** to retrieve
      * @param {*} [options] Override http request option.
@@ -2068,7 +2068,7 @@ export declare const ProviderApiFp: (configuration?: Configuration) => {
      */
     getProvider(providerId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Provider>;
     /**
-     * Retrieve a list of bank providers. A provider-**id** is necessary to create an _access_. To retrieve the necessary access fields, you need to query the specific `provider/{providerId}`. For performance reasons they are kept separate.
+     * Retrieve a list of bank providers. A **providerid** is required to create an _access_. To retrieve the necessary access fields, you need to query the specific `provider/{providerId}`. For performance reasons they are kept separate.
      * @summary List bank providers
      * @param {string} [bankCode] Optional — if length &#x3D; 8, the response will also contain data describing             the fields required for account setup
      * @param {boolean} [supported] Optional — response should only contain providers supported for account             setup via this API
@@ -2084,7 +2084,7 @@ export declare const ProviderApiFp: (configuration?: Configuration) => {
  */
 export declare const ProviderApiFactory: (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) => {
     /**
-     * Retrieve a single provider identified by **providerId**.
+     * Retrieve a single provider identified by **providerId**
      * @summary Get provider
      * @param {string} providerId The **providerId** to retrieve
      * @param {*} [options] Override http request option.
@@ -2092,7 +2092,7 @@ export declare const ProviderApiFactory: (configuration?: Configuration, fetch?:
      */
     getProvider(providerId: string, options?: any): Promise<Provider>;
     /**
-     * Retrieve a list of bank providers. A provider-**id** is necessary to create an _access_. To retrieve the necessary access fields, you need to query the specific `provider/{providerId}`. For performance reasons they are kept separate.
+     * Retrieve a list of bank providers. A **providerid** is required to create an _access_. To retrieve the necessary access fields, you need to query the specific `provider/{providerId}`. For performance reasons they are kept separate.
      * @summary List bank providers
      * @param {string} [bankCode] Optional — if length &#x3D; 8, the response will also contain data describing             the fields required for account setup
      * @param {boolean} [supported] Optional — response should only contain providers supported for account             setup via this API
@@ -2110,7 +2110,7 @@ export declare const ProviderApiFactory: (configuration?: Configuration, fetch?:
  */
 export declare class ProviderApi extends BaseAPI {
     /**
-     * Retrieve a single provider identified by **providerId**.
+     * Retrieve a single provider identified by **providerId**
      * @summary Get provider
      * @param {string} providerId The **providerId** to retrieve
      * @param {*} [options] Override http request option.
@@ -2119,7 +2119,7 @@ export declare class ProviderApi extends BaseAPI {
      */
     getProvider(providerId: string, options?: any): Promise<Provider>;
     /**
-     * Retrieve a list of bank providers. A provider-**id** is necessary to create an _access_. To retrieve the necessary access fields, you need to query the specific `provider/{providerId}`. For performance reasons they are kept separate.
+     * Retrieve a list of bank providers. A **providerid** is required to create an _access_. To retrieve the necessary access fields, you need to query the specific `provider/{providerId}`. For performance reasons they are kept separate.
      * @summary List bank providers
      * @param {string} [bankCode] Optional — if length &#x3D; 8, the response will also contain data describing             the fields required for account setup
      * @param {boolean} [supported] Optional — response should only contain providers supported for account             setup via this API
@@ -2131,26 +2131,188 @@ export declare class ProviderApi extends BaseAPI {
     getProviders(bankCode?: string, supported?: boolean, query?: string, options?: any): Promise<Provider[]>;
 }
 /**
+ * QuickStartApi - fetch parameter creator
+ * @export
+ */
+export declare const QuickStartApiFetchParamCreator: (configuration?: Configuration) => {
+    /**
+     * Retrieve a single provider identified by **providerId**
+     * @summary Get provider
+     * @param {string} providerId The **providerId** to retrieve
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getProvider(providerId: string, options?: any): FetchArgs;
+    /**
+     * Retrieve a list of bank providers. A **providerid** is required to create an _access_. To retrieve the necessary access fields, you need to query the specific `provider/{providerId}`. For performance reasons they are kept separate.
+     * @summary List bank providers
+     * @param {string} [bankCode] Optional — if length &#x3D; 8, the response will also contain data describing             the fields required for account setup
+     * @param {boolean} [supported] Optional — response should only contain providers supported for account             setup via this API
+     * @param {string} [query] Optional — search parameters for BankCode, BIC, Location, Name. Will be ignored             if the bankCode query parameter is set.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getProviders(bankCode?: string, supported?: boolean, query?: string, options?: any): FetchArgs;
+    /**
+     * Create a new access and setup all associated accounts and transactions. This will also trigger the creation of monthly transaction summaries, the analysis of all accounts for recurring transactions, and the calculation of the balance forecast.   If the credentials were invalid, the validation state is set accordingly.    It is possible to have multiple accesses for one user.
+     * @summary Create a new access
+     * @param {Access} accessDto A valid BankAccess object containing the required             **accessFields** as indicated by the provider object and the             **providerId**.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postAccess(accessDto: Access, options?: any): FetchArgs;
+    /**
+     * Registers a user with AHOI
+     * @summary User registration
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    register(options?: any): FetchArgs;
+};
+/**
+ * QuickStartApi - functional programming interface
+ * @export
+ */
+export declare const QuickStartApiFp: (configuration?: Configuration) => {
+    /**
+     * Retrieve a single provider identified by **providerId**
+     * @summary Get provider
+     * @param {string} providerId The **providerId** to retrieve
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getProvider(providerId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Provider>;
+    /**
+     * Retrieve a list of bank providers. A **providerid** is required to create an _access_. To retrieve the necessary access fields, you need to query the specific `provider/{providerId}`. For performance reasons they are kept separate.
+     * @summary List bank providers
+     * @param {string} [bankCode] Optional — if length &#x3D; 8, the response will also contain data describing             the fields required for account setup
+     * @param {boolean} [supported] Optional — response should only contain providers supported for account             setup via this API
+     * @param {string} [query] Optional — search parameters for BankCode, BIC, Location, Name. Will be ignored             if the bankCode query parameter is set.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getProviders(bankCode?: string, supported?: boolean, query?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Provider[]>;
+    /**
+     * Create a new access and setup all associated accounts and transactions. This will also trigger the creation of monthly transaction summaries, the analysis of all accounts for recurring transactions, and the calculation of the balance forecast.   If the credentials were invalid, the validation state is set accordingly.    It is possible to have multiple accesses for one user.
+     * @summary Create a new access
+     * @param {Access} accessDto A valid BankAccess object containing the required             **accessFields** as indicated by the provider object and the             **providerId**.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postAccess(accessDto: Access, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Access>;
+    /**
+     * Registers a user with AHOI
+     * @summary User registration
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    register(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<RegistrationResponse>;
+};
+/**
+ * QuickStartApi - factory interface
+ * @export
+ */
+export declare const QuickStartApiFactory: (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) => {
+    /**
+     * Retrieve a single provider identified by **providerId**
+     * @summary Get provider
+     * @param {string} providerId The **providerId** to retrieve
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getProvider(providerId: string, options?: any): Promise<Provider>;
+    /**
+     * Retrieve a list of bank providers. A **providerid** is required to create an _access_. To retrieve the necessary access fields, you need to query the specific `provider/{providerId}`. For performance reasons they are kept separate.
+     * @summary List bank providers
+     * @param {string} [bankCode] Optional — if length &#x3D; 8, the response will also contain data describing             the fields required for account setup
+     * @param {boolean} [supported] Optional — response should only contain providers supported for account             setup via this API
+     * @param {string} [query] Optional — search parameters for BankCode, BIC, Location, Name. Will be ignored             if the bankCode query parameter is set.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getProviders(bankCode?: string, supported?: boolean, query?: string, options?: any): Promise<Provider[]>;
+    /**
+     * Create a new access and setup all associated accounts and transactions. This will also trigger the creation of monthly transaction summaries, the analysis of all accounts for recurring transactions, and the calculation of the balance forecast.   If the credentials were invalid, the validation state is set accordingly.    It is possible to have multiple accesses for one user.
+     * @summary Create a new access
+     * @param {Access} accessDto A valid BankAccess object containing the required             **accessFields** as indicated by the provider object and the             **providerId**.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postAccess(accessDto: Access, options?: any): Promise<Access>;
+    /**
+     * Registers a user with AHOI
+     * @summary User registration
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    register(options?: any): Promise<RegistrationResponse>;
+};
+/**
+ * QuickStartApi - object-oriented interface
+ * @export
+ * @class QuickStartApi
+ * @extends {BaseAPI}
+ */
+export declare class QuickStartApi extends BaseAPI {
+    /**
+     * Retrieve a single provider identified by **providerId**
+     * @summary Get provider
+     * @param {string} providerId The **providerId** to retrieve
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof QuickStartApi
+     */
+    getProvider(providerId: string, options?: any): Promise<Provider>;
+    /**
+     * Retrieve a list of bank providers. A **providerid** is required to create an _access_. To retrieve the necessary access fields, you need to query the specific `provider/{providerId}`. For performance reasons they are kept separate.
+     * @summary List bank providers
+     * @param {string} [bankCode] Optional — if length &#x3D; 8, the response will also contain data describing             the fields required for account setup
+     * @param {boolean} [supported] Optional — response should only contain providers supported for account             setup via this API
+     * @param {string} [query] Optional — search parameters for BankCode, BIC, Location, Name. Will be ignored             if the bankCode query parameter is set.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof QuickStartApi
+     */
+    getProviders(bankCode?: string, supported?: boolean, query?: string, options?: any): Promise<Provider[]>;
+    /**
+     * Create a new access and setup all associated accounts and transactions. This will also trigger the creation of monthly transaction summaries, the analysis of all accounts for recurring transactions, and the calculation of the balance forecast.   If the credentials were invalid, the validation state is set accordingly.    It is possible to have multiple accesses for one user.
+     * @summary Create a new access
+     * @param {Access} accessDto A valid BankAccess object containing the required             **accessFields** as indicated by the provider object and the             **providerId**.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof QuickStartApi
+     */
+    postAccess(accessDto: Access, options?: any): Promise<Access>;
+    /**
+     * Registers a user with AHOI
+     * @summary User registration
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof QuickStartApi
+     */
+    register(options?: any): Promise<RegistrationResponse>;
+}
+/**
  * RegistrationApi - fetch parameter creator
  * @export
  */
 export declare const RegistrationApiFetchParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * api.resource.registration.deleteRegistration.description
      * @summary Delete the user context for the current token.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     deleteRegistration(options?: any): FetchArgs;
     /**
-     * A valid API public key will be returned in JWK format to be used to encrypt registration data
-     * @summary Request API jwk public key
+     * A valid API public key will be returned in JWK format to be used to encrypt registration data. Only needed with extended encryption.
+     * @summary Request API JWK public key
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getJsonWebKey(options?: any): FetchArgs;
     /**
-     * A valid API public key will be returned to be used to encrypt registration data
+     * A valid API public key will be returned to be used to encrypt registration data. Only needed with extended encryption.
      * @summary Request API public key
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2170,21 +2332,21 @@ export declare const RegistrationApiFetchParamCreator: (configuration?: Configur
  */
 export declare const RegistrationApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * api.resource.registration.deleteRegistration.description
      * @summary Delete the user context for the current token.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     deleteRegistration(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response>;
     /**
-     * A valid API public key will be returned in JWK format to be used to encrypt registration data
-     * @summary Request API jwk public key
+     * A valid API public key will be returned in JWK format to be used to encrypt registration data. Only needed with extended encryption.
+     * @summary Request API JWK public key
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getJsonWebKey(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<JwkJwkPublicKey>;
     /**
-     * A valid API public key will be returned to be used to encrypt registration data
+     * A valid API public key will be returned to be used to encrypt registration data. Only needed with extended encryption.
      * @summary Request API public key
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2204,21 +2366,21 @@ export declare const RegistrationApiFp: (configuration?: Configuration) => {
  */
 export declare const RegistrationApiFactory: (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) => {
     /**
-     *
+     * api.resource.registration.deleteRegistration.description
      * @summary Delete the user context for the current token.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     deleteRegistration(options?: any): Promise<Response>;
     /**
-     * A valid API public key will be returned in JWK format to be used to encrypt registration data
-     * @summary Request API jwk public key
+     * A valid API public key will be returned in JWK format to be used to encrypt registration data. Only needed with extended encryption.
+     * @summary Request API JWK public key
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getJsonWebKey(options?: any): Promise<JwkJwkPublicKey>;
     /**
-     * A valid API public key will be returned to be used to encrypt registration data
+     * A valid API public key will be returned to be used to encrypt registration data. Only needed with extended encryption.
      * @summary Request API public key
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2240,7 +2402,7 @@ export declare const RegistrationApiFactory: (configuration?: Configuration, fet
  */
 export declare class RegistrationApi extends BaseAPI {
     /**
-     *
+     * api.resource.registration.deleteRegistration.description
      * @summary Delete the user context for the current token.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2248,15 +2410,15 @@ export declare class RegistrationApi extends BaseAPI {
      */
     deleteRegistration(options?: any): Promise<Response>;
     /**
-     * A valid API public key will be returned in JWK format to be used to encrypt registration data
-     * @summary Request API jwk public key
+     * A valid API public key will be returned in JWK format to be used to encrypt registration data. Only needed with extended encryption.
+     * @summary Request API JWK public key
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RegistrationApi
      */
     getJsonWebKey(options?: any): Promise<JwkJwkPublicKey>;
     /**
-     * A valid API public key will be returned to be used to encrypt registration data
+     * A valid API public key will be returned to be used to encrypt registration data. Only needed with extended encryption.
      * @summary Request API public key
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2278,9 +2440,9 @@ export declare class RegistrationApi extends BaseAPI {
  */
 export declare const SecurityApiFetchParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * api.resource.accesses.accessId.accounts.accountId.securities.securityId.getSecurity.description
      * @summary Get security
-     * @param {string} accessId
+     * @param {string} accessId api.resource.accesses.accessId.accounts.accountId.securities.securityId.getSecurity.parameter.accessId.description
      * @param {string} accountId The **accountId** for which to retrieve securities
      * @param {string} securityId The **securityId** for the security to retrieve
      * @param {*} [options] Override http request option.
@@ -2288,11 +2450,11 @@ export declare const SecurityApiFetchParamCreator: (configuration?: Configuratio
      */
     getSecurity(accessId: string, accountId: string, securityId: string, options?: any): FetchArgs;
     /**
-     *
+     * api.resource.accesses.accessId.accounts.accountId.securities.listSecurities.description
      * @summary List securities for account
-     * @param {string} accessId
+     * @param {string} accessId api.resource.accesses.accessId.accounts.accountId.securities.listSecurities.parameter.accessId.description
      * @param {string} accountId The **accountId** for which to retrieve securities
-     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.         A \&quot;maxAge\&quot; of 3600 will not trigger an update of the account securities, when last         refresh has been done 2000 seconds ago.
+     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.         A \&quot;maxAge\&quot; of 3600 will not trigger an update of the account securities when the last         refresh was performed 2000 seconds ago.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -2304,9 +2466,9 @@ export declare const SecurityApiFetchParamCreator: (configuration?: Configuratio
  */
 export declare const SecurityApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * api.resource.accesses.accessId.accounts.accountId.securities.securityId.getSecurity.description
      * @summary Get security
-     * @param {string} accessId
+     * @param {string} accessId api.resource.accesses.accessId.accounts.accountId.securities.securityId.getSecurity.parameter.accessId.description
      * @param {string} accountId The **accountId** for which to retrieve securities
      * @param {string} securityId The **securityId** for the security to retrieve
      * @param {*} [options] Override http request option.
@@ -2314,11 +2476,11 @@ export declare const SecurityApiFp: (configuration?: Configuration) => {
      */
     getSecurity(accessId: string, accountId: string, securityId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Security>;
     /**
-     *
+     * api.resource.accesses.accessId.accounts.accountId.securities.listSecurities.description
      * @summary List securities for account
-     * @param {string} accessId
+     * @param {string} accessId api.resource.accesses.accessId.accounts.accountId.securities.listSecurities.parameter.accessId.description
      * @param {string} accountId The **accountId** for which to retrieve securities
-     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.         A \&quot;maxAge\&quot; of 3600 will not trigger an update of the account securities, when last         refresh has been done 2000 seconds ago.
+     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.         A \&quot;maxAge\&quot; of 3600 will not trigger an update of the account securities when the last         refresh was performed 2000 seconds ago.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -2330,9 +2492,9 @@ export declare const SecurityApiFp: (configuration?: Configuration) => {
  */
 export declare const SecurityApiFactory: (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) => {
     /**
-     *
+     * api.resource.accesses.accessId.accounts.accountId.securities.securityId.getSecurity.description
      * @summary Get security
-     * @param {string} accessId
+     * @param {string} accessId api.resource.accesses.accessId.accounts.accountId.securities.securityId.getSecurity.parameter.accessId.description
      * @param {string} accountId The **accountId** for which to retrieve securities
      * @param {string} securityId The **securityId** for the security to retrieve
      * @param {*} [options] Override http request option.
@@ -2340,11 +2502,11 @@ export declare const SecurityApiFactory: (configuration?: Configuration, fetch?:
      */
     getSecurity(accessId: string, accountId: string, securityId: string, options?: any): Promise<Security>;
     /**
-     *
+     * api.resource.accesses.accessId.accounts.accountId.securities.listSecurities.description
      * @summary List securities for account
-     * @param {string} accessId
+     * @param {string} accessId api.resource.accesses.accessId.accounts.accountId.securities.listSecurities.parameter.accessId.description
      * @param {string} accountId The **accountId** for which to retrieve securities
-     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.         A \&quot;maxAge\&quot; of 3600 will not trigger an update of the account securities, when last         refresh has been done 2000 seconds ago.
+     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.         A \&quot;maxAge\&quot; of 3600 will not trigger an update of the account securities when the last         refresh was performed 2000 seconds ago.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -2358,9 +2520,9 @@ export declare const SecurityApiFactory: (configuration?: Configuration, fetch?:
  */
 export declare class SecurityApi extends BaseAPI {
     /**
-     *
+     * api.resource.accesses.accessId.accounts.accountId.securities.securityId.getSecurity.description
      * @summary Get security
-     * @param {string} accessId
+     * @param {string} accessId api.resource.accesses.accessId.accounts.accountId.securities.securityId.getSecurity.parameter.accessId.description
      * @param {string} accountId The **accountId** for which to retrieve securities
      * @param {string} securityId The **securityId** for the security to retrieve
      * @param {*} [options] Override http request option.
@@ -2369,11 +2531,11 @@ export declare class SecurityApi extends BaseAPI {
      */
     getSecurity(accessId: string, accountId: string, securityId: string, options?: any): Promise<Security>;
     /**
-     *
+     * api.resource.accesses.accessId.accounts.accountId.securities.listSecurities.description
      * @summary List securities for account
-     * @param {string} accessId
+     * @param {string} accessId api.resource.accesses.accessId.accounts.accountId.securities.listSecurities.parameter.accessId.description
      * @param {string} accountId The **accountId** for which to retrieve securities
-     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.         A \&quot;maxAge\&quot; of 3600 will not trigger an update of the account securities, when last         refresh has been done 2000 seconds ago.
+     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.         A \&quot;maxAge\&quot; of 3600 will not trigger an update of the account securities when the last         refresh was performed 2000 seconds ago.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SecurityApi
@@ -2386,44 +2548,44 @@ export declare class SecurityApi extends BaseAPI {
  */
 export declare const TANSchemesApiFetchParamCreator: (configuration?: Configuration) => {
     /**
-     * Returns the currently selected TAN media for the access.
-     * @summary Get current TAN media.
-     * @param {string} accessId The **accessId** for which to retrieve the current TAN media.
+     * Returns the currently selected TAN media for the access
+     * @summary Get current TAN media
+     * @param {string} accessId The **accessId** for which to retrieve the current TAN media
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getCurrentTanMedia(accessId: string, options?: any): FetchArgs;
     /**
-     * Returns the currently selected TAN scheme for the access.
+     * Returns the currently selected TAN scheme for the access
      * @summary Get current TAN scheme.
-     * @param {string} accessId The **accessId** for which to retrieve the current TAN scheme.
+     * @param {string} accessId The **accessId** for which to retrieve the current TAN scheme
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getCurrentTanScheme(accessId: string, options?: any): FetchArgs;
     /**
-     * Retrieves all available TAN schemes for access.
+     * Retrieves all available TAN schemes for access
      * @summary List TAN schemes for access
      * @param {string} accessId The **id** for the access for which to retrieve the TAN list
-     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.      A \&quot;maxAge\&quot; of 3600 will not trigger an update of TAN schemes, when last refresh has been      done 2000 seconds ago.
+     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.      A \&quot;maxAge\&quot; of 3600 will not trigger an update of TAN schemes when the last refresh was      performed 2000 seconds ago.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getTanSchemes(accessId: string, maxAge?: number, options?: any): FetchArgs;
     /**
-     * Update the access with a new currentTanMedia.
-     * @summary Update current TAN media.
-     * @param {string} accessId The **accessId** for which to set the current TAN media.
-     * @param {string} tanMediaId The **id** for the TAN media that should be set as the new currentTanMedia.
+     * Update the access with a new currentTanMedia
+     * @summary Update current TAN media
+     * @param {string} accessId The **accessId** for which to set the current TAN media
+     * @param {string} tanMediaId The **id** for the TAN media that should be set as the new currentTanMedia
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     putCurrentTanMedia(accessId: string, tanMediaId: string, options?: any): FetchArgs;
     /**
-     * Update the access with a new currentTanScheme.
-     * @summary Update current TAN scheme.
-     * @param {string} accessId The **accessId** for which to set the current TAN scheme.
-     * @param {string} tanSchemeId The **id** for the TAN scheme that should be set as the new currentTanScheme.
+     * Update the access with a new currentTanScheme
+     * @summary Update current TAN scheme
+     * @param {string} accessId The **accessId** for which to set the current TAN scheme
+     * @param {string} tanSchemeId The **id** for the TAN scheme that should be set as the new currentTanScheme
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -2435,44 +2597,44 @@ export declare const TANSchemesApiFetchParamCreator: (configuration?: Configurat
  */
 export declare const TANSchemesApiFp: (configuration?: Configuration) => {
     /**
-     * Returns the currently selected TAN media for the access.
-     * @summary Get current TAN media.
-     * @param {string} accessId The **accessId** for which to retrieve the current TAN media.
+     * Returns the currently selected TAN media for the access
+     * @summary Get current TAN media
+     * @param {string} accessId The **accessId** for which to retrieve the current TAN media
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getCurrentTanMedia(accessId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TanMedia>;
     /**
-     * Returns the currently selected TAN scheme for the access.
+     * Returns the currently selected TAN scheme for the access
      * @summary Get current TAN scheme.
-     * @param {string} accessId The **accessId** for which to retrieve the current TAN scheme.
+     * @param {string} accessId The **accessId** for which to retrieve the current TAN scheme
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getCurrentTanScheme(accessId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TanScheme>;
     /**
-     * Retrieves all available TAN schemes for access.
+     * Retrieves all available TAN schemes for access
      * @summary List TAN schemes for access
      * @param {string} accessId The **id** for the access for which to retrieve the TAN list
-     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.      A \&quot;maxAge\&quot; of 3600 will not trigger an update of TAN schemes, when last refresh has been      done 2000 seconds ago.
+     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.      A \&quot;maxAge\&quot; of 3600 will not trigger an update of TAN schemes when the last refresh was      performed 2000 seconds ago.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getTanSchemes(accessId: string, maxAge?: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TanScheme[]>;
     /**
-     * Update the access with a new currentTanMedia.
-     * @summary Update current TAN media.
-     * @param {string} accessId The **accessId** for which to set the current TAN media.
-     * @param {string} tanMediaId The **id** for the TAN media that should be set as the new currentTanMedia.
+     * Update the access with a new currentTanMedia
+     * @summary Update current TAN media
+     * @param {string} accessId The **accessId** for which to set the current TAN media
+     * @param {string} tanMediaId The **id** for the TAN media that should be set as the new currentTanMedia
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     putCurrentTanMedia(accessId: string, tanMediaId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Access>;
     /**
-     * Update the access with a new currentTanScheme.
-     * @summary Update current TAN scheme.
-     * @param {string} accessId The **accessId** for which to set the current TAN scheme.
-     * @param {string} tanSchemeId The **id** for the TAN scheme that should be set as the new currentTanScheme.
+     * Update the access with a new currentTanScheme
+     * @summary Update current TAN scheme
+     * @param {string} accessId The **accessId** for which to set the current TAN scheme
+     * @param {string} tanSchemeId The **id** for the TAN scheme that should be set as the new currentTanScheme
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -2484,44 +2646,44 @@ export declare const TANSchemesApiFp: (configuration?: Configuration) => {
  */
 export declare const TANSchemesApiFactory: (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) => {
     /**
-     * Returns the currently selected TAN media for the access.
-     * @summary Get current TAN media.
-     * @param {string} accessId The **accessId** for which to retrieve the current TAN media.
+     * Returns the currently selected TAN media for the access
+     * @summary Get current TAN media
+     * @param {string} accessId The **accessId** for which to retrieve the current TAN media
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getCurrentTanMedia(accessId: string, options?: any): Promise<TanMedia>;
     /**
-     * Returns the currently selected TAN scheme for the access.
+     * Returns the currently selected TAN scheme for the access
      * @summary Get current TAN scheme.
-     * @param {string} accessId The **accessId** for which to retrieve the current TAN scheme.
+     * @param {string} accessId The **accessId** for which to retrieve the current TAN scheme
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getCurrentTanScheme(accessId: string, options?: any): Promise<TanScheme>;
     /**
-     * Retrieves all available TAN schemes for access.
+     * Retrieves all available TAN schemes for access
      * @summary List TAN schemes for access
      * @param {string} accessId The **id** for the access for which to retrieve the TAN list
-     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.      A \&quot;maxAge\&quot; of 3600 will not trigger an update of TAN schemes, when last refresh has been      done 2000 seconds ago.
+     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.      A \&quot;maxAge\&quot; of 3600 will not trigger an update of TAN schemes when the last refresh was      performed 2000 seconds ago.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getTanSchemes(accessId: string, maxAge?: number, options?: any): Promise<TanScheme[]>;
     /**
-     * Update the access with a new currentTanMedia.
-     * @summary Update current TAN media.
-     * @param {string} accessId The **accessId** for which to set the current TAN media.
-     * @param {string} tanMediaId The **id** for the TAN media that should be set as the new currentTanMedia.
+     * Update the access with a new currentTanMedia
+     * @summary Update current TAN media
+     * @param {string} accessId The **accessId** for which to set the current TAN media
+     * @param {string} tanMediaId The **id** for the TAN media that should be set as the new currentTanMedia
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     putCurrentTanMedia(accessId: string, tanMediaId: string, options?: any): Promise<Access>;
     /**
-     * Update the access with a new currentTanScheme.
-     * @summary Update current TAN scheme.
-     * @param {string} accessId The **accessId** for which to set the current TAN scheme.
-     * @param {string} tanSchemeId The **id** for the TAN scheme that should be set as the new currentTanScheme.
+     * Update the access with a new currentTanScheme
+     * @summary Update current TAN scheme
+     * @param {string} accessId The **accessId** for which to set the current TAN scheme
+     * @param {string} tanSchemeId The **id** for the TAN scheme that should be set as the new currentTanScheme
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -2535,48 +2697,48 @@ export declare const TANSchemesApiFactory: (configuration?: Configuration, fetch
  */
 export declare class TANSchemesApi extends BaseAPI {
     /**
-     * Returns the currently selected TAN media for the access.
-     * @summary Get current TAN media.
-     * @param {string} accessId The **accessId** for which to retrieve the current TAN media.
+     * Returns the currently selected TAN media for the access
+     * @summary Get current TAN media
+     * @param {string} accessId The **accessId** for which to retrieve the current TAN media
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TANSchemesApi
      */
     getCurrentTanMedia(accessId: string, options?: any): Promise<TanMedia>;
     /**
-     * Returns the currently selected TAN scheme for the access.
+     * Returns the currently selected TAN scheme for the access
      * @summary Get current TAN scheme.
-     * @param {string} accessId The **accessId** for which to retrieve the current TAN scheme.
+     * @param {string} accessId The **accessId** for which to retrieve the current TAN scheme
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TANSchemesApi
      */
     getCurrentTanScheme(accessId: string, options?: any): Promise<TanScheme>;
     /**
-     * Retrieves all available TAN schemes for access.
+     * Retrieves all available TAN schemes for access
      * @summary List TAN schemes for access
      * @param {string} accessId The **id** for the access for which to retrieve the TAN list
-     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.      A \&quot;maxAge\&quot; of 3600 will not trigger an update of TAN schemes, when last refresh has been      done 2000 seconds ago.
+     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.      A \&quot;maxAge\&quot; of 3600 will not trigger an update of TAN schemes when the last refresh was      performed 2000 seconds ago.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TANSchemesApi
      */
     getTanSchemes(accessId: string, maxAge?: number, options?: any): Promise<TanScheme[]>;
     /**
-     * Update the access with a new currentTanMedia.
-     * @summary Update current TAN media.
-     * @param {string} accessId The **accessId** for which to set the current TAN media.
-     * @param {string} tanMediaId The **id** for the TAN media that should be set as the new currentTanMedia.
+     * Update the access with a new currentTanMedia
+     * @summary Update current TAN media
+     * @param {string} accessId The **accessId** for which to set the current TAN media
+     * @param {string} tanMediaId The **id** for the TAN media that should be set as the new currentTanMedia
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TANSchemesApi
      */
     putCurrentTanMedia(accessId: string, tanMediaId: string, options?: any): Promise<Access>;
     /**
-     * Update the access with a new currentTanScheme.
-     * @summary Update current TAN scheme.
-     * @param {string} accessId The **accessId** for which to set the current TAN scheme.
-     * @param {string} tanSchemeId The **id** for the TAN scheme that should be set as the new currentTanScheme.
+     * Update the access with a new currentTanScheme
+     * @summary Update current TAN scheme
+     * @param {string} accessId The **accessId** for which to set the current TAN scheme
+     * @param {string} tanSchemeId The **id** for the TAN scheme that should be set as the new currentTanScheme
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TANSchemesApi
@@ -2589,26 +2751,26 @@ export declare class TANSchemesApi extends BaseAPI {
  */
 export declare const TaskApiFetchParamCreator: (configuration?: Configuration) => {
     /**
-     * Fetch challenge for asynchronous running task item from AHOI.
-     * @summary Fetch challenge
-     * @param {string} taskId The **id** for the Task.
+     * This is the third required step when executing a TAN-aware  banking task (e.g., a SEPA transfer).
+     * @summary Fetch task challenges
+     * @param {string} taskId The **id** of the task
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getChallenge(taskId: string, options?: any): FetchArgs;
     /**
-     * Fetch asynchronous running task item and its state from AHOI.
-     * @summary Fetch task
-     * @param {string} taskId The **id** for the access to retrieve.
+     * Use this to poll for  status changes (e.g., steps two and five of the SEPA transfer process) or to query the state  after receiving a callback from AHOI.
+     * @summary Fetch state of task
+     * @param {string} taskId The **id** of the task for which to retrieve the status.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getTask(taskId: string, options?: any): FetchArgs;
     /**
-     * Provide an authorization information (e.g. TAN) to an asynchronous running task.
-     * @summary Authorize task
-     * @param {string} taskId The **id** for the Task.
-     * @param {ChallengeResponse} challengeResponse the response to process
+     * The SEPA transfer initiated using the _Transfer_ resource requires this starting with step four.
+     * @summary Authorize a task
+     * @param {string} taskId The **id** of the task
+     * @param {ChallengeResponse} challengeResponse The response to process
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -2620,26 +2782,26 @@ export declare const TaskApiFetchParamCreator: (configuration?: Configuration) =
  */
 export declare const TaskApiFp: (configuration?: Configuration) => {
     /**
-     * Fetch challenge for asynchronous running task item from AHOI.
-     * @summary Fetch challenge
-     * @param {string} taskId The **id** for the Task.
+     * This is the third required step when executing a TAN-aware  banking task (e.g., a SEPA transfer).
+     * @summary Fetch task challenges
+     * @param {string} taskId The **id** of the task
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getChallenge(taskId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Challenge>;
     /**
-     * Fetch asynchronous running task item and its state from AHOI.
-     * @summary Fetch task
-     * @param {string} taskId The **id** for the access to retrieve.
+     * Use this to poll for  status changes (e.g., steps two and five of the SEPA transfer process) or to query the state  after receiving a callback from AHOI.
+     * @summary Fetch state of task
+     * @param {string} taskId The **id** of the task for which to retrieve the status.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getTask(taskId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Task>;
     /**
-     * Provide an authorization information (e.g. TAN) to an asynchronous running task.
-     * @summary Authorize task
-     * @param {string} taskId The **id** for the Task.
-     * @param {ChallengeResponse} challengeResponse the response to process
+     * The SEPA transfer initiated using the _Transfer_ resource requires this starting with step four.
+     * @summary Authorize a task
+     * @param {string} taskId The **id** of the task
+     * @param {ChallengeResponse} challengeResponse The response to process
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -2651,26 +2813,26 @@ export declare const TaskApiFp: (configuration?: Configuration) => {
  */
 export declare const TaskApiFactory: (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) => {
     /**
-     * Fetch challenge for asynchronous running task item from AHOI.
-     * @summary Fetch challenge
-     * @param {string} taskId The **id** for the Task.
+     * This is the third required step when executing a TAN-aware  banking task (e.g., a SEPA transfer).
+     * @summary Fetch task challenges
+     * @param {string} taskId The **id** of the task
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getChallenge(taskId: string, options?: any): Promise<Challenge>;
     /**
-     * Fetch asynchronous running task item and its state from AHOI.
-     * @summary Fetch task
-     * @param {string} taskId The **id** for the access to retrieve.
+     * Use this to poll for  status changes (e.g., steps two and five of the SEPA transfer process) or to query the state  after receiving a callback from AHOI.
+     * @summary Fetch state of task
+     * @param {string} taskId The **id** of the task for which to retrieve the status.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getTask(taskId: string, options?: any): Promise<Task>;
     /**
-     * Provide an authorization information (e.g. TAN) to an asynchronous running task.
-     * @summary Authorize task
-     * @param {string} taskId The **id** for the Task.
-     * @param {ChallengeResponse} challengeResponse the response to process
+     * The SEPA transfer initiated using the _Transfer_ resource requires this starting with step four.
+     * @summary Authorize a task
+     * @param {string} taskId The **id** of the task
+     * @param {ChallengeResponse} challengeResponse The response to process
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -2684,28 +2846,28 @@ export declare const TaskApiFactory: (configuration?: Configuration, fetch?: Fet
  */
 export declare class TaskApi extends BaseAPI {
     /**
-     * Fetch challenge for asynchronous running task item from AHOI.
-     * @summary Fetch challenge
-     * @param {string} taskId The **id** for the Task.
+     * This is the third required step when executing a TAN-aware  banking task (e.g., a SEPA transfer).
+     * @summary Fetch task challenges
+     * @param {string} taskId The **id** of the task
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TaskApi
      */
     getChallenge(taskId: string, options?: any): Promise<Challenge>;
     /**
-     * Fetch asynchronous running task item and its state from AHOI.
-     * @summary Fetch task
-     * @param {string} taskId The **id** for the access to retrieve.
+     * Use this to poll for  status changes (e.g., steps two and five of the SEPA transfer process) or to query the state  after receiving a callback from AHOI.
+     * @summary Fetch state of task
+     * @param {string} taskId The **id** of the task for which to retrieve the status.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TaskApi
      */
     getTask(taskId: string, options?: any): Promise<Task>;
     /**
-     * Provide an authorization information (e.g. TAN) to an asynchronous running task.
-     * @summary Authorize task
-     * @param {string} taskId The **id** for the Task.
-     * @param {ChallengeResponse} challengeResponse the response to process
+     * The SEPA transfer initiated using the _Transfer_ resource requires this starting with step four.
+     * @summary Authorize a task
+     * @param {string} taskId The **id** of the task
+     * @param {ChallengeResponse} challengeResponse The response to process
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TaskApi
@@ -2718,7 +2880,7 @@ export declare class TaskApi extends BaseAPI {
  */
 export declare const TransactionApiFetchParamCreator: (configuration?: Configuration) => {
     /**
-     * Returns the transaction identified by **transactionId** in relationship with **accountId**.
+     * Returns the transaction identified by **transactionId** in relation to **accountId**.
      * @summary Get transaction
      * @param {string} accessId The **accessId** for the transaction to retrieve
      * @param {string} accountId The **accountId** for the transaction to retrieve
@@ -2728,13 +2890,13 @@ export declare const TransactionApiFetchParamCreator: (configuration?: Configura
      */
     getTransaction(accessId: string, accountId: string, transactionId: string, options?: any): FetchArgs;
     /**
-     * Retrieve all transactions for **accountId**.
+     * Retrieve all transactions for **accountId**
      * @summary List transactions for account
-     * @param {string} accessId The **accessId** for which to retrieve transactions.
-     * @param {string} accountId The **accountId** for which to retrieve transactions.
-     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.          A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions, when last refresh has          been done 2000 seconds ago.
+     * @param {string} accessId The **accessId** for which to retrieve transactions
+     * @param {string} accountId The **accountId** for which to retrieve transactions
+     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.          A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions, when the last refresh was          performed 2000 seconds ago.
      * @param {number} [limit] Optional — limit the number of returned transactions
-     * @param {number} [offset] Optional — skip the first **offset** transactions in result
+     * @param {number} [offset] Optional — skip the first **offset** transactions in the result
      * @param {string} [from] Optional — only return transactions with booking date later than **from**; an ISO8601 Month(2014-11), Date (2014-11-17) or DateTime         (2014-11-17T12:00:00Z)
      * @param {string} [to] Optional — only return transactions with booking date prior or equal to **to**; an ISO8601 Date, Month or DateTime
      * @param {*} [options] Override http request option.
@@ -2742,12 +2904,12 @@ export declare const TransactionApiFetchParamCreator: (configuration?: Configura
      */
     listTransactions(accessId: string, accountId: string, maxAge?: number, limit?: number, offset?: number, from?: string, to?: string, options?: any): FetchArgs;
     /**
-     * Retrieve all transactions for **patternId**.
+     * Retrieve all transactions for **patternId**
      * @summary List transactions for pattern
      * @param {string} accessId The **accessId** for which to retrieve transactions
      * @param {string} accountId The **accountId** for which to retrieve transactions
      * @param {string} patternId The **patternId** for which to retrieve transactions
-     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.       A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions, when last refresh has       been done 2000 seconds ago.
+     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.       A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions when the last refresh was       performed 2000 seconds ago.
      * @param {number} [limit] Optional — limit the number of returned transactions
      * @param {number} [offset] Optional — skip the first **offset** transactions in result
      * @param {string} [from] Optional — only return transactions with a booking date later than **from**; an ISO8601 Month(2014-11), Date (2014-11-17) or DateTime         (2014-11-17T12:00:00Z)
@@ -2763,7 +2925,7 @@ export declare const TransactionApiFetchParamCreator: (configuration?: Configura
  */
 export declare const TransactionApiFp: (configuration?: Configuration) => {
     /**
-     * Returns the transaction identified by **transactionId** in relationship with **accountId**.
+     * Returns the transaction identified by **transactionId** in relation to **accountId**.
      * @summary Get transaction
      * @param {string} accessId The **accessId** for the transaction to retrieve
      * @param {string} accountId The **accountId** for the transaction to retrieve
@@ -2773,13 +2935,13 @@ export declare const TransactionApiFp: (configuration?: Configuration) => {
      */
     getTransaction(accessId: string, accountId: string, transactionId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Transaction>;
     /**
-     * Retrieve all transactions for **accountId**.
+     * Retrieve all transactions for **accountId**
      * @summary List transactions for account
-     * @param {string} accessId The **accessId** for which to retrieve transactions.
-     * @param {string} accountId The **accountId** for which to retrieve transactions.
-     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.          A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions, when last refresh has          been done 2000 seconds ago.
+     * @param {string} accessId The **accessId** for which to retrieve transactions
+     * @param {string} accountId The **accountId** for which to retrieve transactions
+     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.          A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions, when the last refresh was          performed 2000 seconds ago.
      * @param {number} [limit] Optional — limit the number of returned transactions
-     * @param {number} [offset] Optional — skip the first **offset** transactions in result
+     * @param {number} [offset] Optional — skip the first **offset** transactions in the result
      * @param {string} [from] Optional — only return transactions with booking date later than **from**; an ISO8601 Month(2014-11), Date (2014-11-17) or DateTime         (2014-11-17T12:00:00Z)
      * @param {string} [to] Optional — only return transactions with booking date prior or equal to **to**; an ISO8601 Date, Month or DateTime
      * @param {*} [options] Override http request option.
@@ -2787,12 +2949,12 @@ export declare const TransactionApiFp: (configuration?: Configuration) => {
      */
     listTransactions(accessId: string, accountId: string, maxAge?: number, limit?: number, offset?: number, from?: string, to?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Transaction[]>;
     /**
-     * Retrieve all transactions for **patternId**.
+     * Retrieve all transactions for **patternId**
      * @summary List transactions for pattern
      * @param {string} accessId The **accessId** for which to retrieve transactions
      * @param {string} accountId The **accountId** for which to retrieve transactions
      * @param {string} patternId The **patternId** for which to retrieve transactions
-     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.       A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions, when last refresh has       been done 2000 seconds ago.
+     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.       A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions when the last refresh was       performed 2000 seconds ago.
      * @param {number} [limit] Optional — limit the number of returned transactions
      * @param {number} [offset] Optional — skip the first **offset** transactions in result
      * @param {string} [from] Optional — only return transactions with a booking date later than **from**; an ISO8601 Month(2014-11), Date (2014-11-17) or DateTime         (2014-11-17T12:00:00Z)
@@ -2808,7 +2970,7 @@ export declare const TransactionApiFp: (configuration?: Configuration) => {
  */
 export declare const TransactionApiFactory: (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) => {
     /**
-     * Returns the transaction identified by **transactionId** in relationship with **accountId**.
+     * Returns the transaction identified by **transactionId** in relation to **accountId**.
      * @summary Get transaction
      * @param {string} accessId The **accessId** for the transaction to retrieve
      * @param {string} accountId The **accountId** for the transaction to retrieve
@@ -2818,13 +2980,13 @@ export declare const TransactionApiFactory: (configuration?: Configuration, fetc
      */
     getTransaction(accessId: string, accountId: string, transactionId: string, options?: any): Promise<Transaction>;
     /**
-     * Retrieve all transactions for **accountId**.
+     * Retrieve all transactions for **accountId**
      * @summary List transactions for account
-     * @param {string} accessId The **accessId** for which to retrieve transactions.
-     * @param {string} accountId The **accountId** for which to retrieve transactions.
-     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.          A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions, when last refresh has          been done 2000 seconds ago.
+     * @param {string} accessId The **accessId** for which to retrieve transactions
+     * @param {string} accountId The **accountId** for which to retrieve transactions
+     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.          A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions, when the last refresh was          performed 2000 seconds ago.
      * @param {number} [limit] Optional — limit the number of returned transactions
-     * @param {number} [offset] Optional — skip the first **offset** transactions in result
+     * @param {number} [offset] Optional — skip the first **offset** transactions in the result
      * @param {string} [from] Optional — only return transactions with booking date later than **from**; an ISO8601 Month(2014-11), Date (2014-11-17) or DateTime         (2014-11-17T12:00:00Z)
      * @param {string} [to] Optional — only return transactions with booking date prior or equal to **to**; an ISO8601 Date, Month or DateTime
      * @param {*} [options] Override http request option.
@@ -2832,12 +2994,12 @@ export declare const TransactionApiFactory: (configuration?: Configuration, fetc
      */
     listTransactions(accessId: string, accountId: string, maxAge?: number, limit?: number, offset?: number, from?: string, to?: string, options?: any): Promise<Transaction[]>;
     /**
-     * Retrieve all transactions for **patternId**.
+     * Retrieve all transactions for **patternId**
      * @summary List transactions for pattern
      * @param {string} accessId The **accessId** for which to retrieve transactions
      * @param {string} accountId The **accountId** for which to retrieve transactions
      * @param {string} patternId The **patternId** for which to retrieve transactions
-     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.       A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions, when last refresh has       been done 2000 seconds ago.
+     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.       A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions when the last refresh was       performed 2000 seconds ago.
      * @param {number} [limit] Optional — limit the number of returned transactions
      * @param {number} [offset] Optional — skip the first **offset** transactions in result
      * @param {string} [from] Optional — only return transactions with a booking date later than **from**; an ISO8601 Month(2014-11), Date (2014-11-17) or DateTime         (2014-11-17T12:00:00Z)
@@ -2855,7 +3017,7 @@ export declare const TransactionApiFactory: (configuration?: Configuration, fetc
  */
 export declare class TransactionApi extends BaseAPI {
     /**
-     * Returns the transaction identified by **transactionId** in relationship with **accountId**.
+     * Returns the transaction identified by **transactionId** in relation to **accountId**.
      * @summary Get transaction
      * @param {string} accessId The **accessId** for the transaction to retrieve
      * @param {string} accountId The **accountId** for the transaction to retrieve
@@ -2866,13 +3028,13 @@ export declare class TransactionApi extends BaseAPI {
      */
     getTransaction(accessId: string, accountId: string, transactionId: string, options?: any): Promise<Transaction>;
     /**
-     * Retrieve all transactions for **accountId**.
+     * Retrieve all transactions for **accountId**
      * @summary List transactions for account
-     * @param {string} accessId The **accessId** for which to retrieve transactions.
-     * @param {string} accountId The **accountId** for which to retrieve transactions.
-     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.          A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions, when last refresh has          been done 2000 seconds ago.
+     * @param {string} accessId The **accessId** for which to retrieve transactions
+     * @param {string} accountId The **accountId** for which to retrieve transactions
+     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.          A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions, when the last refresh was          performed 2000 seconds ago.
      * @param {number} [limit] Optional — limit the number of returned transactions
-     * @param {number} [offset] Optional — skip the first **offset** transactions in result
+     * @param {number} [offset] Optional — skip the first **offset** transactions in the result
      * @param {string} [from] Optional — only return transactions with booking date later than **from**; an ISO8601 Month(2014-11), Date (2014-11-17) or DateTime         (2014-11-17T12:00:00Z)
      * @param {string} [to] Optional — only return transactions with booking date prior or equal to **to**; an ISO8601 Date, Month or DateTime
      * @param {*} [options] Override http request option.
@@ -2881,12 +3043,12 @@ export declare class TransactionApi extends BaseAPI {
      */
     listTransactions(accessId: string, accountId: string, maxAge?: number, limit?: number, offset?: number, from?: string, to?: string, options?: any): Promise<Transaction[]>;
     /**
-     * Retrieve all transactions for **patternId**.
+     * Retrieve all transactions for **patternId**
      * @summary List transactions for pattern
      * @param {string} accessId The **accessId** for which to retrieve transactions
      * @param {string} accountId The **accountId** for which to retrieve transactions
      * @param {string} patternId The **patternId** for which to retrieve transactions
-     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.       A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions, when last refresh has       been done 2000 seconds ago.
+     * @param {number} [maxAge] Optional - defines maximum age (in seconds) of cached account data provided by the bank.       A \&quot;maxAge\&quot; of 3600 will not trigger an update of transactions when the last refresh was       performed 2000 seconds ago.
      * @param {number} [limit] Optional — limit the number of returned transactions
      * @param {number} [offset] Optional — skip the first **offset** transactions in result
      * @param {string} [from] Optional — only return transactions with a booking date later than **from**; an ISO8601 Month(2014-11), Date (2014-11-17) or DateTime         (2014-11-17T12:00:00Z)
@@ -2903,12 +3065,12 @@ export declare class TransactionApi extends BaseAPI {
  */
 export declare const TransactionPatternApiFetchParamCreator: (configuration?: Configuration) => {
     /**
-     * Disabling the transaction pattern results in ignoring the pattern in the forecast. The transaction still exists and relations with transactions are not modified.
+     * Disabling the transaction pattern results in ignoring the pattern in the forecast. The transaction pattern still exists and relationships to transactions are not modified.
      * @summary Enable a transaction pattern
      * @param {string} accessId The **accessId** for which to activate the pattern
      * @param {string} accountId The **accountId** for which to activate the pattern
      * @param {string} patternId The **patternId** to (de)activate
-     * @param {boolean} activated If &#x60;true&#x60;, the pattern will be used for forecast calculations;         &#x60;false&#x60; will be ignored
+     * @param {boolean} activated If &#x60;true&#x60;, the pattern will be used for forecast calculations;         &#x60;false&#x60; will be ignored.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -2924,7 +3086,7 @@ export declare const TransactionPatternApiFetchParamCreator: (configuration?: Co
      */
     deleteTransactionPattern(accessId: string, accountId: string, patternId: string, options?: any): FetchArgs;
     /**
-     * Returns the transaction pattern identified by **patternId** in relationship with  **accountId**.
+     * Returns the transaction pattern identified by **patternId** in relation to  **accountId**.
      * @summary Get transaction pattern
      * @param {string} accessId The **accessId** for the pattern to retrieve
      * @param {string} accountId The **accoundId** for the pattern to retrieve
@@ -2934,7 +3096,7 @@ export declare const TransactionPatternApiFetchParamCreator: (configuration?: Co
      */
     getTransactionPattern(accessId: string, accountId: string, patternId: string, options?: any): FetchArgs;
     /**
-     * Returns all transaction pattern for **accountId**. Transaction patterns are recurring transactions automatically identified by the server or manually created via [create transaction pattern](#!/Transaction_pattern/postTransactionPattern).
+     * Returns all transaction patterns for **accountId**. Transaction patterns are recurring transactions automatically identified by the server or manually created via [create transaction pattern](#!/Transaction_pattern/postTransactionPattern).
      * @summary List transaction patterns for account
      * @param {string} accessId The **accessId** for which to retrieve transaction patterns
      * @param {string} accountId The **accountId** for which to retrieve transaction patterns
@@ -2943,10 +3105,10 @@ export declare const TransactionPatternApiFetchParamCreator: (configuration?: Co
      */
     listTransactionPatterns(accessId: string, accountId: string, options?: any): FetchArgs;
     /**
-     * Create a new pattern for an **accountId**. The **cycle** can be one of `MONTHLY`, `QUARTERLY`, `SEMI_ANNUALLY` or `ANNUALLY`. The **day** can be between `1` and `366`, depending on **cycle**:  | cycle | day range | example | | --- | --- | --- | | `MONTHLY` | `1`-`31`  | every 29th of the month => `29` | | `QUARTERLY` | `1`-`92`  | 23rd of February (23rd of May, etc.) => `54` (31 [complete first month] + 23 [days in second month]) | | `SEMI_ANNUALLY` | `1`-`184` | 1st of May and 1st of November => `121` (for first half of year: 31 + 28 + 31 + 30 + 1) | | `ANNUALLY` | `1`-`366` | 24th of December => `358` |  If a similar pattern already exists, you will receive an HTTP status code 409.
+     * Create a new pattern for an **accountId**. The **cycle** can be `MONTHLY`, `QUARTERLY`, `SEMI_ANNUALLY` or `ANNUALLY`. The **day** can be between `1` and `366`, depending on **cycle**:  | cycle | day range | example | | --- | --- | --- | | `MONTHLY` | `1`-`31`  | every 29th of the month => `29` | | `QUARTERLY` | `1`-`92`  | 23rd of February (23rd of May, etc.) => `54` (31 [complete first month] + 23 [days in second month]) | | `SEMI_ANNUALLY` | `1`-`184` | 1st of May and 1st of November => `121` (for first half of year: 31 + 28 + 31 + 30 + 1) | | `ANNUALLY` | `1`-`366` | 24th of December => `358` |  If a similar pattern already exists, you will receive an HTTP status code 409.
      * @summary Create a new pattern
-     * @param {string} accessId The **accessId** to which the new created pattern is associated with
-     * @param {string} accountId The **accountId** to which the new created pattern is associated with
+     * @param {string} accessId The **accessId** with which the newly created pattern is associated
+     * @param {string} accountId The **accountId** with which the newly created pattern is associated
      * @param {TransactionPattern} transactionPatternDto The transaction pattern to create
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2959,12 +3121,12 @@ export declare const TransactionPatternApiFetchParamCreator: (configuration?: Co
  */
 export declare const TransactionPatternApiFp: (configuration?: Configuration) => {
     /**
-     * Disabling the transaction pattern results in ignoring the pattern in the forecast. The transaction still exists and relations with transactions are not modified.
+     * Disabling the transaction pattern results in ignoring the pattern in the forecast. The transaction pattern still exists and relationships to transactions are not modified.
      * @summary Enable a transaction pattern
      * @param {string} accessId The **accessId** for which to activate the pattern
      * @param {string} accountId The **accountId** for which to activate the pattern
      * @param {string} patternId The **patternId** to (de)activate
-     * @param {boolean} activated If &#x60;true&#x60;, the pattern will be used for forecast calculations;         &#x60;false&#x60; will be ignored
+     * @param {boolean} activated If &#x60;true&#x60;, the pattern will be used for forecast calculations;         &#x60;false&#x60; will be ignored.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -2980,7 +3142,7 @@ export declare const TransactionPatternApiFp: (configuration?: Configuration) =>
      */
     deleteTransactionPattern(accessId: string, accountId: string, patternId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response>;
     /**
-     * Returns the transaction pattern identified by **patternId** in relationship with  **accountId**.
+     * Returns the transaction pattern identified by **patternId** in relation to  **accountId**.
      * @summary Get transaction pattern
      * @param {string} accessId The **accessId** for the pattern to retrieve
      * @param {string} accountId The **accoundId** for the pattern to retrieve
@@ -2990,7 +3152,7 @@ export declare const TransactionPatternApiFp: (configuration?: Configuration) =>
      */
     getTransactionPattern(accessId: string, accountId: string, patternId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TransactionPattern>;
     /**
-     * Returns all transaction pattern for **accountId**. Transaction patterns are recurring transactions automatically identified by the server or manually created via [create transaction pattern](#!/Transaction_pattern/postTransactionPattern).
+     * Returns all transaction patterns for **accountId**. Transaction patterns are recurring transactions automatically identified by the server or manually created via [create transaction pattern](#!/Transaction_pattern/postTransactionPattern).
      * @summary List transaction patterns for account
      * @param {string} accessId The **accessId** for which to retrieve transaction patterns
      * @param {string} accountId The **accountId** for which to retrieve transaction patterns
@@ -2999,10 +3161,10 @@ export declare const TransactionPatternApiFp: (configuration?: Configuration) =>
      */
     listTransactionPatterns(accessId: string, accountId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TransactionPattern[]>;
     /**
-     * Create a new pattern for an **accountId**. The **cycle** can be one of `MONTHLY`, `QUARTERLY`, `SEMI_ANNUALLY` or `ANNUALLY`. The **day** can be between `1` and `366`, depending on **cycle**:  | cycle | day range | example | | --- | --- | --- | | `MONTHLY` | `1`-`31`  | every 29th of the month => `29` | | `QUARTERLY` | `1`-`92`  | 23rd of February (23rd of May, etc.) => `54` (31 [complete first month] + 23 [days in second month]) | | `SEMI_ANNUALLY` | `1`-`184` | 1st of May and 1st of November => `121` (for first half of year: 31 + 28 + 31 + 30 + 1) | | `ANNUALLY` | `1`-`366` | 24th of December => `358` |  If a similar pattern already exists, you will receive an HTTP status code 409.
+     * Create a new pattern for an **accountId**. The **cycle** can be `MONTHLY`, `QUARTERLY`, `SEMI_ANNUALLY` or `ANNUALLY`. The **day** can be between `1` and `366`, depending on **cycle**:  | cycle | day range | example | | --- | --- | --- | | `MONTHLY` | `1`-`31`  | every 29th of the month => `29` | | `QUARTERLY` | `1`-`92`  | 23rd of February (23rd of May, etc.) => `54` (31 [complete first month] + 23 [days in second month]) | | `SEMI_ANNUALLY` | `1`-`184` | 1st of May and 1st of November => `121` (for first half of year: 31 + 28 + 31 + 30 + 1) | | `ANNUALLY` | `1`-`366` | 24th of December => `358` |  If a similar pattern already exists, you will receive an HTTP status code 409.
      * @summary Create a new pattern
-     * @param {string} accessId The **accessId** to which the new created pattern is associated with
-     * @param {string} accountId The **accountId** to which the new created pattern is associated with
+     * @param {string} accessId The **accessId** with which the newly created pattern is associated
+     * @param {string} accountId The **accountId** with which the newly created pattern is associated
      * @param {TransactionPattern} transactionPatternDto The transaction pattern to create
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3015,12 +3177,12 @@ export declare const TransactionPatternApiFp: (configuration?: Configuration) =>
  */
 export declare const TransactionPatternApiFactory: (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) => {
     /**
-     * Disabling the transaction pattern results in ignoring the pattern in the forecast. The transaction still exists and relations with transactions are not modified.
+     * Disabling the transaction pattern results in ignoring the pattern in the forecast. The transaction pattern still exists and relationships to transactions are not modified.
      * @summary Enable a transaction pattern
      * @param {string} accessId The **accessId** for which to activate the pattern
      * @param {string} accountId The **accountId** for which to activate the pattern
      * @param {string} patternId The **patternId** to (de)activate
-     * @param {boolean} activated If &#x60;true&#x60;, the pattern will be used for forecast calculations;         &#x60;false&#x60; will be ignored
+     * @param {boolean} activated If &#x60;true&#x60;, the pattern will be used for forecast calculations;         &#x60;false&#x60; will be ignored.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -3036,7 +3198,7 @@ export declare const TransactionPatternApiFactory: (configuration?: Configuratio
      */
     deleteTransactionPattern(accessId: string, accountId: string, patternId: string, options?: any): Promise<Response>;
     /**
-     * Returns the transaction pattern identified by **patternId** in relationship with  **accountId**.
+     * Returns the transaction pattern identified by **patternId** in relation to  **accountId**.
      * @summary Get transaction pattern
      * @param {string} accessId The **accessId** for the pattern to retrieve
      * @param {string} accountId The **accoundId** for the pattern to retrieve
@@ -3046,7 +3208,7 @@ export declare const TransactionPatternApiFactory: (configuration?: Configuratio
      */
     getTransactionPattern(accessId: string, accountId: string, patternId: string, options?: any): Promise<TransactionPattern>;
     /**
-     * Returns all transaction pattern for **accountId**. Transaction patterns are recurring transactions automatically identified by the server or manually created via [create transaction pattern](#!/Transaction_pattern/postTransactionPattern).
+     * Returns all transaction patterns for **accountId**. Transaction patterns are recurring transactions automatically identified by the server or manually created via [create transaction pattern](#!/Transaction_pattern/postTransactionPattern).
      * @summary List transaction patterns for account
      * @param {string} accessId The **accessId** for which to retrieve transaction patterns
      * @param {string} accountId The **accountId** for which to retrieve transaction patterns
@@ -3055,10 +3217,10 @@ export declare const TransactionPatternApiFactory: (configuration?: Configuratio
      */
     listTransactionPatterns(accessId: string, accountId: string, options?: any): Promise<TransactionPattern[]>;
     /**
-     * Create a new pattern for an **accountId**. The **cycle** can be one of `MONTHLY`, `QUARTERLY`, `SEMI_ANNUALLY` or `ANNUALLY`. The **day** can be between `1` and `366`, depending on **cycle**:  | cycle | day range | example | | --- | --- | --- | | `MONTHLY` | `1`-`31`  | every 29th of the month => `29` | | `QUARTERLY` | `1`-`92`  | 23rd of February (23rd of May, etc.) => `54` (31 [complete first month] + 23 [days in second month]) | | `SEMI_ANNUALLY` | `1`-`184` | 1st of May and 1st of November => `121` (for first half of year: 31 + 28 + 31 + 30 + 1) | | `ANNUALLY` | `1`-`366` | 24th of December => `358` |  If a similar pattern already exists, you will receive an HTTP status code 409.
+     * Create a new pattern for an **accountId**. The **cycle** can be `MONTHLY`, `QUARTERLY`, `SEMI_ANNUALLY` or `ANNUALLY`. The **day** can be between `1` and `366`, depending on **cycle**:  | cycle | day range | example | | --- | --- | --- | | `MONTHLY` | `1`-`31`  | every 29th of the month => `29` | | `QUARTERLY` | `1`-`92`  | 23rd of February (23rd of May, etc.) => `54` (31 [complete first month] + 23 [days in second month]) | | `SEMI_ANNUALLY` | `1`-`184` | 1st of May and 1st of November => `121` (for first half of year: 31 + 28 + 31 + 30 + 1) | | `ANNUALLY` | `1`-`366` | 24th of December => `358` |  If a similar pattern already exists, you will receive an HTTP status code 409.
      * @summary Create a new pattern
-     * @param {string} accessId The **accessId** to which the new created pattern is associated with
-     * @param {string} accountId The **accountId** to which the new created pattern is associated with
+     * @param {string} accessId The **accessId** with which the newly created pattern is associated
+     * @param {string} accountId The **accountId** with which the newly created pattern is associated
      * @param {TransactionPattern} transactionPatternDto The transaction pattern to create
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3073,12 +3235,12 @@ export declare const TransactionPatternApiFactory: (configuration?: Configuratio
  */
 export declare class TransactionPatternApi extends BaseAPI {
     /**
-     * Disabling the transaction pattern results in ignoring the pattern in the forecast. The transaction still exists and relations with transactions are not modified.
+     * Disabling the transaction pattern results in ignoring the pattern in the forecast. The transaction pattern still exists and relationships to transactions are not modified.
      * @summary Enable a transaction pattern
      * @param {string} accessId The **accessId** for which to activate the pattern
      * @param {string} accountId The **accountId** for which to activate the pattern
      * @param {string} patternId The **patternId** to (de)activate
-     * @param {boolean} activated If &#x60;true&#x60;, the pattern will be used for forecast calculations;         &#x60;false&#x60; will be ignored
+     * @param {boolean} activated If &#x60;true&#x60;, the pattern will be used for forecast calculations;         &#x60;false&#x60; will be ignored.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TransactionPatternApi
@@ -3096,7 +3258,7 @@ export declare class TransactionPatternApi extends BaseAPI {
      */
     deleteTransactionPattern(accessId: string, accountId: string, patternId: string, options?: any): Promise<Response>;
     /**
-     * Returns the transaction pattern identified by **patternId** in relationship with  **accountId**.
+     * Returns the transaction pattern identified by **patternId** in relation to  **accountId**.
      * @summary Get transaction pattern
      * @param {string} accessId The **accessId** for the pattern to retrieve
      * @param {string} accountId The **accoundId** for the pattern to retrieve
@@ -3107,7 +3269,7 @@ export declare class TransactionPatternApi extends BaseAPI {
      */
     getTransactionPattern(accessId: string, accountId: string, patternId: string, options?: any): Promise<TransactionPattern>;
     /**
-     * Returns all transaction pattern for **accountId**. Transaction patterns are recurring transactions automatically identified by the server or manually created via [create transaction pattern](#!/Transaction_pattern/postTransactionPattern).
+     * Returns all transaction patterns for **accountId**. Transaction patterns are recurring transactions automatically identified by the server or manually created via [create transaction pattern](#!/Transaction_pattern/postTransactionPattern).
      * @summary List transaction patterns for account
      * @param {string} accessId The **accessId** for which to retrieve transaction patterns
      * @param {string} accountId The **accountId** for which to retrieve transaction patterns
@@ -3117,10 +3279,10 @@ export declare class TransactionPatternApi extends BaseAPI {
      */
     listTransactionPatterns(accessId: string, accountId: string, options?: any): Promise<TransactionPattern[]>;
     /**
-     * Create a new pattern for an **accountId**. The **cycle** can be one of `MONTHLY`, `QUARTERLY`, `SEMI_ANNUALLY` or `ANNUALLY`. The **day** can be between `1` and `366`, depending on **cycle**:  | cycle | day range | example | | --- | --- | --- | | `MONTHLY` | `1`-`31`  | every 29th of the month => `29` | | `QUARTERLY` | `1`-`92`  | 23rd of February (23rd of May, etc.) => `54` (31 [complete first month] + 23 [days in second month]) | | `SEMI_ANNUALLY` | `1`-`184` | 1st of May and 1st of November => `121` (for first half of year: 31 + 28 + 31 + 30 + 1) | | `ANNUALLY` | `1`-`366` | 24th of December => `358` |  If a similar pattern already exists, you will receive an HTTP status code 409.
+     * Create a new pattern for an **accountId**. The **cycle** can be `MONTHLY`, `QUARTERLY`, `SEMI_ANNUALLY` or `ANNUALLY`. The **day** can be between `1` and `366`, depending on **cycle**:  | cycle | day range | example | | --- | --- | --- | | `MONTHLY` | `1`-`31`  | every 29th of the month => `29` | | `QUARTERLY` | `1`-`92`  | 23rd of February (23rd of May, etc.) => `54` (31 [complete first month] + 23 [days in second month]) | | `SEMI_ANNUALLY` | `1`-`184` | 1st of May and 1st of November => `121` (for first half of year: 31 + 28 + 31 + 30 + 1) | | `ANNUALLY` | `1`-`366` | 24th of December => `358` |  If a similar pattern already exists, you will receive an HTTP status code 409.
      * @summary Create a new pattern
-     * @param {string} accessId The **accessId** to which the new created pattern is associated with
-     * @param {string} accountId The **accountId** to which the new created pattern is associated with
+     * @param {string} accessId The **accessId** with which the newly created pattern is associated
+     * @param {string} accountId The **accountId** with which the newly created pattern is associated
      * @param {TransactionPattern} transactionPatternDto The transaction pattern to create
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3134,7 +3296,7 @@ export declare class TransactionPatternApi extends BaseAPI {
  */
 export declare const TransactionSummaryApiFetchParamCreator: (configuration?: Configuration) => {
     /**
-     * Retrieve account summaries and provide a sum for incoming and outgoing transactions.
+     * Retrieve account summaries and provide a sum for incoming and outgoing transactions
      * @summary List account summaries
      * @param {string} accessId The **accessId** for which to list the summaries
      * @param {string} accountId The **accountId** for which to list the summaries
@@ -3153,7 +3315,7 @@ export declare const TransactionSummaryApiFetchParamCreator: (configuration?: Co
  */
 export declare const TransactionSummaryApiFp: (configuration?: Configuration) => {
     /**
-     * Retrieve account summaries and provide a sum for incoming and outgoing transactions.
+     * Retrieve account summaries and provide a sum for incoming and outgoing transactions
      * @summary List account summaries
      * @param {string} accessId The **accessId** for which to list the summaries
      * @param {string} accountId The **accountId** for which to list the summaries
@@ -3172,7 +3334,7 @@ export declare const TransactionSummaryApiFp: (configuration?: Configuration) =>
  */
 export declare const TransactionSummaryApiFactory: (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) => {
     /**
-     * Retrieve account summaries and provide a sum for incoming and outgoing transactions.
+     * Retrieve account summaries and provide a sum for incoming and outgoing transactions
      * @summary List account summaries
      * @param {string} accessId The **accessId** for which to list the summaries
      * @param {string} accountId The **accountId** for which to list the summaries
@@ -3193,7 +3355,7 @@ export declare const TransactionSummaryApiFactory: (configuration?: Configuratio
  */
 export declare class TransactionSummaryApi extends BaseAPI {
     /**
-     * Retrieve account summaries and provide a sum for incoming and outgoing transactions.
+     * Retrieve account summaries and provide a sum for incoming and outgoing transactions
      * @summary List account summaries
      * @param {string} accessId The **accessId** for which to list the summaries
      * @param {string} accountId The **accountId** for which to list the summaries
@@ -3213,11 +3375,11 @@ export declare class TransactionSummaryApi extends BaseAPI {
  */
 export declare const TransferApiFetchParamCreator: (configuration?: Configuration) => {
     /**
-     * The transfer represents a money  transfer from the account identified by its id to another bank account.  **Please note:** Exception from the norm. This POST request will not return  the two header fields X-Id and Location. Also, the returned JSON document  does not represent the transfer entity, but a temporary placeholder.  The transfer is processed asynchronous and needs a message URL zu be configured  to report back the tan challenge and when it is finished.
+     * <p>**Please note:** <ul>      <li>The IBAN of the receiving account needs to exist, even if it is located in Sandbank. Otherwise the transfer will fail.      <li>The returned JSON document represents the task that covers the transfer process as a result of a subsequent TAN request.  </ul>
      * @summary Create a new transfer
-     * @param {string} accessId
-     * @param {string} accountId The **id** for the account.
-     * @param {Transfer} transfer transfer to create
+     * @param {string} accessId The **id** of the access corresponding to accounts to be used
+     * @param {string} accountId The **id** for the account
+     * @param {Transfer} transfer Transfer to create
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -3229,11 +3391,11 @@ export declare const TransferApiFetchParamCreator: (configuration?: Configuratio
  */
 export declare const TransferApiFp: (configuration?: Configuration) => {
     /**
-     * The transfer represents a money  transfer from the account identified by its id to another bank account.  **Please note:** Exception from the norm. This POST request will not return  the two header fields X-Id and Location. Also, the returned JSON document  does not represent the transfer entity, but a temporary placeholder.  The transfer is processed asynchronous and needs a message URL zu be configured  to report back the tan challenge and when it is finished.
+     * <p>**Please note:** <ul>      <li>The IBAN of the receiving account needs to exist, even if it is located in Sandbank. Otherwise the transfer will fail.      <li>The returned JSON document represents the task that covers the transfer process as a result of a subsequent TAN request.  </ul>
      * @summary Create a new transfer
-     * @param {string} accessId
-     * @param {string} accountId The **id** for the account.
-     * @param {Transfer} transfer transfer to create
+     * @param {string} accessId The **id** of the access corresponding to accounts to be used
+     * @param {string} accountId The **id** for the account
+     * @param {Transfer} transfer Transfer to create
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -3245,11 +3407,11 @@ export declare const TransferApiFp: (configuration?: Configuration) => {
  */
 export declare const TransferApiFactory: (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) => {
     /**
-     * The transfer represents a money  transfer from the account identified by its id to another bank account.  **Please note:** Exception from the norm. This POST request will not return  the two header fields X-Id and Location. Also, the returned JSON document  does not represent the transfer entity, but a temporary placeholder.  The transfer is processed asynchronous and needs a message URL zu be configured  to report back the tan challenge and when it is finished.
+     * <p>**Please note:** <ul>      <li>The IBAN of the receiving account needs to exist, even if it is located in Sandbank. Otherwise the transfer will fail.      <li>The returned JSON document represents the task that covers the transfer process as a result of a subsequent TAN request.  </ul>
      * @summary Create a new transfer
-     * @param {string} accessId
-     * @param {string} accountId The **id** for the account.
-     * @param {Transfer} transfer transfer to create
+     * @param {string} accessId The **id** of the access corresponding to accounts to be used
+     * @param {string} accountId The **id** for the account
+     * @param {Transfer} transfer Transfer to create
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -3263,11 +3425,11 @@ export declare const TransferApiFactory: (configuration?: Configuration, fetch?:
  */
 export declare class TransferApi extends BaseAPI {
     /**
-     * The transfer represents a money  transfer from the account identified by its id to another bank account.  **Please note:** Exception from the norm. This POST request will not return  the two header fields X-Id and Location. Also, the returned JSON document  does not represent the transfer entity, but a temporary placeholder.  The transfer is processed asynchronous and needs a message URL zu be configured  to report back the tan challenge and when it is finished.
+     * <p>**Please note:** <ul>      <li>The IBAN of the receiving account needs to exist, even if it is located in Sandbank. Otherwise the transfer will fail.      <li>The returned JSON document represents the task that covers the transfer process as a result of a subsequent TAN request.  </ul>
      * @summary Create a new transfer
-     * @param {string} accessId
-     * @param {string} accountId The **id** for the account.
-     * @param {Transfer} transfer transfer to create
+     * @param {string} accessId The **id** of the access corresponding to accounts to be used
+     * @param {string} accountId The **id** for the account
+     * @param {Transfer} transfer Transfer to create
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TransferApi

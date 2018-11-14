@@ -1,8 +1,10 @@
 # Generated swagger client (Node.js) for the AHOI Simple Banking API
 
-![Sparkassen Innovation Hub](./AHOI-Logo.png)
+[![Sparkassen Innovation Hub](./AHOI-Logo.png)](https://github.com/sparkassen-hub/ahoi-swagger-fetchclient)
 
-&rarr; [Zu GitHub](https://github.com/sparkassen-hub/ahoi-swagger-fetchclient)
+## API Docs
+
+**&rarr; [API Docs](https://sparkassen-hub.github.io/ahoi-swagger-fetchclient/docs/modules/_api_.html)**
 
 ## AHOI - Open Banking API
 
@@ -16,10 +18,6 @@ This client was created automatically from a Swagger configuration file. It cont
 authentication against AHOI API nor encryption.
 
 So you better use this module: [AHOI Node.js Client](https://github.com/sparkassen-hub/ahoi-nodejs-client)
-
-## API Docs
-
-* [API Docs](https://sparkassen-hub.github.io/ahoi-swagger-fetchclient)
 
 ## AHOI Documentation and Links
 
